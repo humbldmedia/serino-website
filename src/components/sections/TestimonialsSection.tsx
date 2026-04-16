@@ -1,13 +1,26 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
-const clientLogos = [
+// Base filter: strip color → invert (white bg → black) → gold tint
+// mix-blend-mode: screen makes the black areas fully transparent on the dark site bg
+const BASE_FILTER = 'grayscale(1) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(0.62)'
+const BASE_FILTER_HOVER = 'grayscale(1) invert(1) sepia(0.4) saturate(0.9) hue-rotate(5deg) brightness(1.1) opacity(0.9)'
+
+const clientLogos: { src: string; alt: string; filter?: string; filterHover?: string }[] = [
   { src: '/logos/client-7.png',  alt: 'Propago PDX' },
   { src: '/logos/client-8.png',  alt: 'The Haven' },
   { src: '/logos/client-4.png',  alt: 'Bloom Agency' },
-  { src: '/logos/client-3.png',  alt: 'DirectStay' },
+  // Light gray text on white — needs contrast boost to become visible after invert
+  { src: '/logos/client-3.png',  alt: 'DirectStay',
+    filter:      'grayscale(1) contrast(5) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(0.62)',
+    filterHover: 'grayscale(1) contrast(5) invert(1) sepia(0.4) saturate(0.9) hue-rotate(5deg) brightness(1.1) opacity(0.9)',
+  },
   { src: '/logos/client-5.png',  alt: 'iModels NW' },
   { src: '/logos/client-12.png', alt: 'Client' },
-  { src: '/logos/client-2.png',  alt: 'Client' },
+  // White-on-white logo — heavy contrast to make faint outlines pop
+  { src: '/logos/client-2.png',  alt: 'Client',
+    filter:      'grayscale(1) contrast(12) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(0.62)',
+    filterHover: 'grayscale(1) contrast(12) invert(1) sepia(0.4) saturate(0.9) hue-rotate(5deg) brightness(1.1) opacity(0.9)',
+  },
 ]
 
 const testimonials = [
@@ -80,7 +93,7 @@ export default function TestimonialsSection() {
         >
           <div
             className="flex flex-wrap items-center justify-center"
-            style={{ gap: '2.5rem 4rem' }}
+            style={{ gap: '2rem 3rem' }}
           >
             {clientLogos.map((logo) => (
               <img
@@ -88,15 +101,16 @@ export default function TestimonialsSection() {
                 src={logo.src}
                 alt={logo.alt}
                 style={{
-                  height: '64px',
+                  height: '120px',
                   width: 'auto',
-                  maxWidth: '180px',
+                  maxWidth: '200px',
                   objectFit: 'contain',
-                  filter: 'grayscale(1) invert(1) opacity(0.38)',
+                  filter: logo.filter ?? BASE_FILTER,
+                  mixBlendMode: 'screen',
                   transition: 'filter 300ms',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.filter = 'grayscale(1) invert(1) opacity(0.7)')}
-                onMouseLeave={e => (e.currentTarget.style.filter = 'grayscale(1) invert(1) opacity(0.38)')}
+                onMouseEnter={e => (e.currentTarget.style.filter = logo.filterHover ?? BASE_FILTER_HOVER)}
+                onMouseLeave={e => (e.currentTarget.style.filter = logo.filter ?? BASE_FILTER)}
               />
             ))}
           </div>
