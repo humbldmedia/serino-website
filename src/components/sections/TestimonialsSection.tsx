@@ -1,30 +1,23 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
-// mix-blend-mode: screen on all logos makes black areas transparent against the dark site bg.
-// Logos with white backgrounds: grayscale → invert (white→black) → screen → bg disappears.
-// Logos with dark backgrounds (client-2): no invert needed, screen already removes black.
-// Logos with colored backgrounds (client-3): no invert, screen softens the bg.
-const F  = (op = 0.62) => `grayscale(1) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(${op})`
-const FH = (op = 0.88) => `grayscale(1) invert(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.1)  opacity(${op})`
-// No-invert variant: for logos already on dark bg or colored bg
-const FN  = (op = 0.62) => `grayscale(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(${op})`
-const FNH = (op = 0.88) => `grayscale(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.1)  opacity(${op})`
+// Standard: grayscale → invert (dark content becomes light) → sepia gold tint → screen blend
+// No-invert: for logos with white/light content on transparent bg (invert would make them black)
+const F   = (op = 0.62) => `grayscale(1) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(${op})`
+const FH  = (op = 0.88) => `grayscale(1) invert(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.1)  opacity(${op})`
+const FN  = (op = 0.62) => `grayscale(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(1.1) opacity(${op})`
+const FNH = (op = 0.88) => `grayscale(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.3) opacity(${op})`
 
-const clientLogos: {
-  src: string; alt: string
-  filter?: string; filterHover?: string
-  cover?: boolean  // use objectFit:cover to crop unwanted white letterbox bands
-}[] = [
+const clientLogos: { src: string; alt: string; filter?: string; filterHover?: string }[] = [
   { src: '/logos/client-1.svg',  alt: 'Client' },
   { src: '/logos/client-7.png',  alt: 'Propago PDX' },
   { src: '/logos/client-8.png',  alt: 'The Haven' },
   { src: '/logos/client-4.png',  alt: 'Bloom Agency' },
-  // White-on-blue bg — no invert so white text stays white under screen blend
-  { src: '/logos/client-3.png',  alt: 'DirectStay',  filter: FN(), filterHover: FNH() },
+  // Transparent bg, dark content — standard invert makes it light/gold
+  { src: '/logos/client-3.png',  alt: 'DirectStay' },
   { src: '/logos/client-5.png',  alt: 'iModels NW' },
   { src: '/logos/client-12.png', alt: 'Client' },
-  // White-on-black bg — already dark bg, no invert; cover crops white letterbox bands
-  { src: '/logos/client-2.png',  alt: 'Dolgo', filter: FN(), filterHover: FNH(), cover: true },
+  // Transparent bg, white/light content — no invert (would turn it black), sepia adds gold tint
+  { src: '/logos/client-2.png',  alt: 'Dolgo', filter: FN(), filterHover: FNH() },
 ]
 
 const testimonials = [
@@ -105,11 +98,10 @@ export default function TestimonialsSection() {
                 src={logo.src}
                 alt={logo.alt}
                 style={{
-                  height: logo.cover ? '58px' : '120px',
-                  width: logo.cover ? '200px' : 'auto',
+                  height: '120px',
+                  width: 'auto',
                   maxWidth: '200px',
-                  objectFit: logo.cover ? 'cover' : 'contain',
-                  objectPosition: 'center',
+                  objectFit: 'contain',
                   filter: logo.filter ?? F(),
                   mixBlendMode: 'screen',
                   transition: 'filter 300ms',
