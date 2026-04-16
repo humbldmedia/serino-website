@@ -7,17 +7,15 @@ const FH  = (op = 0.88) => `grayscale(1) invert(1) sepia(0.4)  saturate(0.9) hue
 const FN  = (op = 0.62) => `grayscale(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(1.1) opacity(${op})`
 const FNH = (op = 0.88) => `grayscale(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.3) opacity(${op})`
 
-const clientLogos: { src: string; alt: string; filter?: string; filterHover?: string }[] = [
+const clientLogos: { src: string; alt: string; filter?: string; filterHover?: string; height?: string }[] = [
   { src: '/logos/client-1.svg',  alt: 'Client' },
   { src: '/logos/client-7.png',  alt: 'Propago PDX' },
   { src: '/logos/client-8.png',  alt: 'The Haven' },
   { src: '/logos/client-4.png',  alt: 'Bloom Agency' },
-  // Transparent bg, dark content — standard invert makes it light/gold
-  { src: '/logos/client-3.png',  alt: 'DirectStay' },
+  { src: '/logos/client-3.png',  alt: 'DirectStay', height: '240px' },
   { src: '/logos/client-5.png',  alt: 'iModels NW' },
-  { src: '/logos/client-12.png', alt: 'Client' },
-  // Transparent bg, white/light content — no invert (would turn it black), sepia adds gold tint
-  { src: '/logos/client-2.png',  alt: 'Dolgo', filter: FN(), filterHover: FNH() },
+  { src: '/logos/client-12.png', alt: 'Client', height: '80px' },
+  { src: '/logos/client-2.png',  alt: 'Dolgo', filter: FN(), filterHover: FNH(), height: '240px' },
 ]
 
 const testimonials = [
@@ -98,9 +96,9 @@ export default function TestimonialsSection() {
                 src={logo.src}
                 alt={logo.alt}
                 style={{
-                  height: '120px',
+                  height: logo.height ?? '120px',
                   width: 'auto',
-                  maxWidth: '200px',
+                  maxWidth: logo.height ? '400px' : '200px',
                   objectFit: 'contain',
                   filter: logo.filter ?? F(),
                   mixBlendMode: 'screen',
