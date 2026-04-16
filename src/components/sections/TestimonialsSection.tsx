@@ -1,5 +1,15 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
+const clientLogos = [
+  { src: '/logos/client-7.png',  alt: 'Propago PDX' },
+  { src: '/logos/client-8.png',  alt: 'The Haven' },
+  { src: '/logos/client-4.png',  alt: 'Bloom Agency' },
+  { src: '/logos/client-3.png',  alt: 'DirectStay' },
+  { src: '/logos/client-5.png',  alt: 'iModels NW' },
+  { src: '/logos/client-12.png', alt: 'Client' },
+  { src: '/logos/client-2.png',  alt: 'Client' },
+]
+
 const testimonials = [
   {
     quote: "They helped me identify the real issue at hand which allowed our company to go to the next level.",
@@ -58,6 +68,51 @@ export default function TestimonialsSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Client logo strip */}
+        <div
+          className="fade-up-visible mt-20 pt-12"
+          style={{
+            transitionDelay: '200ms',
+            borderTop: '1px solid rgba(194,168,120,0.15)',
+          }}
+        >
+          <p
+            className="text-center mb-8"
+            style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontSize: '11px',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: 'rgba(194,168,120,0.45)',
+            }}
+          >
+            Clients &amp; Partners
+          </p>
+
+          <div
+            className="flex flex-wrap items-center justify-center"
+            style={{ gap: '2.5rem 3.5rem' }}
+          >
+            {clientLogos.map((logo) => (
+              <img
+                key={logo.src}
+                src={logo.src}
+                alt={logo.alt}
+                style={{
+                  height: '36px',
+                  width: 'auto',
+                  maxWidth: '120px',
+                  objectFit: 'contain',
+                  filter: 'grayscale(1) invert(1) opacity(0.38)',
+                  transition: 'filter 300ms',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.filter = 'grayscale(1) invert(1) opacity(0.7)')}
+                onMouseLeave={e => (e.currentTarget.style.filter = 'grayscale(1) invert(1) opacity(0.38)')}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
