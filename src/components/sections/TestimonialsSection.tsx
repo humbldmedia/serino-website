@@ -1,26 +1,30 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
-// Base filter: strip color → invert (white bg → black) → gold tint
-// mix-blend-mode: screen makes the black areas fully transparent on the dark site bg
-const BASE_FILTER = 'grayscale(1) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(0.62)'
-const BASE_FILTER_HOVER = 'grayscale(1) invert(1) sepia(0.4) saturate(0.9) hue-rotate(5deg) brightness(1.1) opacity(0.9)'
+// mix-blend-mode: screen on all logos makes black areas transparent against the dark site bg.
+// Logos with white backgrounds: grayscale → invert (white→black) → screen → bg disappears.
+// Logos with dark backgrounds (client-2): no invert needed, screen already removes black.
+// Logos with colored backgrounds (client-3): no invert, screen softens the bg.
+const F  = (op = 0.62) => `grayscale(1) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(${op})`
+const FH = (op = 0.88) => `grayscale(1) invert(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.1)  opacity(${op})`
+// No-invert variant: for logos already on dark bg or colored bg
+const FN  = (op = 0.62) => `grayscale(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(${op})`
+const FNH = (op = 0.88) => `grayscale(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.1)  opacity(${op})`
 
-const clientLogos: { src: string; alt: string; filter?: string; filterHover?: string }[] = [
+const clientLogos: {
+  src: string; alt: string
+  filter?: string; filterHover?: string
+  cover?: boolean  // use objectFit:cover to crop unwanted white letterbox bands
+}[] = [
+  { src: '/logos/client-1.svg',  alt: 'Client' },
   { src: '/logos/client-7.png',  alt: 'Propago PDX' },
   { src: '/logos/client-8.png',  alt: 'The Haven' },
   { src: '/logos/client-4.png',  alt: 'Bloom Agency' },
-  // Light gray text on white — needs contrast boost to become visible after invert
-  { src: '/logos/client-3.png',  alt: 'DirectStay',
-    filter:      'grayscale(1) contrast(5) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(0.62)',
-    filterHover: 'grayscale(1) contrast(5) invert(1) sepia(0.4) saturate(0.9) hue-rotate(5deg) brightness(1.1) opacity(0.9)',
-  },
+  // White-on-blue bg — no invert so white text stays white under screen blend
+  { src: '/logos/client-3.png',  alt: 'DirectStay',  filter: FN(), filterHover: FNH() },
   { src: '/logos/client-5.png',  alt: 'iModels NW' },
   { src: '/logos/client-12.png', alt: 'Client' },
-  // White-on-white logo — heavy contrast to make faint outlines pop
-  { src: '/logos/client-2.png',  alt: 'Client',
-    filter:      'grayscale(1) contrast(12) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(0.62)',
-    filterHover: 'grayscale(1) contrast(12) invert(1) sepia(0.4) saturate(0.9) hue-rotate(5deg) brightness(1.1) opacity(0.9)',
-  },
+  // White-on-black bg — already dark bg, no invert; cover crops white letterbox bands
+  { src: '/logos/client-2.png',  alt: 'Dolgo', filter: FN(), filterHover: FNH(), cover: true },
 ]
 
 const testimonials = [
@@ -101,16 +105,17 @@ export default function TestimonialsSection() {
                 src={logo.src}
                 alt={logo.alt}
                 style={{
-                  height: '120px',
-                  width: 'auto',
+                  height: logo.cover ? '58px' : '120px',
+                  width: logo.cover ? '200px' : 'auto',
                   maxWidth: '200px',
-                  objectFit: 'contain',
-                  filter: logo.filter ?? BASE_FILTER,
+                  objectFit: logo.cover ? 'cover' : 'contain',
+                  objectPosition: 'center',
+                  filter: logo.filter ?? F(),
                   mixBlendMode: 'screen',
                   transition: 'filter 300ms',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.filter = logo.filterHover ?? BASE_FILTER_HOVER)}
-                onMouseLeave={e => (e.currentTarget.style.filter = logo.filter ?? BASE_FILTER)}
+                onMouseEnter={e => (e.currentTarget.style.filter = logo.filterHover ?? FH())}
+                onMouseLeave={e => (e.currentTarget.style.filter = logo.filter ?? F())}
               />
             ))}
           </div>
