@@ -78,22 +78,9 @@ export default function TestimonialsSection() {
             borderTop: '1px solid rgba(194,168,120,0.15)',
           }}
         >
-          <p
-            className="text-center mb-8"
-            style={{
-              fontFamily: 'Cormorant Garamond, serif',
-              fontSize: '11px',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: 'rgba(194,168,120,0.45)',
-            }}
-          >
-            Clients &amp; Partners
-          </p>
-
           <div
             className="flex flex-wrap items-center justify-center"
-            style={{ gap: '2.5rem 3.5rem' }}
+            style={{ gap: '2.5rem 4rem' }}
           >
             {clientLogos.map((logo) => (
               <img
@@ -101,9 +88,9 @@ export default function TestimonialsSection() {
                 src={logo.src}
                 alt={logo.alt}
                 style={{
-                  height: '36px',
+                  height: '64px',
                   width: 'auto',
-                  maxWidth: '120px',
+                  maxWidth: '180px',
                   objectFit: 'contain',
                   filter: 'grayscale(1) invert(1) opacity(0.38)',
                   transition: 'filter 300ms',
