@@ -20,8 +20,16 @@ const clientLogos: { src: string; alt: string; filter?: string; filterHover?: st
 
 const testimonials = [
   {
-    quote: "They helped me identify the real issue at hand which allowed our company to go to the next level.",
-    attribution: "Founder, Professional Services",
+    quote: "you captured the essence and heart of what we're doing and i literally had chills. i could not have done it better myself. that's why i hired you ❤️ Its spectacular",
+    attribution: "Jennefer Payne, CEA of DirectStay",
+  },
+  {
+    quote: "Excellent job today Phil. Appreciate the purpose driven fire!",
+    attribution: "Breck Rubin, Founder/CEO of DirectStay",
+  },
+  {
+    quote: "Yes yes yesss PHIL I couldn't stop smiling !! Also I got a chance to see what was all going on backstage as well. I appreciate you and your commitment",
+    attribution: "Abibat Durosimi, Founder/CEO of Bloom Agency",
   },
 ]
 
@@ -39,10 +47,10 @@ export default function TestimonialsSection() {
 
       <div className="container-main relative z-10 pt-20" ref={ref}>
         <span className="section-label fade-up-visible" style={{ color: '#C2A878' }}>
-          What Clients Say
+          In Their Own Words
         </span>
 
-        <div className={`mt-12 ${testimonials.length === 1 ? 'max-w-3xl mx-auto' : 'grid grid-cols-1 md:grid-cols-' + Math.min(testimonials.length, 3) + ' gap-12'}`}>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-12">
           {testimonials.map((t, i) => (
             <div
               key={i}

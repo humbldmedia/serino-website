@@ -17,9 +17,9 @@ function App() {
       <main>
         <HeroSection />
         <SequenceSection />
+        <ProcessSection />
         <WhatWeDoSection />
         <WhoWeServeSection />
-        <ProcessSection />
         <TestimonialsSection />
         <PhilosophySection />
         <AboutSection />

@@ -37,16 +37,7 @@ export default function Nav() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="font-heading text-xs tracking-widest uppercase text-roma-cream/70 hover:text-gold transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="hidden md:flex items-center">
             <a
               href="#contact"
               className="font-heading text-xs tracking-widest uppercase border border-gold text-gold px-5 py-2.5 hover:bg-gold hover:text-serino-black transition-all duration-200"

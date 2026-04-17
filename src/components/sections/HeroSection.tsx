@@ -11,30 +11,38 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center grain-overlay"
+      className="relative min-h-screen flex items-end grain-overlay"
       style={{ backgroundColor: '#0D0D0D' }}
     >
+      {/* Full-bleed background image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'url(/assets/pictures/hero-bg.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: '80% center',
+          opacity: 1,
+        }}
+      />
+      {/* Left gradient so text stays legible */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(to right, rgba(13,13,13,0.6) 0%, rgba(13,13,13,0.2) 50%, rgba(13,13,13,0) 100%)' }}
+      />
+      {/* Bottom fade */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-40"
+        style={{ background: 'linear-gradient(to top, rgba(13,13,13,1) 0%, transparent 100%)' }}
+      />
+
       {/* Thin vertical gold line on far left */}
       <div
         className="absolute left-0 top-1/4 bottom-1/4 w-px"
         style={{ backgroundColor: '#C2A878', opacity: 0.6 }}
       />
 
-      <div className="container-main relative z-10 py-32 md:py-0">
-        <div className="max-w-3xl">
-          {/* Eyebrow */}
-          <span
-            className="section-label"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? 'translateY(0)' : 'translateY(24px)',
-              transition: 'opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1)',
-              transitionDelay: '0ms',
-            }}
-          >
-            Strategic Clarity for Founders
-          </span>
-
+      <div className="container-main relative z-10 pb-32 md:pb-40">
+        <div className="max-w-2xl">
           {/* Headline */}
           <h1
             className="font-display text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-tight mb-8"
@@ -45,12 +53,12 @@ export default function HeroSection() {
               transitionDelay: '80ms',
             }}
           >
-            Lead with integrity.
+            Lead with inte<span style={{ color: '#C2A878' }}>grit</span>y.
           </h1>
 
           {/* Subheadline */}
           <p
-            className="font-body italic text-xl text-roma-cream/60 mb-12 leading-relaxed max-w-xl"
+            className="font-body italic text-xl text-roma-cream/60 mb-12 leading-relaxed max-w-lg"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? 'translateY(0)' : 'translateY(24px)',
@@ -58,12 +66,13 @@ export default function HeroSection() {
               transitionDelay: '160ms',
             }}
           >
-            We name the real problem in your brand. Then we build the clarity to resolve it.
+            Helping founders do business better.
           </p>
 
           {/* CTA */}
+          <div className="flex justify-center">
           <a
-            href="#contact"
+            href="#process-intro"
             className="inline-block font-heading text-sm tracking-widest uppercase border border-gold text-gold px-8 py-4 hover:bg-gold hover:text-serino-black transition-all duration-200"
             style={{
               opacity: loaded ? 1 : 0,
@@ -72,8 +81,9 @@ export default function HeroSection() {
               transitionDelay: '240ms',
             }}
           >
-            Start the Conversation →
+            Lead with Heart →
           </a>
+          </div>
         </div>
       </div>
     </section>

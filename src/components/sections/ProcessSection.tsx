@@ -21,6 +21,7 @@ export default function ProcessSection() {
   const svgWrapRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
+  const [showDeliverable, setShowDeliverable] = useState(false)
 
   useEffect(() => {
     const el = svgWrapRef.current
@@ -84,7 +85,7 @@ export default function ProcessSection() {
       `}</style>
 
       <div className="container-main" ref={containerRef}>
-        <span className="section-label fade-up-visible">The Process</span>
+        <span className="section-label fade-up-visible">The Restoration Process</span>
 
         <div ref={svgWrapRef} className="max-w-3xl mx-auto mt-8 fade-up-visible" style={{ transitionDelay: '80ms' }}>
           <svg
@@ -110,7 +111,7 @@ export default function ProcessSection() {
             <line x1="480" y1="280" x2="300" y2="340" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(610)} />
 
             {/* STRATEGIC PRODUCTION → DECISION */}
-            <line x1="300" y1="400" x2="300" y2="450" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(780)} />
+            <line x1="300" y1="412" x2="300" y2="450" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(780)} />
 
             {/* DECISION → HUMBLD / OUTSIDE */}
             <line x1="300" y1="490" x2="150" y2="550" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(960)} />
@@ -133,7 +134,7 @@ export default function ProcessSection() {
             <g {...hoverHandlers('client-needs')} style={{ ...hoverHandlers('client-needs').style, ...na(0) }}>
               <rect x="180" y="10" width="240" height="50" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('client-needs', 0)} style={{ transition: 'fill-opacity 200ms' }} />
               <text x="300" y="30" textAnchor="middle" fill={textFill('client-needs')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>CLIENT NEEDS</text>
-              <text x="300" y="48" textAnchor="middle" fill={goldFill('client-needs')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>"We need branding / content"</text>
+              <text x="300" y="48" textAnchor="middle" fill={goldFill('client-needs')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>"We have a need"</text>
             </g>
 
             {/* Dot */}
@@ -143,7 +144,7 @@ export default function ProcessSection() {
             <g {...hoverHandlers('serino')} style={{ ...hoverHandlers('serino').style, ...na(200) }}>
               <rect x="190" y="110" width="220" height="60" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('serino', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
               <text x="300" y="134" textAnchor="middle" fill={goldFill('serino')} fontSize="13" fontFamily="Cormorant Garamond, serif" letterSpacing="2" fontWeight="500" style={{ transition: 'fill 200ms' }}>SERINO CONSULTING</text>
-              <text x="300" y="154" textAnchor="middle" fill={textFill('serino')} fontSize="11" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Brain</text>
+              <text x="300" y="154" textAnchor="middle" fill={textFill('serino')} fontSize="11" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>"This is what you need"</text>
             </g>
 
             {/* NODE: BRAND STRATEGY */}
@@ -172,9 +173,16 @@ export default function ProcessSection() {
 
             {/* NODE: STRATEGIC PRODUCTION PLAN */}
             <g {...hoverHandlers('production-plan')} style={{ ...hoverHandlers('production-plan').style, ...na(660) }}>
-              <rect x="150" y="340" width="300" height="60" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('production-plan', 0.06)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="363" textAnchor="middle" fill={goldFill('production-plan')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>STRATEGIC PRODUCTION PLAN</text>
-              <text x="300" y="381" textAnchor="middle" fill={textFill('production-plan')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Master Plan for Execution</text>
+              <rect x="150" y="340" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('production-plan', 0.06)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="363" textAnchor="middle" fill={goldFill('production-plan')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #1</text>
+              <text x="300" y="381" textAnchor="middle" fill={textFill('production-plan')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Brand Bible &amp; Master Plan</text>
+              <text
+                x="300" y="396" textAnchor="middle"
+                fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5"
+                fill="#C2A878"
+                style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                onClick={(e) => { e.stopPropagation(); setShowDeliverable(true) }}
+              >Learn more</text>
             </g>
 
             {/* Dot */}
@@ -253,6 +261,84 @@ export default function ProcessSection() {
           </div>
         </div>
       </div>
+
+      {/* Deliverable #1 Modal */}
+      {showDeliverable && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-6"
+          style={{ backgroundColor: 'rgba(13,13,13,0.85)', backdropFilter: 'blur(4px)' }}
+          onClick={() => setShowDeliverable(false)}
+        >
+          <div
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
+            style={{ backgroundColor: '#111', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Close */}
+            <button
+              onClick={() => setShowDeliverable(false)}
+              className="absolute top-4 right-5 font-heading text-xs tracking-widest uppercase"
+              style={{ color: '#C2A878' }}
+            >
+              Close ✕
+            </button>
+
+            <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>Deliverable Item #1</p>
+            <h2 className="font-display text-3xl text-roma-cream mb-1">Brand Bible + Master Plan</h2>
+            <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: 'rgba(194,168,120,0.6)' }}>$20,000 – $25,000+</p>
+
+            <p className="font-body text-roma-cream/70 leading-relaxed mb-8">
+              Perfect for anyone serious about building a scalable brand with long-term vision. This is the transformation package — guided consulting, content creation, integration, and marketing strategy all in one.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Brand Bible</p>
+                <ul className="space-y-2">
+                  {[
+                    'Brand Audit + Discovery Session',
+                    'Mission, Vision & Values',
+                    'Core Identity Messaging + UVP',
+                    'Brand Voice & Tone Guide',
+                    'StoryBrand Framework',
+                    'Audience & Brand Narrative Arc',
+                    'Logo Creation',
+                    'Color Palette',
+                    'Typography System',
+                    'Moodboards',
+                    'Social Media Templates',
+                    'Social Media Messaging + Scripts',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
+                      <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Master Marketing Plan</p>
+                <ul className="space-y-2">
+                  {[
+                    'Social Media Integration',
+                    'Website Strategy + Integration',
+                    'Marketing Strategy + Planning',
+                    'Content Buckets + 30-Day Content Plan',
+                    'Brand Video Shoot + Photoshoot',
+                    'Consulting + Project Management (duration of project)',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
+                      <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
