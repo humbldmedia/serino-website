@@ -2,7 +2,6 @@ import Nav from './components/layout/Nav'
 import Footer from './components/layout/Footer'
 import HeroSection from './components/sections/HeroSection'
 import SequenceSection from './components/sections/SequenceSection'
-import WhatWeDoSection from './components/sections/WhatWeDoSection'
 import WhoWeServeSection from './components/sections/WhoWeServeSection'
 import ProcessSection from './components/sections/ProcessSection'
 import TestimonialsSection from './components/sections/TestimonialsSection'
@@ -18,7 +17,6 @@ function App() {
         <HeroSection />
         <SequenceSection />
         <ProcessSection />
-        <WhatWeDoSection />
         <WhoWeServeSection />
         <TestimonialsSection />
         <PhilosophySection />

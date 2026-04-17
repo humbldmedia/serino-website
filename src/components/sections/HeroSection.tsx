@@ -81,7 +81,7 @@ export default function HeroSection() {
               transitionDelay: '240ms',
             }}
           >
-            Lead with Heart →
+            Do Business Better →
           </a>
           </div>
         </div>

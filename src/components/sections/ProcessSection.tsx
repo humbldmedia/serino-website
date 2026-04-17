@@ -22,6 +22,7 @@ export default function ProcessSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
   const [showDeliverable, setShowDeliverable] = useState(false)
+  const [modalView, setModalView] = useState<'deliverable' | 'why'>('deliverable')
 
   useEffect(() => {
     const el = svgWrapRef.current
@@ -133,8 +134,8 @@ export default function ProcessSection() {
             {/* NODE: CLIENT NEEDS */}
             <g {...hoverHandlers('client-needs')} style={{ ...hoverHandlers('client-needs').style, ...na(0) }}>
               <rect x="180" y="10" width="240" height="50" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('client-needs', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="30" textAnchor="middle" fill={textFill('client-needs')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>CLIENT NEEDS</text>
-              <text x="300" y="48" textAnchor="middle" fill={goldFill('client-needs')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>"We have a need"</text>
+              <text x="300" y="30" textAnchor="middle" fill={textFill('client-needs')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>CLIENT</text>
+              <text x="300" y="50" textAnchor="middle" fill={goldFill('client-needs')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>"We have a need"</text>
             </g>
 
             {/* Dot */}
@@ -149,23 +150,23 @@ export default function ProcessSection() {
 
             {/* NODE: BRAND STRATEGY */}
             <g {...hoverHandlers('brand-strategy')} style={{ ...hoverHandlers('brand-strategy').style, ...na(440) }}>
-              <rect x="50" y="235" width="120" height="44" rx="0" fill="#C2A878" fillOpacity={rectFill('brand-strategy', 0)} stroke="none" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="100" y="257" textAnchor="middle" fill={textFill('brand-strategy')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>BRAND</text>
-              <text x="100" y="271" textAnchor="middle" fill={textFill('brand-strategy')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>STRATEGY</text>
+              <polygon points="148,233 172,257 148,281 92,281 68,257 92,233" fill="#C2A878" fillOpacity={rectFill('brand-strategy', 0)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="120" y="254" textAnchor="middle" fill={textFill('brand-strategy')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>BRAND</text>
+              <text x="120" y="268" textAnchor="middle" fill={textFill('brand-strategy')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>STRATEGY</text>
             </g>
 
             {/* NODE: CREATIVE DIRECTION */}
             <g {...hoverHandlers('creative-dir')} style={{ ...hoverHandlers('creative-dir').style, ...na(470) }}>
-              <rect x="240" y="235" width="120" height="44" rx="0" fill="#C2A878" fillOpacity={rectFill('creative-dir', 0)} stroke="none" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="257" textAnchor="middle" fill={textFill('creative-dir')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>CREATIVE</text>
-              <text x="300" y="271" textAnchor="middle" fill={textFill('creative-dir')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>DIRECTION</text>
+              <polygon points="328,233 352,257 328,281 272,281 248,257 272,233" fill="#C2A878" fillOpacity={rectFill('creative-dir', 0)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="254" textAnchor="middle" fill={textFill('creative-dir')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>CREATIVE</text>
+              <text x="300" y="268" textAnchor="middle" fill={textFill('creative-dir')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>DIRECTION</text>
             </g>
 
             {/* NODE: PROJECT ARCHITECTURE */}
             <g {...hoverHandlers('project-arch')} style={{ ...hoverHandlers('project-arch').style, ...na(500) }}>
-              <rect x="430" y="235" width="110" height="44" rx="0" fill="#C2A878" fillOpacity={rectFill('project-arch', 0)} stroke="none" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="490" y="257" textAnchor="middle" fill={textFill('project-arch')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>PROJECT</text>
-              <text x="490" y="271" textAnchor="middle" fill={textFill('project-arch')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>ARCHITECTURE</text>
+              <polygon points="515,233 542,257 515,281 445,281 418,257 445,233" fill="#C2A878" fillOpacity={rectFill('project-arch', 0)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="480" y="254" textAnchor="middle" fill={textFill('project-arch')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>PROJECT</text>
+              <text x="480" y="268" textAnchor="middle" fill={textFill('project-arch')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>ARCHITECTURE</text>
             </g>
 
             {/* Dot */}
@@ -175,7 +176,7 @@ export default function ProcessSection() {
             <g {...hoverHandlers('production-plan')} style={{ ...hoverHandlers('production-plan').style, ...na(660) }}>
               <rect x="150" y="340" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('production-plan', 0.06)} style={{ transition: 'fill-opacity 200ms' }} />
               <text x="300" y="363" textAnchor="middle" fill={goldFill('production-plan')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #1</text>
-              <text x="300" y="381" textAnchor="middle" fill={textFill('production-plan')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Brand Bible &amp; Master Plan</text>
+              <text x="300" y="381" textAnchor="middle" fill={textFill('production-plan')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Brand Foundation Plan</text>
               <text
                 x="300" y="396" textAnchor="middle"
                 fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5"
@@ -231,7 +232,7 @@ export default function ProcessSection() {
             {/* NODE: ONGOING */}
             <g {...hoverHandlers('ongoing')} style={{ ...hoverHandlers('ongoing').style, ...na(1560) }}>
               <rect x="100" y="806" width="400" height="24" rx="0" fill="#C2A878" fillOpacity={rectFill('ongoing', 0)} stroke="none" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="822" textAnchor="middle" fill={goldFill('ongoing')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>ONGOING CONSULTING &amp; GROWTH</text>
+              <text x="300" y="822" textAnchor="middle" fill={goldFill('ongoing')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>ONGOING GOVERNANCE &amp; GROWTH</text>
             </g>
 
           </svg>
@@ -267,7 +268,7 @@ export default function ProcessSection() {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-6"
           style={{ backgroundColor: 'rgba(13,13,13,0.85)', backdropFilter: 'blur(4px)' }}
-          onClick={() => setShowDeliverable(false)}
+          onClick={() => { setShowDeliverable(false); setModalView('deliverable') }}
         >
           <div
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
@@ -276,66 +277,142 @@ export default function ProcessSection() {
           >
             {/* Close */}
             <button
-              onClick={() => setShowDeliverable(false)}
+              onClick={() => { setShowDeliverable(false); setModalView('deliverable') }}
               className="absolute top-4 right-5 font-heading text-xs tracking-widest uppercase"
               style={{ color: '#C2A878' }}
             >
               Close ✕
             </button>
 
+            {/* Shared header */}
             <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>Deliverable Item #1</p>
-            <h2 className="font-display text-3xl text-roma-cream mb-1">Brand Bible + Master Plan</h2>
-            <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: 'rgba(194,168,120,0.6)' }}>$20,000 – $25,000+</p>
+            <h2 className="font-display text-3xl text-roma-cream mb-1">Brand Foundation Plan</h2>
+            <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: 'rgba(194,168,120,0.6)' }}>$20,000 – $25,000+&nbsp;&nbsp;·&nbsp;&nbsp;4–6 Weeks</p>
 
-            <p className="font-body text-roma-cream/70 leading-relaxed mb-8">
-              Perfect for anyone serious about building a scalable brand with long-term vision. This is the transformation package — guided consulting, content creation, integration, and marketing strategy all in one.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Brand Bible</p>
-                <ul className="space-y-2">
-                  {[
-                    'Brand Audit + Discovery Session',
-                    'Mission, Vision & Values',
-                    'Core Identity Messaging + UVP',
-                    'Brand Voice & Tone Guide',
-                    'StoryBrand Framework',
-                    'Audience & Brand Narrative Arc',
-                    'Logo Creation',
-                    'Color Palette',
-                    'Typography System',
-                    'Moodboards',
-                    'Social Media Templates',
-                    'Social Media Messaging + Scripts',
-                  ].map(item => (
-                    <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
-                      <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Master Marketing Plan</p>
-                <ul className="space-y-2">
-                  {[
-                    'Social Media Integration',
-                    'Website Strategy + Integration',
-                    'Marketing Strategy + Planning',
-                    'Content Buckets + 30-Day Content Plan',
-                    'Brand Video Shoot + Photoshoot',
-                    'Consulting + Project Management (duration of project)',
-                  ].map(item => (
-                    <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
-                      <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* Slide indicator */}
+            <div className="flex gap-2 mb-8">
+              {(['deliverable', 'why'] as const).map(v => (
+                <div
+                  key={v}
+                  style={{
+                    height: '2px',
+                    flex: 1,
+                    backgroundColor: modalView === v ? '#C2A878' : 'rgba(194,168,120,0.2)',
+                    transition: 'background-color 300ms',
+                  }}
+                />
+              ))}
             </div>
+
+            {/* SLIDE 1: Deliverable breakdown */}
+            {modalView === 'deliverable' && (
+              <div>
+                <p className="font-body text-roma-cream/70 leading-relaxed mb-8">
+                  Perfect for anyone serious about building a scalable brand with long-term vision. This is the transformation package: brand assets, marketing strategy, integration, and guided consulting all in one.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                  <div>
+                    <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Brand Bible</p>
+                    <ul className="space-y-2">
+                      {[
+                        'Brand Audit + Discovery Session',
+                        'Mission, Vision & Values',
+                        'Core Identity Messaging + UVP',
+                        'Brand Voice & Tone Guide',
+                        'StoryBrand Framework',
+                        'Audience & Brand Narrative Arc',
+                        'Logo Creation',
+                        'Color Palette',
+                        'Typography System',
+                        'Moodboards',
+                        'Social Media Templates',
+                        'Social Media Messaging + Scripts',
+                      ].map(item => (
+                        <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
+                          <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Master Marketing Plan</p>
+                      <ul className="space-y-2 mb-6">
+                        {[
+                          'Social Media Integration',
+                          'Website Strategy + Integration',
+                          'Marketing Strategy + Planning',
+                          'Content Buckets + 30-Day Content Plan',
+                          'Brand Video Shoot + Photoshoot',
+                          'Consulting + Project Management (duration of project)',
+                        ].map(item => (
+                          <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
+                            <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <button
+                      onClick={() => setModalView('why')}
+                      className="font-heading text-xs tracking-widest uppercase border px-6 py-3 transition-all duration-200 self-start"
+                      style={{ borderColor: '#C2A878', color: '#C2A878' }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.backgroundColor = '#C2A878'
+                        e.currentTarget.style.color = '#0D0D0D'
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.backgroundColor = 'transparent'
+                        e.currentTarget.style.color = '#C2A878'
+                      }}
+                    >
+                      Why This Matters →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* SLIDE 2: Why This Matters */}
+            {modalView === 'why' && (
+              <div>
+                <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: '#C2A878' }}>Why This Matters</p>
+
+                <div className="space-y-4 leading-relaxed mb-10">
+                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
+                    This is the essential item that most startups and businesses overlook. Not for any reason other than it's simply not talked about enough. You cannot build a house successfully without the foundation.
+                  </p>
+                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
+                    "Do your planning and prepare your fields before building your house." — Proverbs 24:27
+                  </p>
+                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
+                    "Write the vision and make it plain on tablets, that he may run who reads it." — Habakkuk 2:2
+                  </p>
+                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
+                    Without a clear identity, voice, and plan established from the start, teams pull in different directions, messaging becomes inconsistent, and the energy that launched the idea slowly turns into burnout and dysfunction. No, a brand logo is not all you need.
+                  </p>
+                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
+                    Why do 90% of startups fail within the first 2–5 years of operation? Because they do not hire Serino Consulting to establish their brand foundation and keep them on track.
+                  </p>
+                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
+                    Serino's Brand Foundation Plan exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => setModalView('deliverable')}
+                  className="font-heading text-xs tracking-widest uppercase"
+                  style={{ color: '#C2A878', letterSpacing: '0.1em' }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
+                  onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                >
+                  ← Back to Deliverables
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

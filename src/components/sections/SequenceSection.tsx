@@ -42,7 +42,7 @@ export default function SequenceSection() {
     >
       <div className="container-main" ref={ref}>
         <span className="section-label fade-up-visible" style={{ color: '#C2A878' }}>
-          Lead with Heart
+          Do Business Better
         </span>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 mt-4">
@@ -72,7 +72,7 @@ export default function SequenceSection() {
         {/* Closing pull quote */}
         <div
           ref={quoteRef}
-          className="fade-up-visible mt-20 max-w-2xl"
+          className="fade-up-visible mt-20 max-w-2xl mx-auto flex flex-col items-center text-center"
         >
           <p
             className="font-display italic text-xl md:text-2xl leading-relaxed mb-10"
