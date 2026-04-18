@@ -435,7 +435,7 @@ export default function ProcessSection() {
                     "Write the vision and make it plain on tablets, that he may run who reads it." — Habakkuk 2:2
                   </p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
-                    Serino's The Serino Brand Foundation exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.
+                    The Serino Brand Foundation exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.
                   </p>
                 </div>
 
