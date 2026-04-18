@@ -25,6 +25,8 @@ export default function ProcessSection() {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
   const [showDeliverable, setShowDeliverable] = useState(false)
   const [modalView, setModalView] = useState<'deliverable' | 'why'>('deliverable')
+  const [showRetainer, setShowRetainer] = useState(false)
+  const [retainerView, setRetainerView] = useState<'deliverable' | 'why'>('deliverable')
 
   useEffect(() => {
     const el = svgWrapRef.current
@@ -226,7 +228,7 @@ export default function ProcessSection() {
               <rect x="150" y="602" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#b45f40" fillOpacity={rectFill('deliverable-2', 0.18)} style={{ transition: 'fill-opacity 200ms' }} />
               <text x="300" y="625" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>RETAINER PACKAGE</text>
               <text x="300" y="643" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Governance &amp; Growth</text>
-              <text x="300" y="658" textAnchor="middle" fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" fill="#C2A878" style={{ cursor: 'pointer', textDecoration: 'underline' }}>Learn more</text>
+              <text x="300" y="658" textAnchor="middle" fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" fill="#C2A878" style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={(e) => { e.stopPropagation(); setShowRetainer(true) }}>Learn more</text>
             </g>
 
             {/* NODE: HUMBLD MEDIA */}
@@ -443,6 +445,150 @@ export default function ProcessSection() {
                   style={{ color: '#C2A878', letterSpacing: '0.1em' }}
                   onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
                   onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                >
+                  ← Back to Deliverables
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+      {/* Retainer Package Modal */}
+      {showRetainer && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-6"
+          style={{ backgroundColor: 'rgba(13,13,13,0.85)', backdropFilter: 'blur(4px)' }}
+          onClick={() => { setShowRetainer(false); setRetainerView('deliverable') }}
+        >
+          <div
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
+            style={{ backgroundColor: '#111', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Close */}
+            <button
+              onClick={() => { setShowRetainer(false); setRetainerView('deliverable') }}
+              className="absolute top-4 right-5 font-heading text-xs tracking-widest uppercase"
+              style={{ color: '#C2A878' }}
+            >
+              Close ✕
+            </button>
+
+            {/* Shared header */}
+            <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>Retainer Package</p>
+            <h2 className="font-display text-3xl text-roma-cream mb-1">Serino Governance &amp; Growth</h2>
+            <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: 'rgba(194,168,120,0.6)' }}>$3,500 – $6,000 / mo&nbsp;&nbsp;·&nbsp;&nbsp;Ongoing</p>
+
+            {/* Slide indicator */}
+            <div className="flex gap-2 mb-8">
+              {(['deliverable', 'why'] as const).map(v => (
+                <div
+                  key={v}
+                  style={{
+                    height: '2px',
+                    flex: 1,
+                    backgroundColor: retainerView === v ? '#C2A878' : 'rgba(194,168,120,0.2)',
+                    transition: 'background-color 300ms',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* SLIDE 1: Package breakdown */}
+            {retainerView === 'deliverable' && (
+              <div>
+                <p className="font-body text-roma-cream/70 leading-relaxed mb-8">
+                  The brand is built. Now it has to be kept. This retainer exists for companies that understand the work doesn't end at launch — it deepens. Serino stays inside your operation as the strategic constant: guiding decisions, maintaining brand integrity, and ensuring every execution reflects the vision you built from the foundation.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                  <div>
+                    <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Strategic Oversight</p>
+                    <ul className="space-y-2">
+                      {[
+                        'Monthly Strategy & Direction Sessions',
+                        'Brand Governance & Consistency Reviews',
+                        'Content Approval & Quality Control',
+                        'Campaign Direction & Messaging Alignment',
+                        'Quarterly Brand Audits',
+                        'Creative Direction on All Output',
+                      ].map(item => (
+                        <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
+                          <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Execution Support</p>
+                      <ul className="space-y-2 mb-6">
+                        {[
+                          'Vendor & Production Team Coordination',
+                          'Humbld Media Partnership Management',
+                          'Performance Review & Reporting',
+                          'Growth Roadmap Updates',
+                          'On-Call Consulting (Priority Access)',
+                          'Consulting + Project Management (Ongoing)',
+                        ].map(item => (
+                          <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
+                            <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <button
+                      onClick={() => setRetainerView('why')}
+                      className="font-heading text-xs tracking-widest uppercase border px-6 py-3 transition-all duration-200 self-start"
+                      style={{ borderColor: '#C2A878', color: '#C2A878' }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.backgroundColor = '#C2A878'
+                        e.currentTarget.style.color = '#0D0D0D'
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.backgroundColor = 'transparent'
+                        e.currentTarget.style.color = '#C2A878'
+                      }}
+                    >
+                      Why This Matters →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* SLIDE 2: Why This Matters */}
+            {retainerView === 'why' && (
+              <div>
+                <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: '#C2A878' }}>Why This Matters</p>
+
+                <div className="space-y-4 leading-relaxed mb-10">
+                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
+                    Most brands drift within six to twelve months of launch. Not because the strategy was wrong — but because there was no one keeping watch. Execution without ongoing oversight becomes inconsistent. Messaging fragments. The heart of the brand gets buried under urgency and output.
+                  </p>
+                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
+                    "Let us not grow weary in doing good, for in due season we will reap, if we do not give up." — Galatians 6:9
+                  </p>
+                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
+                    Governance is not maintenance. It is mastery maintained. The Serino Retainer keeps your brand in alignment through every season of growth — protecting what was built, directing what comes next, and ensuring that every decision made in the marketplace is rooted in your original vision and values.
+                  </p>
+                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
+                    "Where there is no guidance, a people falls, but in an abundance of counselors there is safety." — Proverbs 11:14
+                  </p>
+                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
+                    The brands that endure are not the ones that launched loudest. They are the ones that stayed true the longest. Serino Consulting exists to be that voice in the room — the one that keeps the standard high, the direction clear, and the brand worth believing in.
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => setRetainerView('deliverable')}
+                  className="font-heading text-xs tracking-widest uppercase"
+                  style={{ color: '#C2A878', letterSpacing: '0.1em' }}
+                  onMouseEnter={e => { e.currentTarget.style.opacity = '0.7' }}
+                  onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
                 >
                   ← Back to Deliverables
                 </button>
