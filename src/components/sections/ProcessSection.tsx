@@ -167,7 +167,7 @@ export default function ProcessSection() {
             {/* NODE: DELIVERABLE ITEM #1 */}
             <g {...hoverHandlers('production-plan')} style={{ ...hoverHandlers('production-plan').style, ...na(400) }}>
               <rect x="150" y="220" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#b45f40" fillOpacity={rectFill('production-plan', 0.18)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="243" textAnchor="middle" fill={goldFill('production-plan')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #1</text>
+              <text x="300" y="243" textAnchor="middle" fill={goldFill('production-plan')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>FLAGSHIP SERVICE</text>
               <text x="300" y="261" textAnchor="middle" fill={textFill('production-plan')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Serino Brand Foundation</text>
               <text
                 x="300" y="276" textAnchor="middle"
