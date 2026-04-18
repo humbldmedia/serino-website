@@ -12,11 +12,10 @@ const NODE_DESCRIPTIONS: Record<string, string> = {
   'deliverables':       'Your complete brand foundation package has been delivered — assets, strategy, and plan ready to activate.',
   'deliverable-2-shipped': 'The Serino Content Engine has been delivered — content systems, campaigns, and creative output ready to deploy.',
   'review-call':        'We walk through every deliverable together — this is the moment clarity meets conviction and the next phase begins.',
-  'deliverable-2':      'A full content production system built to fuel your brand with consistent, on-brand output.',
+  'deliverable-2':      'Your ongoing retainer with Serino Consulting — strategic oversight, governance, and continuous growth management to keep your brand sharp and your execution aligned.',
   'humbld':             'Our in-house agency partner offers a seamless production ecosystem that handles content creation of all types and needs, planning and management, and design executions. We bring in vetted specialists when the scope demands deeper or niche expertise.',
   'outside-team':       'Every business is run differently. Sometimes companies have their own marketing manager and teams, and sometimes they don\'t. Our intent is to build good relations and team collaboration throughout the process of what\'s needed for your company to grow.',
   'oversees':           'We stay in the loop on every deliverable, ensuring quality, brand alignment, and your approval.',
-  'ongoing':            'We remain your strategic partner long after launch, adapting the strategy as you grow.',
 }
 
 export default function ProcessSection() {
@@ -93,7 +92,7 @@ export default function ProcessSection() {
 
         <div ref={svgWrapRef} className="max-w-3xl mx-auto mt-8 fade-up-visible" style={{ transitionDelay: '80ms' }}>
           <svg
-            viewBox="0 0 600 1020"
+            viewBox="0 0 600 920"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="w-full h-auto overflow-visible"
@@ -139,11 +138,6 @@ export default function ProcessSection() {
             <line x1="140" y1="760" x2="300" y2="810" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1730)} />
             <line x1="460" y1="760" x2="300" y2="810" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1750)} />
 
-            {/* OVERSEES → DELIVERABLE #2 SHIPPED */}
-            <line x1="300" y1="890" x2="300" y2="910" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1940)} />
-
-            {/* DELIVERABLE #2 SHIPPED → ONGOING */}
-            <line x1="300" y1="964" x2="300" y2="984" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(2100)} />
 
             {/* ── DOTS ── */}
             <circle cx="300" cy="110" r="3" fill="#C2A878" style={na(150)} />
@@ -227,11 +221,11 @@ export default function ProcessSection() {
               <text x="300" y="568" textAnchor="middle" fill={textFill('review-call')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Consulting: "Yes! Now let's execute."</text>
             </g>
 
-            {/* NODE: DELIVERABLE ITEM #2 */}
+            {/* NODE: ONGOING GOVERNANCE & GROWTH */}
             <g {...hoverHandlers('deliverable-2')} style={{ ...hoverHandlers('deliverable-2').style, ...na(1400) }}>
               <rect x="150" y="602" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverable-2', 0.06)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="625" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #2</text>
-              <text x="300" y="643" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Serino Content Engine</text>
+              <text x="300" y="625" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>ONGOING GOVERNANCE &amp; GROWTH</text>
+              <text x="300" y="643" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Retainer Package</text>
               <text x="300" y="658" textAnchor="middle" fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" fill="#C2A878" style={{ cursor: 'pointer', textDecoration: 'underline' }}>Learn more</text>
             </g>
 
@@ -256,18 +250,6 @@ export default function ProcessSection() {
               <text x="300" y="858" textAnchor="middle" fill={textFill('oversees')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Quality, Consistency, Brand Alignment, Approvals</text>
             </g>
 
-            {/* NODE: DELIVERABLE ITEM #2 SHIPPED */}
-            <g {...hoverHandlers('deliverable-2-shipped')} style={{ ...hoverHandlers('deliverable-2-shipped').style, ...na(1960) }}>
-              <rect x="150" y="910" width="300" height="54" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverable-2-shipped', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="933" textAnchor="middle" fill={textFill('deliverable-2-shipped')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #2 SHIPPED</text>
-              <text x="300" y="951" textAnchor="middle" fill={goldFill('deliverable-2-shipped')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Serino Content Engine</text>
-            </g>
-
-            {/* NODE: ONGOING */}
-            <g {...hoverHandlers('ongoing')} style={{ ...hoverHandlers('ongoing').style, ...na(2120) }}>
-              <rect x="100" y="984" width="400" height="28" rx="0" fill="#C2A878" fillOpacity={rectFill('ongoing', 0)} stroke="none" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="1002" textAnchor="middle" fill={goldFill('ongoing')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>ONGOING GOVERNANCE &amp; GROWTH</text>
-            </g>
 
           </svg>
 
