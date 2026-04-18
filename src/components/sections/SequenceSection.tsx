@@ -78,7 +78,7 @@ export default function SequenceSection() {
             className="font-display italic text-xl md:text-2xl leading-relaxed mb-10"
             style={{ color: '#1A1A1A' }}
           >
-            Every roadblock removed reignites a rebrand that reinforces the right reason and real result:
+            Every Roadblock Removed Reignites a Rebrand that Reinforces the Right Reason and Real Result: to Render Restoration.
           </p>
           <a
             href="#process"
@@ -98,7 +98,7 @@ export default function SequenceSection() {
               ;(e.currentTarget as HTMLAnchorElement).style.color = '#7C6122'
             }}
           >
-            Render Restoration →
+            The Process →
           </a>
         </div>
       </div>

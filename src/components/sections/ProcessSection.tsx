@@ -89,7 +89,7 @@ export default function ProcessSection() {
       `}</style>
 
       <div className="container-main" ref={containerRef}>
-        <span className="section-label fade-up-visible">The Restoration Process</span>
+        <span className="section-label fade-up-visible">The Process</span>
 
         <div ref={svgWrapRef} className="max-w-3xl mx-auto mt-8 fade-up-visible" style={{ transitionDelay: '80ms' }}>
           <svg
