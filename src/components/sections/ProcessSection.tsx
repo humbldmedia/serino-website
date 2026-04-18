@@ -309,7 +309,7 @@ export default function ProcessSection() {
         >
           <div
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
-            style={{ backgroundColor: '#111', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
+            style={{ backgroundColor: '#2b1c16', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
             onClick={e => e.stopPropagation()}
           >
             {/* Close */}
@@ -462,7 +462,7 @@ export default function ProcessSection() {
         >
           <div
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
-            style={{ backgroundColor: '#111', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
+            style={{ backgroundColor: '#2b1c16', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
             onClick={e => e.stopPropagation()}
           >
             {/* Close */}
@@ -570,13 +570,13 @@ export default function ProcessSection() {
                     Most brands drift within six to twelve months of launch. Not because the strategy was wrong — but because there was no one keeping watch. Execution without ongoing oversight becomes inconsistent. Messaging fragments. The heart of the brand gets buried under urgency and output.
                   </p>
                   <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
-                    "Let us not grow weary in doing good, for in due season we will reap, if we do not give up." — Galatians 6:9
+                    "Let us not grow weary in doing good, for in due season we will reap,<br />if we do not give up." — Galatians 6:9
                   </p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
                     Governance is not maintenance. It is mastery maintained. The Serino Retainer keeps your brand in alignment through every season of growth — protecting what was built, directing what comes next, and ensuring that every decision made in the marketplace is rooted in your original vision and values.
                   </p>
                   <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
-                    "Where there is no guidance, a people falls, but in an abundance of counselors there is safety." — Proverbs 11:14
+                    "Where there is no guidance, a people falls, but in an abundance of counselors<br />there is safety." — Proverbs 11:14
                   </p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
                     The brands that endure are not the ones that launched loudest. They are the ones that stayed true the longest. Serino Consulting exists to be that voice in the room — the one that keeps the standard high, the direction clear, and the brand worth believing in.
