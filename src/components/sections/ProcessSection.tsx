@@ -224,8 +224,8 @@ export default function ProcessSection() {
             {/* NODE: ONGOING GOVERNANCE & GROWTH */}
             <g {...hoverHandlers('deliverable-2')} style={{ ...hoverHandlers('deliverable-2').style, ...na(1400) }}>
               <rect x="150" y="602" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverable-2', 0.06)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="625" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>ONGOING GOVERNANCE &amp; GROWTH</text>
-              <text x="300" y="643" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Retainer Package</text>
+              <text x="300" y="625" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>RETAINER PACKAGE</text>
+              <text x="300" y="643" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Governance &amp; Growth</text>
               <text x="300" y="658" textAnchor="middle" fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" fill="#C2A878" style={{ cursor: 'pointer', textDecoration: 'underline' }}>Learn more</text>
             </g>
 
