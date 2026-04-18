@@ -180,28 +180,28 @@ export default function ProcessSection() {
 
             {/* NODE: BRAND DEVELOPMENT */}
             <g {...hoverHandlers('brand-dev')} style={{ ...hoverHandlers('brand-dev').style, ...na(720) }}>
-              <polygon points="102,338 127,360 102,382 48,382 23,360 48,338" fill="#C2A878" fillOpacity={rectFill('brand-dev', 0)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <polygon points="102,338 127,360 102,382 48,382 23,360 48,338" fill="#C2A878" fillOpacity={rectFill('brand-dev', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
               <text x="75" y="357" textAnchor="middle" fill={textFill('brand-dev')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>BRAND</text>
               <text x="75" y="370" textAnchor="middle" fill={textFill('brand-dev')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>DEVELOPMENT</text>
             </g>
 
             {/* NODE: MARKETING STRATEGY */}
             <g {...hoverHandlers('marketing-strategy')} style={{ ...hoverHandlers('marketing-strategy').style, ...na(750) }}>
-              <polygon points="252,338 277,360 252,382 198,382 173,360 198,338" fill="#C2A878" fillOpacity={rectFill('marketing-strategy', 0)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <polygon points="252,338 277,360 252,382 198,382 173,360 198,338" fill="#C2A878" fillOpacity={rectFill('marketing-strategy', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
               <text x="225" y="357" textAnchor="middle" fill={textFill('marketing-strategy')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>MARKETING</text>
               <text x="225" y="370" textAnchor="middle" fill={textFill('marketing-strategy')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>STRATEGY</text>
             </g>
 
             {/* NODE: CREATIVE DIRECTION */}
             <g {...hoverHandlers('creative-dir')} style={{ ...hoverHandlers('creative-dir').style, ...na(780) }}>
-              <polygon points="402,338 427,360 402,382 348,382 323,360 348,338" fill="#C2A878" fillOpacity={rectFill('creative-dir', 0)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <polygon points="402,338 427,360 402,382 348,382 323,360 348,338" fill="#C2A878" fillOpacity={rectFill('creative-dir', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
               <text x="375" y="357" textAnchor="middle" fill={textFill('creative-dir')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>CREATIVE</text>
               <text x="375" y="370" textAnchor="middle" fill={textFill('creative-dir')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>DIRECTION</text>
             </g>
 
             {/* NODE: PROJECT ARCHITECTURE */}
             <g {...hoverHandlers('project-arch')} style={{ ...hoverHandlers('project-arch').style, ...na(810) }}>
-              <polygon points="552,338 577,360 552,382 498,382 473,360 498,338" fill="#C2A878" fillOpacity={rectFill('project-arch', 0)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <polygon points="552,338 577,360 552,382 498,382 473,360 498,338" fill="#C2A878" fillOpacity={rectFill('project-arch', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
               <text x="525" y="357" textAnchor="middle" fill={textFill('project-arch')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>PROJECT</text>
               <text x="525" y="370" textAnchor="middle" fill={textFill('project-arch')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>ARCHITECTURE</text>
             </g>
