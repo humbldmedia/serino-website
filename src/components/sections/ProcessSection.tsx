@@ -309,7 +309,7 @@ export default function ProcessSection() {
         >
           <div
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
-            style={{ backgroundColor: '#2b1c16', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
+            style={{ backgroundColor: '#26211a', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
             onClick={e => e.stopPropagation()}
           >
             {/* Close */}
@@ -462,7 +462,7 @@ export default function ProcessSection() {
         >
           <div
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
-            style={{ backgroundColor: '#2b1c16', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
+            style={{ backgroundColor: '#26211a', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
             onClick={e => e.stopPropagation()}
           >
             {/* Close */}
