@@ -295,6 +295,25 @@ export default function ProcessSection() {
             </p>
           </div>
         </div>
+
+        {/* CTA → Testimonials */}
+        <div className="flex justify-center mt-12">
+          <a
+            href="#testimonials"
+            className="inline-block font-heading text-sm tracking-widest uppercase border px-8 py-4 transition-all duration-200"
+            style={{ borderColor: '#C2A878', color: '#C2A878' }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#C2A878'
+              ;(e.currentTarget as HTMLAnchorElement).style.color = '#0D0D0D'
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent'
+              ;(e.currentTarget as HTMLAnchorElement).style.color = '#C2A878'
+            }}
+          >
+            What Our Clients Say →
+          </a>
+        </div>
       </div>
 
       {/* Deliverable #1 Modal */}

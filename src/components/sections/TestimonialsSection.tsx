@@ -1,22 +1,19 @@
 import { useState } from 'react'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
-// Standard: grayscale → invert (dark content becomes light) → sepia gold tint → screen blend
-// No-invert: for logos with white/light content on transparent bg (invert would make them black)
-const F   = (op = 0.62) => `grayscale(1) invert(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(0.95) opacity(${op})`
-const FH  = (op = 0.88) => `grayscale(1) invert(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.1)  opacity(${op})`
-const FN  = (op = 0.62) => `grayscale(1) sepia(0.55) saturate(0.7) hue-rotate(5deg) brightness(1.1) opacity(${op})`
-const FNH = (op = 0.88) => `grayscale(1) sepia(0.4)  saturate(0.9) hue-rotate(5deg) brightness(1.3) opacity(${op})`
+// Default: faded dark grayscale. Hover: original colors (no filter).
+const F   = () => `grayscale(1) brightness(0.35) opacity(0.55)`
+const FN  = () => `grayscale(1) invert(1) brightness(0.35) opacity(0.55)`
 
-const clientLogos: { src: string; alt: string; blurb: string; filter?: string; filterHover?: string }[] = [
-  { src: '/logos/client-1.svg',  alt: 'Beloved Health',     blurb: 'Delivered brand strategy & content that elevated their social presence, engagement, and network' },
-  { src: '/logos/client-7.png',  alt: 'Propago PDX', blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
-  { src: '/logos/client-8.png',  alt: 'The Haven PDX',   blurb: 'Directed a kickstarter campaign that reached their $30k goal within 30 days' },
-  { src: '/logos/client-4.png',  alt: 'Bloom Agency',blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
-  { src: '/logos/client-3.png',  alt: 'DirectStay',  blurb: 'Delivered the essential startup package that accelerated their new business' },
-  { src: '/logos/client-5.png',  alt: 'iModels NW',  blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
-  { src: '/logos/client-12.png', alt: 'PowerPay',    blurb: 'Delivered brand materials that activated their new business' },
-  { src: '/logos/client-2.png',  alt: 'Dolgo',       blurb: 'Delivered a branded explainer video for a successful investor pitch', filter: FN(), filterHover: FNH() },
+const clientLogos: { src: string; alt: string; blurb: string; noInvert?: boolean }[] = [
+  { src: '/logos/client-1.svg',  alt: 'Beloved Health',  blurb: 'Delivered brand strategy & content that elevated their social presence, engagement, and network' },
+  { src: '/logos/client-7.png',  alt: 'Propago PDX',     blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
+  { src: '/logos/client-8.svg',  alt: 'The Haven PDX',   blurb: 'Directed a kickstarter campaign that reached their $30k goal within 30 days' },
+  { src: '/logos/client-4.png',  alt: 'Bloom Agency',    blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
+  { src: '/logos/client-3.svg',  alt: 'DirectStay',      blurb: 'Delivered the essential startup package that accelerated their new business' },
+  { src: '/logos/client-6.png',  alt: 'iModels NW',      blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
+  { src: '/logos/client-12.png', alt: 'PowerPay',        blurb: 'Delivered brand materials that activated their new business' },
+  { src: '/logos/client-2.svg',  alt: 'Dolgo',           blurb: 'Delivered a branded explainer video for a successful investor pitch', noInvert: true },
 ]
 
 const testimonials = [
@@ -68,8 +65,8 @@ function LogoStrip() {
                   width: 'auto',
                   maxWidth: '140px',
                   objectFit: 'contain',
-                  filter: isActive ? (logo.filterHover ?? FH()) : (logo.filter ?? F()),
-                  mixBlendMode: 'screen',
+                  filter: isActive ? 'none' : (logo.noInvert ? FN() : F()),
+                  mixBlendMode: isActive ? 'normal' : 'multiply',
                   transition: 'filter 300ms',
                 }}
               />
@@ -141,13 +138,10 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       className="py-28 md:py-36 relative overflow-hidden"
-      style={{ backgroundColor: '#0D0D0D' }}
+      style={{ backgroundColor: '#F4F0EA' }}
     >
-      {/* Subtle gold top rule */}
-      <hr className="gold-rule" />
-
-      <div className="container-main relative z-10 pt-20" ref={ref}>
-        <span className="section-label fade-up-visible" style={{ color: '#C2A878' }}>
+      <div className="container-main relative z-10" ref={ref}>
+        <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
           In Their Own Words
         </span>
 
@@ -161,14 +155,14 @@ export default function TestimonialsSection() {
               {/* Decorative quote mark */}
               <div
                 className="font-display text-8xl leading-none mb-4 select-none"
-                style={{ color: '#C2A878', opacity: 0.25, lineHeight: 1 }}
+                style={{ color: '#7C6122', opacity: 0.55, lineHeight: 1 }}
                 aria-hidden="true"
               >
                 &ldquo;
               </div>
 
               <blockquote
-                className="font-display italic text-2xl md:text-3xl text-roma-cream leading-snug mb-8"
+                className="font-display italic text-2xl md:text-3xl text-serino-black leading-snug mb-8"
                 style={{ marginTop: '-1.5rem' }}
               >
                 {t.quote}
@@ -177,9 +171,9 @@ export default function TestimonialsSection() {
               <div className="flex items-center gap-4">
                 <div
                   className="h-px w-8 flex-shrink-0"
-                  style={{ backgroundColor: '#C2A878' }}
+                  style={{ backgroundColor: '#7C6122' }}
                 />
-                <cite className="font-heading text-xs tracking-widest uppercase not-italic" style={{ color: '#C2A878' }}>
+                <cite className="font-heading text-xs tracking-widest uppercase not-italic" style={{ color: '#7C6122' }}>
                   {t.attribution}
                 </cite>
               </div>

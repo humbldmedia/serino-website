@@ -32,7 +32,7 @@ export default function Nav() {
             <img
               src="/assets/logos/black_w_quill.png"
               alt="Serino Consulting"
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
           </a>
 

@@ -14,27 +14,19 @@ export default function AboutSection() {
           {/* Left — image placeholder */}
           <div className="fade-up-visible order-2 md:order-1">
             <div
-              className="relative aspect-[4/5] w-full max-w-sm mx-auto md:mx-0"
-              style={{ border: '1px solid #C2A878' }}
+              className="relative aspect-[4/3] w-full max-w-lg mx-auto md:mx-0 overflow-hidden"
+              style={{ border: '1px solid rgba(194,168,120,0.4)' }}
             >
-              {/* Placeholder portrait — cinematic dark tones */}
+              <img
+                src="/assets/pictures/team-portrait.jpg"
+                alt="Philip Serino — Founder"
+                className="absolute inset-0 w-full h-full object-cover object-top"
+              />
+              {/* Subtle vignette */}
               <div
-                className="absolute inset-0 flex items-end justify-center"
-                style={{
-                  background: 'linear-gradient(160deg, #1a1510 0%, #0a0805 100%)',
-                }}
-              >
-                {/* Vignette overlay */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%)',
-                  }}
-                />
-                <p className="relative z-10 font-heading text-xs tracking-widest uppercase text-gold/40 pb-6">
-                  Founder Photo
-                </p>
-              </div>
+                className="absolute inset-0"
+                style={{ background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.35) 100%)' }}
+              />
             </div>
           </div>
 

@@ -41,7 +41,7 @@ export default function SequenceSection() {
       style={{ backgroundColor: '#F4F0EA' }}
     >
       <div className="container-main" ref={ref}>
-        <span className="section-label fade-up-visible" style={{ color: '#C2A878' }}>
+        <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
           Do Business Better
         </span>
 
@@ -55,7 +55,7 @@ export default function SequenceSection() {
               {/* Ghost number */}
               <div
                 className="font-display text-8xl font-normal leading-none mb-4 select-none"
-                style={{ color: '#C2A878', opacity: 0.18 }}
+                style={{ color: '#7C6122', opacity: 0.18 }}
               >
                 {step.number}
               </div>
@@ -84,16 +84,18 @@ export default function SequenceSection() {
             href="#process"
             className="inline-block font-heading text-sm tracking-widest uppercase border px-8 py-4 transition-all duration-200"
             style={{
-              borderColor: '#C2A878',
-              color: '#C2A878',
+              borderColor: '#7C6122',
+              color: '#7C6122',
             }}
             onMouseEnter={e => {
               (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#C2A878'
+              ;(e.currentTarget as HTMLAnchorElement).style.borderColor = '#C2A878'
               ;(e.currentTarget as HTMLAnchorElement).style.color = '#0D0D0D'
             }}
             onMouseLeave={e => {
               (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent'
-              ;(e.currentTarget as HTMLAnchorElement).style.color = '#C2A878'
+              ;(e.currentTarget as HTMLAnchorElement).style.borderColor = '#7C6122'
+              ;(e.currentTarget as HTMLAnchorElement).style.color = '#7C6122'
             }}
           >
             Render Restoration →

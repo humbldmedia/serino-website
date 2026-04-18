@@ -6,7 +6,7 @@ export default function Footer() {
           <img
             src="/assets/logos/black_w_quill.png"
             alt="Serino Consulting"
-            className="h-6 w-auto opacity-80"
+            className="h-10 w-auto opacity-80"
           />
           <p className="font-body text-sm text-roma-cream/40 text-center">
             © 2025 Serino Consulting. All rights reserved.
