@@ -322,7 +322,7 @@ export default function ProcessSection() {
             </button>
 
             {/* Shared header */}
-            <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>Deliverable Item #1</p>
+            <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>Flagship Service</p>
             <h2 className="font-display text-3xl text-roma-cream mb-1">The Serino Brand Foundation</h2>
             <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: 'rgba(194,168,120,0.6)' }}>$20,000 – $25,000+&nbsp;&nbsp;·&nbsp;&nbsp;4–6 Weeks</p>
 
@@ -425,14 +425,14 @@ export default function ProcessSection() {
                   <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
                     "Do your planning and prepare your fields before building your house." — Proverbs 24:27
                   </p>
-                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
-                    "Write the vision and make it plain on tablets, that he may run who reads it." — Habakkuk 2:2
-                  </p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
                     Without a clear identity, voice, and plan established from the start, teams pull in different directions, messaging becomes inconsistent, and the energy that launched the idea slowly turns into burnout and dysfunction. No, a brand logo is not all you need.
                   </p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
                     Why do 90% of startups fail within the first 2–5 years of operation? Because they do not hire Serino Consulting to establish their brand foundation and keep them on track.
+                  </p>
+                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>
+                    "Write the vision and make it plain on tablets, that he may run who reads it." — Habakkuk 2:2
                   </p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
                     Serino's The Serino Brand Foundation exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.
