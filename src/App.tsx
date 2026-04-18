@@ -3,7 +3,6 @@ import Footer from './components/layout/Footer'
 import HeroSection from './components/sections/HeroSection'
 import SequenceSection from './components/sections/SequenceSection'
 import ProcessSection from './components/sections/ProcessSection'
-import ProcessSectionTest from './components/sections/ProcessSectionTest'
 import TestimonialsSection from './components/sections/TestimonialsSection'
 import AboutSection from './components/sections/AboutSection'
 import CTASection from './components/sections/CTASection'
@@ -16,7 +15,6 @@ function App() {
         <HeroSection />
         <SequenceSection />
         <ProcessSection />
-        <ProcessSectionTest />
         <TestimonialsSection />
         <AboutSection />
         <CTASection />
