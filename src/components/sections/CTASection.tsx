@@ -33,10 +33,10 @@ export default function CTASection() {
           <div className="fade-up-visible" style={{ transitionDelay: '240ms' }}>
             <a
               href="mailto:hello@serinoconsulting.com"
-              className="inline-block font-heading text-sm tracking-widest uppercase px-10 py-4 text-serino-black transition-all duration-200"
-              style={{ backgroundColor: '#C2A878' }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#B45F40')}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#C2A878')}
+              className="inline-block font-heading text-sm tracking-widest uppercase px-10 py-4 transition-all duration-200"
+              style={{ backgroundColor: '#7a3825', color: '#F4F0EA' }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#964830')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#7a3825')}
             >
               Start the Conversation →
             </a>

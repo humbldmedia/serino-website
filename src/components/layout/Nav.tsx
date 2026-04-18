@@ -40,7 +40,9 @@ export default function Nav() {
           <div className="hidden md:flex items-center">
             <a
               href="#contact"
-              className="font-heading text-xs tracking-widest uppercase border border-gold text-gold px-5 py-2.5 hover:bg-gold hover:text-serino-black transition-all duration-200"
+              className="font-heading text-xs tracking-widest uppercase border border-gold text-gold px-5 py-2.5 transition-all duration-200"
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#7a3825'; e.currentTarget.style.color = '#F4F0EA'; e.currentTarget.style.borderColor = '#7a3825' }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C2A878'; e.currentTarget.style.borderColor = '#C2A878' }}
             >
               Book a Call
             </a>
@@ -90,7 +92,9 @@ export default function Nav() {
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
-            className="mt-4 font-heading text-sm tracking-widest uppercase border border-gold text-gold px-8 py-3 hover:bg-gold hover:text-serino-black transition-all duration-200"
+            className="mt-4 font-heading text-sm tracking-widest uppercase border border-gold text-gold px-8 py-3 transition-all duration-200"
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#7a3825'; e.currentTarget.style.color = '#F4F0EA'; e.currentTarget.style.borderColor = '#7a3825' }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C2A878'; e.currentTarget.style.borderColor = '#C2A878' }}
           >
             Book a Call
           </a>
