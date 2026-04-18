@@ -15,15 +15,21 @@ export default function HeroSection() {
       style={{ backgroundColor: '#0D0D0D' }}
     >
       {/* Full-bleed background image */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: 'url(/assets/pictures/hero-bg.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: '80% center',
-          opacity: 1,
-        }}
-      />
+      <style>{`
+        .hero-bg {
+          background-image: url(/assets/pictures/hero-bg.png);
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+        @media (max-width: 767px) {
+          .hero-bg {
+            background-size: cover;
+            background-position: center center;
+          }
+        }
+      `}</style>
+      <div className="hero-bg absolute inset-0" />
       {/* Left gradient so text stays legible */}
       <div
         className="absolute inset-0"
