@@ -11,8 +11,7 @@ const NODE_DESCRIPTIONS: Record<string, string> = {
   'project-arch':       'We architect your exact plan for sustainable growth.',
   'deliverables':       'Your complete brand foundation package has been delivered — assets, strategy, and plan ready to activate.',
   'deliverable-2-shipped': 'The Serino Content Engine has been delivered — content systems, campaigns, and creative output ready to deploy.',
-  'client-wow':         'The moment the work lands and the vision becomes real.',
-  'serino-upsell':      'We identify the next phase of growth and build the roadmap to get there.',
+  'review-call':        'We walk through every deliverable together — this is the moment clarity meets conviction and the next phase begins.',
   'deliverable-2':      'A full content production system built to fuel your brand with consistent, on-brand output.',
   'humbld':             'Our in-house agency partner offers a seamless production ecosystem that handles content creation of all types and needs, planning and management, and design executions. We bring in vetted specialists when the scope demands deeper or niche expertise.',
   'outside-team':       'Every business is run differently. Sometimes companies have their own marketing manager and teams, and sometimes they don\'t. Our intent is to build good relations and team collaboration throughout the process of what\'s needed for your company to grow.',
@@ -94,7 +93,7 @@ export default function ProcessSection() {
 
         <div ref={svgWrapRef} className="max-w-3xl mx-auto mt-8 fade-up-visible" style={{ transitionDelay: '80ms' }}>
           <svg
-            viewBox="0 0 600 1120"
+            viewBox="0 0 600 1020"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="w-full h-auto overflow-visible"
@@ -126,28 +125,25 @@ export default function ProcessSection() {
             {/* converge dot → DELIVERABLES */}
             <line x1="300" y1="418" x2="300" y2="438" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1060)} />
 
-            {/* PACKAGE DELIVERED → CLIENT WOW */}
+            {/* PACKAGE DELIVERED → REVIEW CALL */}
             <line x1="300" y1="492" x2="300" y2="510" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1200)} />
 
-            {/* CLIENT WOW → SERINO UPSELL */}
-            <line x1="300" y1="560" x2="300" y2="580" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1360)} />
-
-            {/* SERINO UPSELL → DELIVERABLE #2 */}
-            <line x1="300" y1="640" x2="300" y2="660" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1520)} />
+            {/* REVIEW CALL → DELIVERABLE #2 */}
+            <line x1="300" y1="582" x2="300" y2="602" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1360)} />
 
             {/* DELIVERABLE #2 → HUMBLD / OUTSIDE */}
-            <line x1="300" y1="732" x2="140" y2="780" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1700)} />
-            <line x1="300" y1="732" x2="460" y2="780" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1725)} />
+            <line x1="300" y1="674" x2="140" y2="720" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1540)} />
+            <line x1="300" y1="674" x2="460" y2="720" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1565)} />
 
             {/* HUMBLD / OUTSIDE → OVERSEES */}
-            <line x1="140" y1="820" x2="300" y2="870" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1890)} />
-            <line x1="460" y1="820" x2="300" y2="870" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1910)} />
+            <line x1="140" y1="760" x2="300" y2="810" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1730)} />
+            <line x1="460" y1="760" x2="300" y2="810" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1750)} />
 
             {/* OVERSEES → DELIVERABLE #2 SHIPPED */}
-            <line x1="300" y1="950" x2="300" y2="970" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(2100)} />
+            <line x1="300" y1="890" x2="300" y2="910" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1940)} />
 
             {/* DELIVERABLE #2 SHIPPED → ONGOING */}
-            <line x1="300" y1="1024" x2="300" y2="1058" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(2260)} />
+            <line x1="300" y1="964" x2="300" y2="984" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(2100)} />
 
             {/* ── DOTS ── */}
             <circle cx="300" cy="110" r="3" fill="#C2A878" style={na(150)} />
@@ -155,9 +151,8 @@ export default function ProcessSection() {
             <circle cx="300" cy="310" r="3" fill="#C2A878" style={na(580)} />
             <circle cx="300" cy="418" r="3" fill="#C2A878" style={na(1040)} />
             <circle cx="300" cy="510" r="3" fill="#C2A878" style={na(1220)} />
-            <circle cx="300" cy="580" r="3" fill="#C2A878" style={na(1380)} />
-            <circle cx="300" cy="660" r="3" fill="#C2A878" style={na(1540)} />
-            <circle cx="300" cy="870" r="3" fill="#C2A878" style={na(1930)} />
+            <circle cx="300" cy="602" r="3" fill="#C2A878" style={na(1380)} />
+            <circle cx="300" cy="810" r="3" fill="#C2A878" style={na(1770)} />
 
             {/* ── NODES ── */}
 
@@ -224,60 +219,54 @@ export default function ProcessSection() {
               <text x="300" y="476" textAnchor="middle" fill={goldFill('deliverables')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Assessment &amp; Review</text>
             </g>
 
-            {/* NODE: CLIENT WOW */}
-            <g {...hoverHandlers('client-wow')} style={{ ...hoverHandlers('client-wow').style, ...na(1240) }}>
-              <rect x="180" y="510" width="240" height="50" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('client-wow', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="530" textAnchor="middle" fill={textFill('client-wow')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>CLIENT</text>
-              <text x="300" y="550" textAnchor="middle" fill={goldFill('client-wow')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>"Wow!"</text>
-            </g>
-
-            {/* NODE: SERINO UPSELL */}
-            <g {...hoverHandlers('serino-upsell')} style={{ ...hoverHandlers('serino-upsell').style, ...na(1400) }}>
-              <rect x="190" y="580" width="220" height="60" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('serino-upsell', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="604" textAnchor="middle" fill={goldFill('serino-upsell')} fontSize="13" fontFamily="Cormorant Garamond, serif" letterSpacing="2" fontWeight="500" style={{ transition: 'fill 200ms' }}>SERINO CONSULTING</text>
-              <text x="300" y="624" textAnchor="middle" fill={textFill('serino-upsell')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>"Yes! Now let's execute."</text>
+            {/* NODE: REVIEW CALL */}
+            <g {...hoverHandlers('review-call')} style={{ ...hoverHandlers('review-call').style, ...na(1240) }}>
+              <rect x="160" y="510" width="280" height="72" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('review-call', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="532" textAnchor="middle" fill={goldFill('review-call')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" fontWeight="500" style={{ transition: 'fill 200ms' }}>REVIEW CALL</text>
+              <text x="300" y="550" textAnchor="middle" fill={textFill('review-call')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Client: "Wow!"</text>
+              <text x="300" y="568" textAnchor="middle" fill={textFill('review-call')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Consulting: "Yes! Now let's execute."</text>
             </g>
 
             {/* NODE: DELIVERABLE ITEM #2 */}
-            <g {...hoverHandlers('deliverable-2')} style={{ ...hoverHandlers('deliverable-2').style, ...na(1560) }}>
-              <rect x="150" y="660" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverable-2', 0.06)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="683" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #2</text>
-              <text x="300" y="701" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Serino Content Engine</text>
-              <text x="300" y="716" textAnchor="middle" fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" fill="#C2A878" style={{ cursor: 'pointer', textDecoration: 'underline' }}>Learn more</text>
+            <g {...hoverHandlers('deliverable-2')} style={{ ...hoverHandlers('deliverable-2').style, ...na(1400) }}>
+              <rect x="150" y="602" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverable-2', 0.06)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="625" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #2</text>
+              <text x="300" y="643" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Serino Content Engine</text>
+              <text x="300" y="658" textAnchor="middle" fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" fill="#C2A878" style={{ cursor: 'pointer', textDecoration: 'underline' }}>Learn more</text>
             </g>
 
             {/* NODE: HUMBLD MEDIA */}
-            <g {...hoverHandlers('humbld')} style={{ ...hoverHandlers('humbld').style, ...na(1750) }}>
-              <rect x="50" y="780" width="180" height="40" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('humbld', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="140" y="797" textAnchor="middle" fill={textFill('humbld')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>HUMBLD MEDIA</text>
-              <text x="140" y="811" textAnchor="middle" fill={goldFill('humbld')} fontSize="9" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Our production agency partner</text>
+            <g {...hoverHandlers('humbld')} style={{ ...hoverHandlers('humbld').style, ...na(1590) }}>
+              <rect x="50" y="720" width="180" height="40" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('humbld', 0)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="140" y="737" textAnchor="middle" fill={textFill('humbld')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>HUMBLD MEDIA</text>
+              <text x="140" y="751" textAnchor="middle" fill={goldFill('humbld')} fontSize="9" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Our production agency partner</text>
             </g>
 
-            {/* NODE: OUTSIDE TEAM */}
-            <g {...hoverHandlers('outside-team')} style={{ ...hoverHandlers('outside-team').style, ...na(1780) }}>
-              <rect x="370" y="780" width="180" height="40" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('outside-team', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="460" y="797" textAnchor="middle" fill={textFill('outside-team')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>YOUR COMPANY</text>
-              <text x="460" y="811" textAnchor="middle" fill={goldFill('outside-team')} fontSize="9" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Your in-house marketing team</text>
+            {/* NODE: YOUR COMPANY */}
+            <g {...hoverHandlers('outside-team')} style={{ ...hoverHandlers('outside-team').style, ...na(1615) }}>
+              <rect x="370" y="720" width="180" height="40" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('outside-team', 0)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="460" y="737" textAnchor="middle" fill={textFill('outside-team')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>YOUR COMPANY</text>
+              <text x="460" y="751" textAnchor="middle" fill={goldFill('outside-team')} fontSize="9" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Your in-house marketing team</text>
             </g>
 
             {/* NODE: SERINO OVERSEES */}
-            <g {...hoverHandlers('oversees')} style={{ ...hoverHandlers('oversees').style, ...na(1950) }}>
-              <rect x="150" y="870" width="300" height="80" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('oversees', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="898" textAnchor="middle" fill={goldFill('oversees')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>SERINO CONSULTING OVERSEES</text>
-              <text x="300" y="918" textAnchor="middle" fill={textFill('oversees')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Quality, Consistency, Brand Alignment, Approvals</text>
+            <g {...hoverHandlers('oversees')} style={{ ...hoverHandlers('oversees').style, ...na(1790) }}>
+              <rect x="150" y="810" width="300" height="80" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('oversees', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="838" textAnchor="middle" fill={goldFill('oversees')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>SERINO CONSULTING OVERSEES</text>
+              <text x="300" y="858" textAnchor="middle" fill={textFill('oversees')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Quality, Consistency, Brand Alignment, Approvals</text>
             </g>
 
             {/* NODE: DELIVERABLE ITEM #2 SHIPPED */}
-            <g {...hoverHandlers('deliverable-2-shipped')} style={{ ...hoverHandlers('deliverable-2-shipped').style, ...na(2120) }}>
-              <rect x="150" y="970" width="300" height="54" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverable-2-shipped', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="993" textAnchor="middle" fill={textFill('deliverable-2-shipped')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #2 SHIPPED</text>
-              <text x="300" y="1011" textAnchor="middle" fill={goldFill('deliverable-2-shipped')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Serino Content Engine</text>
+            <g {...hoverHandlers('deliverable-2-shipped')} style={{ ...hoverHandlers('deliverable-2-shipped').style, ...na(1960) }}>
+              <rect x="150" y="910" width="300" height="54" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverable-2-shipped', 0)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="933" textAnchor="middle" fill={textFill('deliverable-2-shipped')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #2 SHIPPED</text>
+              <text x="300" y="951" textAnchor="middle" fill={goldFill('deliverable-2-shipped')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Serino Content Engine</text>
             </g>
 
             {/* NODE: ONGOING */}
-            <g {...hoverHandlers('ongoing')} style={{ ...hoverHandlers('ongoing').style, ...na(2280) }}>
-              <rect x="100" y="1058" width="400" height="28" rx="0" fill="#C2A878" fillOpacity={rectFill('ongoing', 0)} stroke="none" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="1076" textAnchor="middle" fill={goldFill('ongoing')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>ONGOING GOVERNANCE &amp; GROWTH</text>
+            <g {...hoverHandlers('ongoing')} style={{ ...hoverHandlers('ongoing').style, ...na(2120) }}>
+              <rect x="100" y="984" width="400" height="28" rx="0" fill="#C2A878" fillOpacity={rectFill('ongoing', 0)} stroke="none" style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="1002" textAnchor="middle" fill={goldFill('ongoing')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>ONGOING GOVERNANCE &amp; GROWTH</text>
             </g>
 
           </svg>

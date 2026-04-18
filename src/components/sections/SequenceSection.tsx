@@ -5,17 +5,17 @@ const steps = [
   {
     number: '01',
     title: 'Remember Why You Started',
-    body: 'Before strategy, we go back to the beginning. Not to romanticize it — to strip away everything layered on top. The assumptions. The noise. The things you said yes to when you should have said no. What is actually broken is rarely what it looks like.',
+    body: 'Before strategy, we go back to the beginning. We help you remember why you started and strip away the roadblocks: the assumptions, the noise, the nonsense. The things you said yes to when you should have said no. We listen intently and use careful discernment.',
   },
   {
     number: '02',
     title: 'Name the Thing',
-    body: 'When you can name it clearly, something shifts. The real problem gets real language. Attachments fall away. Roadblocks stop looking like walls and start looking like decisions. That clarity does not just free up your strategy — it reignites the fire that made you build this in the first place.',
+    body: 'When you can name it clearly, something shifts. The real problem gets real language. Attachments fall away. Roadblocks stop looking like walls and start looking like decisions. That clarity does more than just free up blockage. It inspires action, momentum, and reignites the fire that made you build this in the first place.',
   },
   {
     number: '03',
     title: 'Hold the Fire',
-    body: 'Now you know where you are going — and why it matters. This is where story becomes strategy. We stay in the room, shape the direction, and make sure every decision that follows carries the same energy from that first moment of clarity.',
+    body: 'Now you know where you are going, and why it matters. This is where story becomes strategy. We stay in the room, shape the direction, and make sure every decision that follows carries the same energy from that first moment of clarity.',
   },
 ]
 
