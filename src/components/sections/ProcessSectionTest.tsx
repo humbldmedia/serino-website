@@ -106,21 +106,18 @@ function NodeCard({ ch, progress, last }: { ch: CardCh; progress: number; last?:
 // ─── Carousel3D ──────────────────────────────────────────────────────────────
 function Carousel3D({ progress }: { progress: number }) {
   const ENTER = 0.18, EXIT = 0.82
-  // Section-level opacity
   let secOpacity = 1
   if (progress < ENTER) secOpacity = progress / ENTER
   else if (progress > EXIT) secOpacity = 1 - (progress - EXIT) / (1 - EXIT)
 
-  // Active card driven by scroll (only advances during the hold window)
-  const holdP  = Math.max(0, Math.min(1, (progress - ENTER) / (EXIT - ENTER)))
+  const holdP    = Math.max(0, Math.min(1, (progress - ENTER) / (EXIT - ENTER)))
   const activeIdx = Math.min(3, Math.floor(holdP * 4))
 
-  // Per-card 3D transform params
   const POSITIONS = [
-    { tx: '0%',    tz: '0px',    ry: '0deg',  sc: 1,    op: 1,   blur: 0 },  // front
-    { tx: '72%',   tz: '-160px', ry: '-44deg', sc: 0.82, op: 0.5, blur: 1 },  // right
-    { tx: '0%',    tz: '-340px', ry: '0deg',  sc: 0.65, op: 0.12, blur: 3 },  // behind
-    { tx: '-72%',  tz: '-160px', ry: '44deg', sc: 0.82, op: 0.5, blur: 1 },  // left
+    { tx: '0%',    tz: '0px',    ry: '0deg',  sc: 1,    op: 1,   blur: 0 },
+    { tx: '72%',   tz: '-160px', ry: '-44deg', sc: 0.82, op: 0.5, blur: 1 },
+    { tx: '0%',    tz: '-340px', ry: '0deg',  sc: 0.65, op: 0.12, blur: 3 },
+    { tx: '-72%',  tz: '-160px', ry: '44deg', sc: 0.82, op: 0.5, blur: 1 },
   ]
 
   return (
@@ -129,7 +126,6 @@ function Carousel3D({ progress }: { progress: number }) {
         Inside the Foundation
       </p>
 
-      {/* 3D stage */}
       <div style={{ position:'relative', width:'min(420px,88vw)', height:'clamp(180px,28vw,240px)', perspective:'900px', perspectiveOrigin:'50% 50%' }}>
         <div style={{ position:'relative', width:'100%', height:'100%', transformStyle:'preserve-3d' }}>
           {CAROUSEL_CARDS.map((card, i) => {
@@ -162,7 +158,7 @@ function Carousel3D({ progress }: { progress: number }) {
                   <p style={{ fontFamily:'Cormorant Garamond, serif', fontSize:'clamp(1.5rem,4vw,2rem)', color:'rgba(194,168,120,0.18)', lineHeight:1 }}>
                     {card.num}
                   </p>
-                  <h3 style={{ fontFamily:'Cormorant Garamond, serif', letterSpacing:'0.14em', fontSize:'clamp(0.78rem,2.2vw,0.98rem)', color: isFront ? GOLD : CREAM, fontWeight:500, whiteSpace:'pre-line' }}>
+                  <h3 style={{ fontFamily:'Cormorant Garamond, serif', letterSpacing:'0.14em', fontSize:'clamp(0.78rem,2.2vw,0.98rem)', color: isFront ? GOLD : CREAM, fontWeight:500 }}>
                     {card.title}
                   </h3>
                   {isFront && (
@@ -177,7 +173,6 @@ function Carousel3D({ progress }: { progress: number }) {
         </div>
       </div>
 
-      {/* Dots */}
       <div style={{ display:'flex', gap:'0.5rem', marginTop:'2rem', alignItems:'center' }}>
         {CAROUSEL_CARDS.map((_, i) => (
           <div key={i} style={{
@@ -225,7 +220,7 @@ function FinalNode({ ch, progress }: { ch: FinalCh; progress: number }) {
     <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', opacity, pointerEvents: opacity < 0.05 ? 'none' : 'auto' }}>
       <div style={{ textAlign:'center', transform:`translateY(${y}px) scale(${scale})` }}>
         <div style={{ width:'32px', height:'1px', backgroundColor: GOLD, margin:'0 auto 1.5rem' }} />
-        <h2 style={{ fontFamily:'Cormorant Garamond, serif', letterSpacing:'0.2em', fontSize:'clamp(0.9rem,3vw,1.25rem)', color: GOLD, fontWeight:400 }}>
+        <h2 style={{ fontFamily:'Cormorant Garamond, serif', letterSpacing:'0.12em', fontSize:'clamp(0.8rem,2.5vw,1.1rem)', color: GOLD, fontWeight:400, maxWidth:'min(480px,80vw)', margin:'0 auto', wordBreak:'break-word' }}>
           {ch.title}
         </h2>
         <div style={{ width:'32px', height:'1px', backgroundColor: GOLD, margin:'1.5rem auto 0' }} />
@@ -236,16 +231,13 @@ function FinalNode({ ch, progress }: { ch: FinalCh; progress: number }) {
 
 // ─── SpineIndicator ──────────────────────────────────────────────────────────
 function SpineIndicator({ idx, progress }: { idx: number; progress: number }) {
-  const n       = CHAPTERS.length
-  const filled  = (idx + progress) / (n - 1)
+  const n      = CHAPTERS.length
+  const filled = (idx + progress) / (n - 1)
 
   return (
     <div style={{ position:'absolute', left:'clamp(1.25rem,3.5vw,2.5rem)', top:'12%', bottom:'12%', display:'flex', flexDirection:'column', alignItems:'center', zIndex:20 }}>
-      {/* Track */}
       <div style={{ position:'absolute', top:0, bottom:0, width:'1px', backgroundColor:'rgba(194,168,120,0.12)' }} />
-      {/* Fill */}
       <div style={{ position:'absolute', top:0, width:'1px', height:`${Math.min(100, filled * 100)}%`, backgroundColor: GOLD, transition:'height 0.08s linear' }} />
-      {/* Dots */}
       {CHAPTERS.map((ch, i) => {
         const active = i === idx
         const past   = i < idx
@@ -268,15 +260,21 @@ function SpineIndicator({ idx, progress }: { idx: number; progress: number }) {
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
+// Note: position:sticky is broken when any ancestor has overflow-x:hidden (#root does).
+// We use position:fixed + manual active tracking instead.
 export default function ProcessSectionTest() {
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const [state, setState] = useState({ idx: 0, progress: 0 })
+  const [state, setState] = useState({ idx: 0, progress: 0, active: false })
 
   useEffect(() => {
     const onScroll = () => {
       if (!wrapperRef.current) return
       const scrolled = -wrapperRef.current.getBoundingClientRect().top
-      if (scrolled < 0 || scrolled > TOTAL_PX) return
+
+      if (scrolled < 0 || scrolled > TOTAL_PX) {
+        setState(s => s.active ? { ...s, active: false } : s)
+        return
+      }
 
       let idx = CHAPTERS.length - 1, progress = 1
       for (let i = 0; i < CHAPTERS.length; i++) {
@@ -287,7 +285,7 @@ export default function ProcessSectionTest() {
           break
         }
       }
-      setState({ idx, progress })
+      setState({ idx, progress, active: true })
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -295,73 +293,72 @@ export default function ProcessSectionTest() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const { idx, progress } = state
+  const { idx, progress, active } = state
 
   return (
     <section id="process-test" style={{ backgroundColor: '#0D0D0D' }}>
 
-      {/* Entry label */}
+      {/* Entry label — visible before the fixed overlay takes over */}
       <div style={{ textAlign:'center', padding:'4rem 0 0' }}>
         <span style={{ fontFamily:'Cormorant Garamond, serif', letterSpacing:'0.22em', fontSize:'0.72rem', textTransform:'uppercase', color: GOLD_SUB }}>
           Restoration Test
         </span>
       </div>
 
-      {/* Scroll wrapper — sets total scrollable height */}
-      <div ref={wrapperRef} style={{ height:`calc(${TOTAL_PX}px + 100vh)` }}>
+      {/* Tall div that creates the scroll space */}
+      <div ref={wrapperRef} style={{ height:`calc(${TOTAL_PX}px + 100vh)` }} />
 
-        {/* Sticky viewport */}
-        <div style={{ position:'sticky', top:0, height:'100vh', overflow:'hidden', backgroundColor:'#0D0D0D' }}>
+      {/* Fixed overlay — covers viewport while section is active */}
+      <div style={{
+        position: 'fixed',
+        top: 0, left: 0, right: 0,
+        height: '100vh',
+        backgroundColor: '#0D0D0D',
+        zIndex: 30,
+        opacity: active ? 1 : 0,
+        pointerEvents: active ? 'auto' : 'none',
+        transition: 'opacity 0.2s ease',
+      }}>
+        <SpineIndicator idx={idx} progress={progress} />
 
-          <SpineIndicator idx={idx} progress={progress} />
+        {/* Chapter layers — offset below nav (80px) */}
+        <div style={{ position:'absolute', top:'80px', left:0, right:0, bottom:0 }}>
+          {CHAPTERS.map((ch, i) => {
+            if (Math.abs(i - idx) > 1) return null
 
-          {/* Chapter layers */}
-          <div style={{ position:'absolute', inset:0 }}>
-            {CHAPTERS.map((ch, i) => {
-              // Only render active + adjacent chapters
-              if (Math.abs(i - idx) > 1) return null
+            let p: number
+            if (i === idx)       p = progress
+            else if (i === idx + 1) p = Math.max(0, progress - 0.82)
+            else                 p = 1
 
-              // Compute display progress for this chapter
-              let p: number
-              if (i === idx) {
-                p = progress
-              } else if (i === idx + 1) {
-                // Next chapter starts entering as current exits
-                p = Math.max(0, progress - 0.82)
-              } else {
-                // Previous chapter: fully exited
-                p = 1
-              }
+            const isLast = i === CHAPTERS.length - 1
 
-              const isLast = i === CHAPTERS.length - 1
-
-              if (ch.type === 'card')     return <NodeCard    key={ch.id} ch={ch}   progress={p} last={isLast} />
-              if (ch.type === 'carousel') return <Carousel3D  key={ch.id}           progress={p} />
-              if (ch.type === 'split')    return <SplitNode   key={ch.id} ch={ch}   progress={p} />
-              if (ch.type === 'final')    return <FinalNode   key={ch.id} ch={ch}   progress={p} />
-              return null
-            })}
-          </div>
-
-          {/* Step counter */}
-          <div style={{ position:'absolute', bottom:'2rem', right:'clamp(1.25rem,3.5vw,2.5rem)', textAlign:'right', zIndex:20 }}>
-            <span style={{ fontFamily:'Cormorant Garamond, serif', fontSize:'0.72rem', letterSpacing:'0.15em', color: GOLD_SUB }}>
-              {String(idx + 1).padStart(2,'0')} / {String(CHAPTERS.length).padStart(2,'0')}
-            </span>
-          </div>
-
-          {/* Scroll hint */}
-          {idx === 0 && (
-            <div style={{ position:'absolute', bottom:'2rem', left:'50%', transform:'translateX(-50%)', textAlign:'center', opacity: Math.max(0, 1 - progress / 0.25), transition:'opacity 0.1s', zIndex:20 }}>
-              <p style={{ fontFamily:'EB Garamond, serif', fontStyle:'italic', fontSize:'0.82rem', color:'rgba(194,168,120,0.4)', letterSpacing:'0.1em', marginBottom:'0.4rem' }}>
-                scroll to explore
-              </p>
-              <span style={{ fontSize:'0.7rem', color:'rgba(194,168,120,0.3)' }}>↓</span>
-            </div>
-          )}
-
+            if (ch.type === 'card')     return <NodeCard    key={ch.id} ch={ch} progress={p} last={isLast} />
+            if (ch.type === 'carousel') return <Carousel3D  key={ch.id}         progress={p} />
+            if (ch.type === 'split')    return <SplitNode   key={ch.id} ch={ch} progress={p} />
+            if (ch.type === 'final')    return <FinalNode   key={ch.id} ch={ch} progress={p} />
+            return null
+          })}
         </div>
+
+        {/* Step counter */}
+        <div style={{ position:'absolute', bottom:'2rem', right:'clamp(1.25rem,3.5vw,2.5rem)', textAlign:'right', zIndex:20 }}>
+          <span style={{ fontFamily:'Cormorant Garamond, serif', fontSize:'0.72rem', letterSpacing:'0.15em', color: GOLD_SUB }}>
+            {String(idx + 1).padStart(2,'0')} / {String(CHAPTERS.length).padStart(2,'0')}
+          </span>
+        </div>
+
+        {/* Scroll hint */}
+        {idx === 0 && (
+          <div style={{ position:'absolute', bottom:'2rem', left:'50%', transform:'translateX(-50%)', textAlign:'center', opacity: Math.max(0, 1 - progress / 0.25), transition:'opacity 0.1s', zIndex:20 }}>
+            <p style={{ fontFamily:'EB Garamond, serif', fontStyle:'italic', fontSize:'0.82rem', color:'rgba(194,168,120,0.4)', letterSpacing:'0.1em', marginBottom:'0.4rem' }}>
+              scroll to explore
+            </p>
+            <span style={{ fontSize:'0.7rem', color:'rgba(194,168,120,0.3)' }}>↓</span>
+          </div>
+        )}
       </div>
+
     </section>
   )
 }
