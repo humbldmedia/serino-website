@@ -23,6 +23,7 @@ export default function ProcessSection() {
   const svgWrapRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
   const [showDeliverable, setShowDeliverable] = useState(false)
   const [modalView, setModalView] = useState<'deliverable' | 'why'>('deliverable')
   const [showRetainer, setShowRetainer] = useState(false)
@@ -92,13 +93,21 @@ export default function ProcessSection() {
       <div className="container-main" ref={containerRef}>
         <span className="section-label fade-up-visible">The Process</span>
 
-        <div ref={svgWrapRef} className="mt-8 fade-up-visible" style={{ transitionDelay: '80ms', overflowX: 'auto', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
+        <div
+          ref={svgWrapRef}
+          className="mt-8 fade-up-visible"
+          style={{ transitionDelay: '80ms', overflowX: 'auto', WebkitOverflowScrolling: 'touch', position: 'relative' } as React.CSSProperties}
+          onMouseMove={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect()
+            setTooltipPos({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+          }}
+        >
           <svg
-            viewBox="-12 0 624 920"
+            viewBox="80 0 440 970"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="h-auto overflow-visible"
-            style={{ width: '100%', minWidth: '580px' }}
+            style={{ width: '100%', minWidth: '340px' }}
             aria-label="Serino Consulting Process Flowchart"
           >
             {/* ── LINES ── */}
@@ -112,44 +121,51 @@ export default function ProcessSection() {
             {/* DELIVERABLE #1 → fan dot */}
             <line x1="300" y1="292" x2="300" y2="310" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(560)} />
 
-            {/* Fan → 4 hexagons */}
-            <line x1="300" y1="310" x2="75"  y2="338" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(600)} />
-            <line x1="300" y1="310" x2="225" y2="338" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(630)} />
-            <line x1="300" y1="310" x2="375" y2="338" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(660)} />
-            <line x1="300" y1="310" x2="525" y2="338" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(690)} />
+            {/* Fan dot → top hex (Brand Dev) */}
+            <line x1="300" y1="310" x2="300" y2="323" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(600)} />
 
-            {/* 4 hexagons → converge dot */}
-            <line x1="75"  y1="382" x2="300" y2="418" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(960)} />
-            <line x1="225" y1="382" x2="300" y2="418" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(980)} />
-            <line x1="375" y1="382" x2="300" y2="418" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1000)} />
-            <line x1="525" y1="382" x2="300" y2="418" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1020)} />
+            {/* Top hex → hub */}
+            <line x1="300" y1="367" x2="300" y2="385" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(650)} />
 
-            {/* converge dot → DELIVERABLES */}
-            <line x1="300" y1="418" x2="300" y2="438" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1060)} />
+            {/* Hub → left hex (Marketing) */}
+            <line x1="300" y1="385" x2="272" y2="385" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(680)} />
+
+            {/* Hub → right hex (Creative Dir) */}
+            <line x1="300" y1="385" x2="328" y2="385" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(710)} />
+
+            {/* Hub → bottom hex (Project Arch) */}
+            <line x1="300" y1="385" x2="300" y2="403" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(740)} />
+
+            {/* Bottom hex → converge dot */}
+            <line x1="300" y1="447" x2="300" y2="467" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1060)} />
+
+            {/* Converge dot → DELIVERABLES */}
+            <line x1="300" y1="467" x2="300" y2="487" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1080)} />
 
             {/* PACKAGE DELIVERED → REVIEW CALL */}
-            <line x1="300" y1="492" x2="300" y2="510" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1200)} />
+            <line x1="300" y1="541" x2="300" y2="559" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1200)} />
 
             {/* REVIEW CALL → DELIVERABLE #2 */}
-            <line x1="300" y1="582" x2="300" y2="602" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1360)} />
+            <line x1="300" y1="631" x2="300" y2="651" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1360)} />
 
             {/* DELIVERABLE #2 → HUMBLD / OUTSIDE */}
-            <line x1="300" y1="674" x2="140" y2="720" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1540)} />
-            <line x1="300" y1="674" x2="460" y2="720" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1565)} />
+            <line x1="300" y1="723" x2="175" y2="769" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1540)} />
+            <line x1="300" y1="723" x2="425" y2="769" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1565)} />
 
             {/* HUMBLD / OUTSIDE → OVERSEES */}
-            <line x1="140" y1="760" x2="300" y2="810" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1730)} />
-            <line x1="460" y1="760" x2="300" y2="810" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1750)} />
+            <line x1="175" y1="809" x2="300" y2="859" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1730)} />
+            <line x1="425" y1="809" x2="300" y2="859" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1750)} />
 
 
             {/* ── DOTS ── */}
             <circle cx="300" cy="110" r="3" fill="#C2A878" style={na(150)} />
             <circle cx="300" cy="220" r="3" fill="#C2A878" style={na(370)} />
             <circle cx="300" cy="310" r="3" fill="#C2A878" style={na(580)} />
-            <circle cx="300" cy="418" r="3" fill="#C2A878" style={na(1040)} />
-            <circle cx="300" cy="510" r="3" fill="#C2A878" style={na(1220)} />
-            <circle cx="300" cy="602" r="3" fill="#C2A878" style={na(1380)} />
-            <circle cx="300" cy="810" r="3" fill="#C2A878" style={na(1770)} />
+            <circle cx="300" cy="385" r="3" fill="#C2A878" style={na(660)} />
+            <circle cx="300" cy="467" r="3" fill="#C2A878" style={na(1040)} />
+            <circle cx="300" cy="559" r="3" fill="#C2A878" style={na(1220)} />
+            <circle cx="300" cy="651" r="3" fill="#C2A878" style={na(1380)} />
+            <circle cx="300" cy="859" r="3" fill="#C2A878" style={na(1770)} />
 
             {/* ── NODES ── */}
 
@@ -181,104 +197,110 @@ export default function ProcessSection() {
               >Learn more</text>
             </g>
 
-            {/* NODE: BRAND DEVELOPMENT */}
+            {/* NODE: BRAND DEVELOPMENT (top of cross) */}
             <g {...hoverHandlers('brand-dev')} style={{ ...hoverHandlers('brand-dev').style, ...na(720) }}>
-              <polygon points="102,338 127,360 102,382 48,382 23,360 48,338" fill="#C2A878" fillOpacity={rectFill('brand-dev', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="75" y="357" textAnchor="middle" fill={textFill('brand-dev')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>BRAND</text>
-              <text x="75" y="370" textAnchor="middle" fill={textFill('brand-dev')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>DEVELOPMENT</text>
+              <polygon points="327,323 352,345 327,367 273,367 248,345 273,323" fill="#C2A878" fillOpacity={rectFill('brand-dev', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="341" textAnchor="middle" fill={textFill('brand-dev')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>BRAND</text>
+              <text x="300" y="354" textAnchor="middle" fill={textFill('brand-dev')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>DEVELOPMENT</text>
             </g>
 
-            {/* NODE: MARKETING STRATEGY */}
+            {/* NODE: MARKETING STRATEGY (left of cross) */}
             <g {...hoverHandlers('marketing-strategy')} style={{ ...hoverHandlers('marketing-strategy').style, ...na(750) }}>
-              <polygon points="252,338 277,360 252,382 198,382 173,360 198,338" fill="#C2A878" fillOpacity={rectFill('marketing-strategy', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="225" y="357" textAnchor="middle" fill={textFill('marketing-strategy')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>MARKETING</text>
-              <text x="225" y="370" textAnchor="middle" fill={textFill('marketing-strategy')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>STRATEGY</text>
+              <polygon points="247,363 272,385 247,407 193,407 168,385 193,363" fill="#C2A878" fillOpacity={rectFill('marketing-strategy', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="220" y="381" textAnchor="middle" fill={textFill('marketing-strategy')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>MARKETING</text>
+              <text x="220" y="394" textAnchor="middle" fill={textFill('marketing-strategy')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>STRATEGY</text>
             </g>
 
-            {/* NODE: CREATIVE DIRECTION */}
+            {/* NODE: CREATIVE DIRECTION (right of cross) */}
             <g {...hoverHandlers('creative-dir')} style={{ ...hoverHandlers('creative-dir').style, ...na(780) }}>
-              <polygon points="402,338 427,360 402,382 348,382 323,360 348,338" fill="#C2A878" fillOpacity={rectFill('creative-dir', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="375" y="357" textAnchor="middle" fill={textFill('creative-dir')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>CREATIVE</text>
-              <text x="375" y="370" textAnchor="middle" fill={textFill('creative-dir')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>DIRECTION</text>
+              <polygon points="407,363 432,385 407,407 353,407 328,385 353,363" fill="#C2A878" fillOpacity={rectFill('creative-dir', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="380" y="381" textAnchor="middle" fill={textFill('creative-dir')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>CREATIVE</text>
+              <text x="380" y="394" textAnchor="middle" fill={textFill('creative-dir')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>DIRECTION</text>
             </g>
 
-            {/* NODE: PROJECT ARCHITECTURE */}
+            {/* NODE: PROJECT ARCHITECTURE (bottom of cross) */}
             <g {...hoverHandlers('project-arch')} style={{ ...hoverHandlers('project-arch').style, ...na(810) }}>
-              <polygon points="552,338 577,360 552,382 498,382 473,360 498,338" fill="#C2A878" fillOpacity={rectFill('project-arch', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="525" y="357" textAnchor="middle" fill={textFill('project-arch')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>PROJECT</text>
-              <text x="525" y="370" textAnchor="middle" fill={textFill('project-arch')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>ARCHITECTURE</text>
+              <polygon points="327,403 352,425 327,447 273,447 248,425 273,403" fill="#C2A878" fillOpacity={rectFill('project-arch', 0.13)} stroke="#C2A878" strokeWidth="1" style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="421" textAnchor="middle" fill={textFill('project-arch')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>PROJECT</text>
+              <text x="300" y="434" textAnchor="middle" fill={textFill('project-arch')} fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.2" style={{ transition: 'fill 200ms' }}>ARCHITECTURE</text>
             </g>
 
             {/* NODE: DELIVERABLES */}
             <g {...hoverHandlers('deliverables')} style={{ ...hoverHandlers('deliverables').style, ...na(1080) }}>
-              <rect x="150" y="438" width="300" height="54" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverables', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="458" textAnchor="middle" fill={textFill('deliverables')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #1 SHIPPED</text>
-              <text x="300" y="476" textAnchor="middle" fill={goldFill('deliverables')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Assessment &amp; Review</text>
+              <rect x="150" y="487" width="300" height="54" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverables', 0)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="507" textAnchor="middle" fill={textFill('deliverables')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #1 SHIPPED</text>
+              <text x="300" y="525" textAnchor="middle" fill={goldFill('deliverables')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Assessment &amp; Review</text>
             </g>
 
             {/* NODE: REVIEW CALL */}
             <g {...hoverHandlers('review-call')} style={{ ...hoverHandlers('review-call').style, ...na(1240) }}>
-              <rect x="160" y="510" width="280" height="72" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('review-call', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="532" textAnchor="middle" fill={goldFill('review-call')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" fontWeight="500" style={{ transition: 'fill 200ms' }}>REVIEW CALL</text>
-              <text x="300" y="550" textAnchor="middle" fill={textFill('review-call')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Client: "Wow!"</text>
-              <text x="300" y="568" textAnchor="middle" fill={textFill('review-call')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Consulting: "Yes! Now let's execute."</text>
+              <rect x="160" y="559" width="280" height="72" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('review-call', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="581" textAnchor="middle" fill={goldFill('review-call')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" fontWeight="500" style={{ transition: 'fill 200ms' }}>REVIEW CALL</text>
+              <text x="300" y="599" textAnchor="middle" fill={textFill('review-call')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Client: "Wow!"</text>
+              <text x="300" y="617" textAnchor="middle" fill={textFill('review-call')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Consulting: "Yes! Now let's execute."</text>
             </g>
 
             {/* NODE: RETAINER PACKAGE */}
             <g {...hoverHandlers('deliverable-2')} style={{ ...hoverHandlers('deliverable-2').style, ...na(1400) }}>
-              <rect x="150" y="602" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#b45f40" fillOpacity={rectFill('deliverable-2', 0.18)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="625" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>RETAINER PACKAGE</text>
-              <text x="300" y="643" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Governance &amp; Growth</text>
-              <text x="300" y="658" textAnchor="middle" fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" fill="#C2A878" style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={(e) => { e.stopPropagation(); setShowRetainer(true) }}>Learn more</text>
+              <rect x="150" y="651" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#b45f40" fillOpacity={rectFill('deliverable-2', 0.18)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="674" textAnchor="middle" fill={goldFill('deliverable-2')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>RETAINER PACKAGE</text>
+              <text x="300" y="692" textAnchor="middle" fill={textFill('deliverable-2')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Governance &amp; Growth</text>
+              <text x="300" y="707" textAnchor="middle" fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" fill="#C2A878" style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={(e) => { e.stopPropagation(); setShowRetainer(true) }}>Learn more</text>
             </g>
 
             {/* NODE: HUMBLD MEDIA */}
             <g {...hoverHandlers('humbld')} style={{ ...hoverHandlers('humbld').style, ...na(1590) }}>
-              <rect x="50" y="720" width="180" height="40" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('humbld', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="140" y="737" textAnchor="middle" fill={textFill('humbld')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>HUMBLD MEDIA</text>
-              <text x="140" y="751" textAnchor="middle" fill={goldFill('humbld')} fontSize="9" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Our production agency partner</text>
+              <rect x="95" y="769" width="160" height="40" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('humbld', 0)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="175" y="786" textAnchor="middle" fill={textFill('humbld')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>HUMBLD MEDIA</text>
+              <text x="175" y="800" textAnchor="middle" fill={goldFill('humbld')} fontSize="9" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Our production agency partner</text>
             </g>
 
             {/* NODE: YOUR COMPANY */}
             <g {...hoverHandlers('outside-team')} style={{ ...hoverHandlers('outside-team').style, ...na(1615) }}>
-              <rect x="370" y="720" width="180" height="40" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('outside-team', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="460" y="737" textAnchor="middle" fill={textFill('outside-team')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>YOUR COMPANY</text>
-              <text x="460" y="751" textAnchor="middle" fill={goldFill('outside-team')} fontSize="9" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Your in-house marketing team</text>
+              <rect x="345" y="769" width="160" height="40" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('outside-team', 0)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="425" y="786" textAnchor="middle" fill={textFill('outside-team')} fontSize="10" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5" style={{ transition: 'fill 200ms' }}>YOUR COMPANY</text>
+              <text x="425" y="800" textAnchor="middle" fill={goldFill('outside-team')} fontSize="9" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Your in-house marketing team</text>
             </g>
 
             {/* NODE: SERINO OVERSEES */}
             <g {...hoverHandlers('oversees')} style={{ ...hoverHandlers('oversees').style, ...na(1790) }}>
-              <rect x="150" y="810" width="300" height="80" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('oversees', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="838" textAnchor="middle" fill={goldFill('oversees')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>SERINO CONSULTING OVERSEES</text>
-              <text x="300" y="858" textAnchor="middle" fill={textFill('oversees')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Quality, Consistency, Brand Alignment, Approvals</text>
+              <rect x="150" y="859" width="300" height="80" rx="0" stroke="#C2A878" strokeWidth="1.5" fill="#C2A878" fillOpacity={rectFill('oversees', 0.08)} style={{ transition: 'fill-opacity 200ms' }} />
+              <text x="300" y="887" textAnchor="middle" fill={goldFill('oversees')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>SERINO CONSULTING OVERSEES</text>
+              <text x="300" y="907" textAnchor="middle" fill={textFill('oversees')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Quality, Consistency, Brand Alignment, Approvals</text>
             </g>
 
 
           </svg>
 
-          {/* Hover description */}
-          <div
-            style={{
-              minHeight: '2.5rem',
-              marginTop: '1.25rem',
-              textAlign: 'center',
-              transition: 'opacity 250ms',
-              opacity: hoveredNode ? 1 : 0,
-            }}
-          >
-            <p
+          {/* Floating cursor tooltip */}
+          {hoveredNode && NODE_DESCRIPTIONS[hoveredNode] && (
+            <div
               style={{
-                color: '#C2A878',
-                fontFamily: 'EB Garamond, serif',
-                fontStyle: 'italic',
-                fontSize: '1rem',
-                lineHeight: 1.6,
-                margin: 0,
+                position: 'absolute',
+                left: tooltipPos.x + 16,
+                top: tooltipPos.y - 12,
+                maxWidth: '220px',
+                backgroundColor: '#1a1a1a',
+                border: '1px solid rgba(194,168,120,0.35)',
+                padding: '12px 14px',
+                pointerEvents: 'none',
+                zIndex: 30,
               }}
             >
-              {hoveredNode ? NODE_DESCRIPTIONS[hoveredNode] : '\u00A0'}
-            </p>
-          </div>
+              <p
+                style={{
+                  fontFamily: 'EB Garamond, serif',
+                  fontSize: '13px',
+                  fontStyle: 'italic',
+                  color: 'rgba(245,240,230,0.85)',
+                  lineHeight: 1.55,
+                  margin: 0,
+                }}
+              >
+                {NODE_DESCRIPTIONS[hoveredNode]}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* CTA → Testimonials */}
