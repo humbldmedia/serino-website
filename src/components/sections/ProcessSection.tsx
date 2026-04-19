@@ -92,12 +92,13 @@ export default function ProcessSection() {
       <div className="container-main" ref={containerRef}>
         <span className="section-label fade-up-visible">The Process</span>
 
-        <div ref={svgWrapRef} className="max-w-3xl mx-auto mt-8 fade-up-visible" style={{ transitionDelay: '80ms' }}>
+        <div ref={svgWrapRef} className="mt-8 fade-up-visible" style={{ transitionDelay: '80ms', overflowX: 'auto', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
           <svg
-            viewBox="0 0 600 920"
+            viewBox="-12 0 624 920"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto overflow-visible"
+            className="h-auto overflow-visible"
+            style={{ width: '100%', minWidth: '580px' }}
             aria-label="Serino Consulting Process Flowchart"
           >
             {/* ── LINES ── */}
