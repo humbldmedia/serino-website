@@ -118,11 +118,8 @@ export default function ProcessSection() {
             {/* SERINO → DELIVERABLE #1 */}
             <line x1="300" y1="170" x2="300" y2="220" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(350)} />
 
-            {/* DELIVERABLE #1 → fan dot */}
-            <line x1="300" y1="292" x2="300" y2="310" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(560)} />
-
-            {/* Fan dot → top hex (Brand Dev) */}
-            <line x1="300" y1="310" x2="300" y2="323" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(600)} />
+            {/* DELIVERABLE #1 → top hex (Brand Dev) */}
+            <line x1="300" y1="292" x2="300" y2="323" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(560)} />
 
             {/* Top hex → hub */}
             <line x1="300" y1="367" x2="300" y2="385" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(650)} />
@@ -136,11 +133,8 @@ export default function ProcessSection() {
             {/* Hub → bottom hex (Project Arch) */}
             <line x1="300" y1="385" x2="300" y2="403" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(740)} />
 
-            {/* Bottom hex → converge dot */}
-            <line x1="300" y1="447" x2="300" y2="467" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1060)} />
-
-            {/* Converge dot → DELIVERABLES */}
-            <line x1="300" y1="467" x2="300" y2="487" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1080)} />
+            {/* Bottom hex → DELIVERABLES */}
+            <line x1="300" y1="447" x2="300" y2="487" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1060)} />
 
             {/* PACKAGE DELIVERED → REVIEW CALL */}
             <line x1="300" y1="541" x2="300" y2="559" stroke="#C2A878" strokeWidth="1" pathLength="1" style={la(1200)} />
@@ -160,9 +154,8 @@ export default function ProcessSection() {
             {/* ── DOTS ── */}
             <circle cx="300" cy="110" r="3" fill="#C2A878" style={na(150)} />
             <circle cx="300" cy="220" r="3" fill="#C2A878" style={na(370)} />
-            <circle cx="300" cy="310" r="3" fill="#C2A878" style={na(580)} />
             <circle cx="300" cy="385" r="3" fill="#C2A878" style={na(660)} />
-            <circle cx="300" cy="467" r="3" fill="#C2A878" style={na(1040)} />
+            <circle cx="300" cy="487" r="3" fill="#C2A878" style={na(1040)} />
             <circle cx="300" cy="559" r="3" fill="#C2A878" style={na(1220)} />
             <circle cx="300" cy="651" r="3" fill="#C2A878" style={na(1380)} />
             <circle cx="300" cy="859" r="3" fill="#C2A878" style={na(1770)} />
@@ -187,7 +180,7 @@ export default function ProcessSection() {
             <g {...hoverHandlers('production-plan')} style={{ ...hoverHandlers('production-plan').style, ...na(400) }}>
               <rect x="150" y="220" width="300" height="72" rx="0" stroke="#C2A878" strokeWidth="1" fill="#b45f40" fillOpacity={rectFill('production-plan', 0.18)} style={{ transition: 'fill-opacity 200ms' }} />
               <text x="300" y="243" textAnchor="middle" fill={goldFill('production-plan')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>FLAGSHIP SERVICE</text>
-              <text x="300" y="261" textAnchor="middle" fill={textFill('production-plan')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>The Serino Brand Foundation</text>
+              <text x="300" y="261" textAnchor="middle" fill={textFill('production-plan')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Serino Brand Foundation Plan</text>
               <text
                 x="300" y="276" textAnchor="middle"
                 fontSize="9" fontFamily="Cormorant Garamond, serif" letterSpacing="1.5"
@@ -228,8 +221,7 @@ export default function ProcessSection() {
             {/* NODE: DELIVERABLES */}
             <g {...hoverHandlers('deliverables')} style={{ ...hoverHandlers('deliverables').style, ...na(1080) }}>
               <rect x="150" y="487" width="300" height="54" rx="0" stroke="#C2A878" strokeWidth="1" fill="#C2A878" fillOpacity={rectFill('deliverables', 0)} style={{ transition: 'fill-opacity 200ms' }} />
-              <text x="300" y="507" textAnchor="middle" fill={textFill('deliverables')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERABLE ITEM #1 SHIPPED</text>
-              <text x="300" y="525" textAnchor="middle" fill={goldFill('deliverables')} fontSize="10" fontFamily="EB Garamond, serif" fontStyle="italic" style={{ transition: 'fill 200ms' }}>Assessment &amp; Review</text>
+              <text x="300" y="516" textAnchor="middle" fill={textFill('deliverables')} fontSize="11" fontFamily="Cormorant Garamond, serif" letterSpacing="2" style={{ transition: 'fill 200ms' }}>DELIVERY</text>
             </g>
 
             {/* NODE: REVIEW CALL */}
@@ -318,7 +310,7 @@ export default function ProcessSection() {
               ;(e.currentTarget as HTMLAnchorElement).style.color = '#C2A878'
             }}
           >
-            What Our Clients Say →
+            What Our Clients Say ↓
           </a>
         </div>
       </div>
@@ -346,7 +338,7 @@ export default function ProcessSection() {
 
             {/* Shared header */}
             <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>Flagship Service</p>
-            <h2 className="font-display text-3xl text-roma-cream mb-1">The Serino Brand Foundation</h2>
+            <h2 className="font-display text-3xl text-roma-cream mb-1">Serino Brand Foundation Plan</h2>
             <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: 'rgba(194,168,120,0.6)' }}>$20,000 – $25,000+&nbsp;&nbsp;·&nbsp;&nbsp;4–6 Weeks</p>
 
             {/* Slide indicator */}
@@ -458,7 +450,7 @@ export default function ProcessSection() {
                     "Write the vision and make it plain on tablets, that he may run who reads it." — Habakkuk 2:2
                   </p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>
-                    The Serino Brand Foundation exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.
+                    The Serino Brand Foundation Plan exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.
                   </p>
                 </div>
 

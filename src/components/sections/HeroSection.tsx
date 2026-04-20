@@ -87,7 +87,7 @@ export default function HeroSection() {
               transitionDelay: '240ms',
             }}
           >
-            Do Business Better →
+            Do Business Better ↓
           </a>
           </div>
         </div>

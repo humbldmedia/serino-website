@@ -98,7 +98,7 @@ export default function SequenceSection() {
               ;(e.currentTarget as HTMLAnchorElement).style.color = '#7C6122'
             }}
           >
-            The Process →
+            The Process ↓
           </a>
         </div>
       </div>

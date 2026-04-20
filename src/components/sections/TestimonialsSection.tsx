@@ -5,15 +5,15 @@ import { useScrollReveal } from '../../hooks/useScrollReveal'
 const F   = () => `grayscale(1) brightness(0.35) opacity(0.55)`
 const FN  = () => `grayscale(1) invert(1) brightness(0.35) opacity(0.55)`
 
-const clientLogos: { src: string; alt: string; blurb: string; noInvert?: boolean }[] = [
+const clientLogos: { src: string; alt: string; blurb: string; noInvert?: boolean; height?: string }[] = [
   { src: '/logos/client-1.svg',  alt: 'Beloved Health',  blurb: 'Delivered brand strategy & content that elevated their social presence, engagement, and network' },
-  { src: '/logos/client-7.png',  alt: 'Propago PDX',     blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
-  { src: '/logos/client-8.svg',  alt: 'The Haven PDX',   blurb: 'Directed a kickstarter campaign that reached their $30k goal within 30 days' },
-  { src: '/logos/client-4.png',  alt: 'Bloom Agency',    blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
-  { src: '/logos/client-3.svg',  alt: 'DirectStay',      blurb: 'Delivered the essential startup package that accelerated their new business' },
-  { src: '/logos/client-6.png',  alt: 'iModels NW',      blurb: 'Delivered branded content that elevated their social presence, engagement and network' },
+  { src: '/logos/client-7.png',  alt: 'Propago PDX',     blurb: 'Delivered branded content that elevated their social presence, engagement and network', height: '76px' },
+  { src: '/logos/client-8.svg',  alt: 'The Haven PDX',   blurb: 'Directed a kickstarter campaign that reached their $30k goal within 30 days', height: '96px' },
+  { src: '/logos/client-4.png',  alt: 'Bloom Agency',    blurb: 'Delivered branded content that elevated their social presence, engagement and network', height: '96px' },
+  { src: '/logos/client-3.svg',  alt: 'DirectStay',      blurb: 'Delivered the essential startup package that accelerated their new business', height: '130px' },
+  { src: '/logos/client-6.png',  alt: 'iModels NW',      blurb: 'Delivered branded content that elevated their social presence, engagement and network', height: '96px' },
   { src: '/logos/client-12.png', alt: 'PowerPay',        blurb: 'Delivered brand materials that activated their new business' },
-  { src: '/logos/client-2.svg',  alt: 'Dolgo',           blurb: 'Delivered a branded explainer video for a successful investor pitch', noInvert: true },
+  { src: '/logos/client-2.svg',  alt: 'Dolgo',           blurb: 'Delivered a branded explainer video for a successful investor pitch', noInvert: true, height: '96px' },
 ]
 
 const testimonials = [
@@ -61,9 +61,9 @@ function LogoStrip() {
                 src={logo.src}
                 alt={logo.alt}
                 style={{
-                  height: '38px',
+                  height: logo.height ?? '56px',
                   width: 'auto',
-                  maxWidth: '140px',
+                  maxWidth: '180px',
                   objectFit: 'contain',
                   filter: isActive ? 'none' : (logo.noInvert ? FN() : F()),
                   mixBlendMode: isActive ? 'normal' : 'multiply',
@@ -183,6 +183,24 @@ export default function TestimonialsSection() {
 
         {/* Client logo strip */}
         <LogoStrip />
+
+        <div className="flex justify-center mt-16">
+          <a
+            href="#team"
+            className="inline-block font-heading text-sm tracking-widest uppercase border px-8 py-4 transition-all duration-200"
+            style={{ borderColor: '#7C6122', color: '#7C6122' }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#7C6122'
+              ;(e.currentTarget as HTMLAnchorElement).style.color = '#F4F0EA'
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent'
+              ;(e.currentTarget as HTMLAnchorElement).style.color = '#7C6122'
+            }}
+          >
+            Why Us ↓
+          </a>
+        </div>
       </div>
     </section>
   )

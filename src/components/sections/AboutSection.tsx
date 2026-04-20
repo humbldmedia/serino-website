@@ -5,7 +5,7 @@ export default function AboutSection() {
 
   return (
     <section
-      id="about"
+      id="team"
       className="py-28 md:py-36"
       style={{ backgroundColor: '#0D0D0D' }}
     >
