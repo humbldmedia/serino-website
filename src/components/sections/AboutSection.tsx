@@ -10,49 +10,101 @@ export default function AboutSection() {
       style={{ backgroundColor: '#0D0D0D' }}
     >
       <div className="container-main" ref={ref}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
-          {/* Left — image placeholder */}
-          <div className="fade-up-visible order-2 md:order-1">
-            <div
-              className="relative aspect-[4/3] w-full max-w-lg mx-auto md:mx-0 overflow-hidden"
-              style={{ border: '1px solid rgba(194,168,120,0.4)' }}
-            >
-              <img
-                src="/assets/pictures/team-portrait.jpg"
-                alt="Philip Serino — Founder"
-                className="absolute inset-0 w-full h-full object-cover object-top"
-              />
-              {/* Subtle vignette */}
-              <div
-                className="absolute inset-0"
-                style={{ background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.35) 100%)' }}
-              />
-            </div>
-          </div>
 
-          {/* Right — text */}
-          <div className="fade-up-visible order-1 md:order-2" style={{ transitionDelay: '80ms' }}>
-            <span className="section-label">The Team</span>
-
-            <h2 className="font-display text-4xl md:text-5xl text-roma-cream mb-8 leading-tight">
-              Built for depth,<br />
-              not scale.
-            </h2>
-
-            <div className="font-body text-lg text-roma-cream/70 leading-relaxed space-y-6 mb-10">
-              <p>
-                Serino Consulting is a small team of strategists and storytellers. We have worked with founders across industries, from early-stage startups to established family businesses.
-              </p>
-              <p>
-                The work is the same regardless of size: name what is true, identify what is broken, and build something worth building.
-              </p>
-            </div>
-
-            <p className="font-body italic text-base text-roma-cream/50 leading-relaxed">
-              Founded by Philip Serino, a creative entrepreneur with a background in video, music, and brand strategy.
+        {/* Header */}
+        <div className="fade-up-visible mb-16 md:mb-20">
+          <span className="section-label">Our Team</span>
+          <h2 className="font-display text-4xl md:text-5xl text-roma-cream mb-8 leading-tight">
+            The ride or die type.
+          </h2>
+          <div className="font-body text-lg text-roma-cream/70 leading-relaxed space-y-6 max-w-2xl">
+            <p>
+              Serino Consulting is your not-so-average team of strategists and storytellers. Having worked with founders and brands across industries from early-stage startups to established family businesses, <span style={{ color: '#C2A878' }}>what makes us different is our ability to discern, interpret, name, and govern</span> based on principles such as integrity, authenticity, humility, and compassion.
+            </p>
+            <p>
+              We challenge you to make aligned decisions, helping you say no to what dilutes and yes to what deepens.
             </p>
           </div>
         </div>
+
+        {/* Portraits */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+
+          {/* Phil */}
+          <div className="fade-up-visible">
+            <div style={{ borderBottom: '1px solid rgba(194,168,120,0.2)', paddingBottom: '20px', marginBottom: '24px' }}>
+              <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>
+                Founder &amp; Brand Consultant
+              </p>
+              <h3 className="font-display text-2xl text-roma-cream mb-4">Phil Serino</h3>
+              <p className="font-body text-roma-cream/60 text-sm leading-relaxed">
+                Background in customer relations, brand architecture, and storytelling through creative writing, music and film.
+              </p>
+            </div>
+            <div
+              className="relative w-full overflow-hidden"
+              style={{ aspectRatio: '3/4', border: '1px solid rgba(194,168,120,0.3)' }}
+            >
+              <img
+                src="/assets/pictures/phil.png"
+                alt="Phil Serino — Founder & Brand Consultant"
+                className="absolute inset-0 w-full h-full object-cover object-top"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.4) 100%)' }}
+              />
+            </div>
+          </div>
+
+          {/* Alexandria */}
+          <div className="fade-up-visible" style={{ transitionDelay: '100ms' }}>
+            <div style={{ borderBottom: '1px solid rgba(194,168,120,0.2)', paddingBottom: '20px', marginBottom: '24px' }}>
+              <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>
+                Business Consultant
+              </p>
+              <h3 className="font-display text-2xl text-roma-cream mb-4">Alexandria Russell</h3>
+              <p className="font-body text-roma-cream/60 text-sm leading-relaxed">
+                Background in project development, business architecture, and building operations.
+              </p>
+            </div>
+            <div
+              className="relative w-full overflow-hidden"
+              style={{ aspectRatio: '3/4', border: '1px solid rgba(194,168,120,0.3)' }}
+            >
+              <img
+                src="/assets/pictures/lexi.png"
+                alt="Alexandria Russell — Business Consultant"
+                className="absolute inset-0 w-full h-full object-cover object-top"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.4) 100%)' }}
+              />
+            </div>
+          </div>
+
+        </div>
+
+        {/* CTA button */}
+        <div className="flex justify-center mt-20">
+          <a
+            href="#contact"
+            className="font-heading text-xs tracking-widest uppercase border px-8 py-4 transition-all duration-200"
+            style={{ borderColor: '#C2A878', color: '#C2A878' }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#C2A878'
+              ;(e.currentTarget as HTMLAnchorElement).style.color = '#0D0D0D'
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent'
+              ;(e.currentTarget as HTMLAnchorElement).style.color = '#C2A878'
+            }}
+          >
+            Let's Connect ↓
+          </a>
+        </div>
+
       </div>
     </section>
   )

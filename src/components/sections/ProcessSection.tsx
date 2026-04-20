@@ -49,19 +49,19 @@ const NODES: NodeDef[] = [
     title: 'FLAGSHIP SERVICE', sub: 'The Serino Brand Foundation', link: 'flagship',
     info: 'The Serino Brand Foundation is our core strategic offering — a full-spectrum brand and business alignment engagement built for lasting impact.' },
 
-  { id: 'brand',     cx: CX,       cy: 390,            w: HEX_W, h: HEX_H, type: 'hex',
+  { id: 'brand',     cx: CX,       cy: 415,            w: HEX_W, h: HEX_H, type: 'hex',
     title: 'BRAND\nDEVELOPMENT',
     info: 'Identity. Interpretation. Visual language. Voice. Everything that defines how the brand shows up in the world — consistently and boldly.' },
 
-  { id: 'marketing', cx: CX - 192, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
+  { id: 'marketing', cx: CX - 158, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
     title: 'MARKETING\nSTRATEGY',
     info: 'Channel Strategy. Campaigns. Positioning. Audience Development. Everything aligned to brand goals and growth objectives.' },
 
-  { id: 'creative',  cx: CX + 192, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
+  { id: 'creative',  cx: CX + 158, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
     title: 'CREATIVE\nDIRECTION',
     info: 'Strategic Thinking. Concept Development. Content Frameworks. Storytelling that breathes life into the brand and captivates audiences.' },
 
-  { id: 'project',   cx: CX,       cy: HUB_Y + 30,     w: HEX_W, h: HEX_H, type: 'hex',
+  { id: 'project',   cx: CX,       cy: HUB_Y + 15,     w: HEX_W, h: HEX_H, type: 'hex',
     title: 'PROJECT\nARCHITECTURE',
     info: 'Systems. Timelines. Workflows that ensure every initiative is executed with precision and excellence.' },
 
@@ -77,15 +77,15 @@ const NODES: NodeDef[] = [
     title: 'RETAINER PACKAGE', sub: 'Serino Governance & Growth', link: 'retainer',
     info: 'Ongoing partnership. The Serino Governance & Growth retainer sustains momentum, consistency, and brand integrity across every initiative.' },
 
-  { id: 'humbld',    cx: CX - 200, cy: 1204,           w: 210,   h: 62,    type: 'standard',
+  { id: 'humbld',    cx: CX - 145, cy: 1204,           w: 210,   h: 62,    type: 'standard',
     title: 'HUMBLD MEDIA', sub: 'Our production agency partner',
     info: 'Humbld Media handles all production — video, photo, and content creation at the highest creative and technical standard.' },
 
-  { id: 'yourco',    cx: CX + 200, cy: 1204,           w: 210,   h: 62,    type: 'standard',
+  { id: 'yourco',    cx: CX + 145, cy: 1204,           w: 210,   h: 62,    type: 'standard',
     title: 'YOUR COMPANY', sub: 'Your in-house marketing team',
     info: 'Your internal team executes day-to-day operations — fully empowered with Serino strategy and brand guardrails as their guide.' },
 
-  { id: 'oversees',  cx: CX,       cy: 1320,           w: 352,   h: 70,    type: 'standard',
+  { id: 'oversees',  cx: CX,       cy: 1320,           w: 300,   h: 70,    type: 'standard',
     title: 'SERINO CONSULTING OVERSEES',
     sub: 'Quality, Consistency, Brand Alignment, Approvals',
     info: 'Serino maintains final oversight — ensuring every output meets the standard, serves the brand, and advances the mission.' },
@@ -168,6 +168,19 @@ export default function ProcessSection() {
   const [modalView,     setModalView]     = useState<'deliverable' | 'why'>('deliverable')
   const [showRetainer,  setShowRetainer]  = useState(false)
   const [retainerView,  setRetainerView]  = useState<'deliverable' | 'why'>('deliverable')
+  const [diagramScale,  setDiagramScale]  = useState(1)
+
+  useEffect(() => {
+    const updateScale = () => {
+      // Content spans x≈150–650 within the 800px canvas; scale to that real width
+      const CONTENT_W = 520
+      const maxW = window.innerWidth - 40
+      setDiagramScale(Math.min(1, maxW / CONTENT_W))
+    }
+    updateScale()
+    window.addEventListener('resize', updateScale)
+    return () => window.removeEventListener('resize', updateScale)
+  }, [])
 
   // ── Canvas RAF loop ──────────────────────────────────
   useEffect(() => {
@@ -344,8 +357,8 @@ export default function ProcessSection() {
           </div>
 
           {/* Diagram */}
-          <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
-            <div style={{ position: 'relative', width: DIAG_W, height: DIAG_H }}>
+          <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden', height: DIAG_H * diagramScale }}>
+            <div style={{ position: 'relative', width: DIAG_W, height: DIAG_H, flexShrink: 0, transformOrigin: 'top center', transform: `scale(${diagramScale})` }}>
 
               {/* Particle canvas */}
               <canvas
