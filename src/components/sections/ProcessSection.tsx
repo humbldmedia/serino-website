@@ -16,7 +16,7 @@ const GOLD_V    = '#c9a84c'            // --gold (vivid)
 const CREAM     = 'rgb(244,240,234)'   // --cream
 const BG_COLOR  = '#060402'
 const DARK_BG   = 'rgba(36,13,4,0.94)'
-const GOLD_NODE_BG = 'rgba(48,32,4,0.96)'
+const GOLD_NODE_BG = 'rgba(28,28,28,0.97)'
 
 // ── Types ──────────────────────────────────────────────
 interface NodeDef {
