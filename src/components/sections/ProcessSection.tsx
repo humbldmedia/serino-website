@@ -46,7 +46,7 @@ const NODES: NodeDef[] = [
     info: 'Serino Consulting maps the challenge to a solution — delivering clarity and a precise path forward. No guesswork. Only strategy.' },
 
   { id: 'flagship',  cx: CX,       cy: 265,            w: 312,   h: 76,    type: 'dark',
-    title: 'FLAGSHIP SERVICE', sub: 'The Serino Brand Foundation', link: 'flagship',
+    title: 'FLAGSHIP SERVICE', sub: 'Serino Brand Foundation Plan', link: 'flagship',
     info: 'The Serino Brand Foundation is our core strategic offering — a full-spectrum brand and business alignment engagement built for lasting impact.' },
 
   { id: 'brand',     cx: CX,       cy: 415,            w: HEX_W, h: HEX_H, type: 'hex',
@@ -169,6 +169,7 @@ export default function ProcessSection() {
   const [showRetainer,  setShowRetainer]  = useState(false)
   const [retainerView,  setRetainerView]  = useState<'deliverable' | 'why'>('deliverable')
   const [diagramScale,  setDiagramScale]  = useState(1)
+  const [touchStartX,   setTouchStartX]   = useState(0)
 
   useEffect(() => {
     const updateScale = () => {
@@ -632,6 +633,12 @@ export default function ProcessSection() {
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
             style={{ backgroundColor: '#26211a', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
             onClick={e => e.stopPropagation()}
+            onTouchStart={e => setTouchStartX(e.touches[0].clientX)}
+            onTouchEnd={e => {
+              const delta = e.changedTouches[0].clientX - touchStartX
+              if (delta < -50) setModalView('why')
+              if (delta > 50) setModalView('deliverable')
+            }}
           >
             <button
               onClick={() => { setShowDeliverable(false); setModalView('deliverable') }}
@@ -717,6 +724,12 @@ export default function ProcessSection() {
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
             style={{ backgroundColor: '#26211a', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
             onClick={e => e.stopPropagation()}
+            onTouchStart={e => setTouchStartX(e.touches[0].clientX)}
+            onTouchEnd={e => {
+              const delta = e.changedTouches[0].clientX - touchStartX
+              if (delta < -50) setRetainerView('why')
+              if (delta > 50) setRetainerView('deliverable')
+            }}
           >
             <button
               onClick={() => { setShowRetainer(false); setRetainerView('deliverable') }}
