@@ -1,26 +1,21 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Nav from './components/layout/Nav'
 import Footer from './components/layout/Footer'
-import HeroSection from './components/sections/HeroSection'
-import SequenceSection from './components/sections/SequenceSection'
-import ProcessSection from './components/sections/ProcessSection'
-import TestimonialsSection from './components/sections/TestimonialsSection'
-import AboutSection from './components/sections/AboutSection'
-import CTASection from './components/sections/CTASection'
+import HomePage from './pages/HomePage'
+import ContactPage from './pages/ContactPage'
 
 function App() {
   return (
-    <div className="min-h-screen bg-serino-black">
-      <Nav />
-      <main>
-        <HeroSection />
-        <SequenceSection />
-        <ProcessSection />
-        <TestimonialsSection />
-        <AboutSection />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-serino-black">
+        <Nav />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
 

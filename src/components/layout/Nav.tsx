@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -37,9 +38,17 @@ export default function Nav() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-6">
+            <Link
+              to="/contact"
+              className="font-heading text-xs tracking-widest uppercase text-roma-cream/50 hover:text-gold transition-colors duration-200"
+            >
+              Contact
+            </Link>
             <a
-              href="#contact"
+              href="https://calendly.com/serinoconsulting/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-heading text-xs tracking-widest uppercase border border-gold text-gold px-5 py-2.5 transition-all duration-200"
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#7a3825'; e.currentTarget.style.color = '#F4F0EA'; e.currentTarget.style.borderColor = '#7a3825' }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C2A878'; e.currentTarget.style.borderColor = '#C2A878' }}
@@ -90,7 +99,9 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="https://calendly.com/serinoconsulting/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             className="mt-4 font-heading text-sm tracking-widest uppercase border border-gold text-gold px-8 py-3 transition-all duration-200"
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#7a3825'; e.currentTarget.style.color = '#F4F0EA'; e.currentTarget.style.borderColor = '#7a3825' }}

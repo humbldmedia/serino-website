@@ -32,22 +32,24 @@ export default function CTASection() {
 
           <div className="fade-up-visible" style={{ transitionDelay: '240ms' }}>
             <a
-              href="mailto:hello@serinoconsulting.com"
+              href="https://calendly.com/serinoconsulting/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block font-heading text-sm tracking-widest uppercase px-10 py-4 transition-all duration-200"
               style={{ backgroundColor: '#7a3825', color: '#F4F0EA' }}
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#964830')}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#7a3825')}
             >
-              Start the Conversation →
+              Book a Call →
             </a>
 
             <p className="mt-6 font-body text-sm text-roma-cream/30">
-              or email us at{' '}
+              Not ready to talk?{' '}
               <a
-                href="mailto:hello@serinoconsulting.com"
+                href="/contact"
                 className="text-roma-cream/50 hover:text-gold transition-colors underline underline-offset-2"
               >
-                hello@serinoconsulting.com
+                Send us a message
               </a>
             </p>
           </div>
