@@ -59,7 +59,7 @@ export default function HeroSection() {
               transitionDelay: '80ms',
             }}
           >
-            Lead with inte<span style={{ color: '#C2A878' }}>grit</span>y.
+            Lead with inte<span style={{ color: '#DBBFA8' }}>grit</span>y.
           </h1>
 
           {/* Subheadline */}

@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section
       id="team"
-      className="py-28 md:py-36"
+      className="pt-28 md:pt-36 pb-12 md:pb-16"
       style={{ backgroundColor: '#0D0D0D' }}
     >
       <div className="container-main" ref={ref}>
@@ -28,10 +28,10 @@ export default function AboutSection() {
         </div>
 
         {/* Portraits */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 max-w-2xl mx-auto">
 
           {/* Phil */}
-          <div className="fade-up-visible">
+          <div className="fade-up-visible max-w-xs mx-auto w-full">
             <div style={{ borderBottom: '1px solid rgba(194,168,120,0.2)', paddingBottom: '20px', marginBottom: '24px' }}>
               <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>
                 Founder &amp; Brand Consultant
@@ -58,14 +58,14 @@ export default function AboutSection() {
           </div>
 
           {/* Alexandria */}
-          <div className="fade-up-visible" style={{ transitionDelay: '100ms' }}>
+          <div className="fade-up-visible max-w-xs mx-auto w-full" style={{ transitionDelay: '100ms' }}>
             <div style={{ borderBottom: '1px solid rgba(194,168,120,0.2)', paddingBottom: '20px', marginBottom: '24px' }}>
               <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>
                 Business Consultant
               </p>
               <h3 className="font-display text-2xl text-roma-cream mb-4">Alexandria Russell</h3>
               <p className="font-body text-roma-cream/60 text-sm leading-relaxed">
-                Background in project development, business architecture, and building operations.
+                Background in project development, business architecture, building operations and management.
               </p>
             </div>
             <div
@@ -101,7 +101,7 @@ export default function AboutSection() {
               ;(e.currentTarget as HTMLAnchorElement).style.color = '#C2A878'
             }}
           >
-            Let's Connect ↓
+            I'm Ready ↓
           </a>
         </div>
 

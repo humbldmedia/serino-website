@@ -42,7 +42,7 @@ export default function SequenceSection() {
     >
       <div className="container-main" ref={ref}>
         <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
-          Do Business Better
+          Our Motive
         </span>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 mt-4">

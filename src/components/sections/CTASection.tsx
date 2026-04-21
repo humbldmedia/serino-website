@@ -14,20 +14,17 @@ export default function CTASection() {
 
       <div className="container-main" ref={ref}>
         <div className="max-w-2xl mx-auto text-center pt-20">
-          <span className="section-label fade-up-visible">Ready to Talk?</span>
-
           <h2
             className="font-display text-4xl md:text-5xl lg:text-6xl text-roma-cream mb-8 leading-tight fade-up-visible"
-            style={{ transitionDelay: '80ms' }}
           >
-            Let's find out<br />what's real.
+            Let's connect!
           </h2>
 
           <p
             className="font-body text-xl text-roma-cream/60 mb-12 leading-relaxed fade-up-visible"
-            style={{ transitionDelay: '160ms' }}
+            style={{ transitionDelay: '80ms' }}
           >
-            Tell us what you are working on. We respond personally to every inquiry.
+            Book a call with us. We're excited to hear what you're working on.
           </p>
 
           <div className="fade-up-visible" style={{ transitionDelay: '240ms' }}>

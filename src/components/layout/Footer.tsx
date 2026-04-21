@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import LegalModal from '../ui/LegalModal'
+
 function InstagramIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -36,44 +39,49 @@ function YouTubeIcon() {
 }
 
 export default function Footer() {
+  const [modal, setModal] = useState<'privacy' | 'terms' | null>(null)
+
   return (
-    <footer className="bg-serino-black border-t border-gold/20">
-      <div className="container-main py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <img
-            src="/assets/logos/black_w_quill.png"
-            alt="Serino Consulting"
-            className="h-10 w-auto opacity-80"
-          />
-          <p className="font-body text-sm text-roma-cream/40 text-center">
-            © 2025 Serino Consulting. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="font-heading text-xs tracking-widest uppercase text-roma-cream/40 hover:text-gold transition-colors">
-              Privacy
-            </a>
-            <span className="text-roma-cream/20">|</span>
-            <a href="#" className="font-heading text-xs tracking-widest uppercase text-roma-cream/40 hover:text-gold transition-colors">
-              Terms
-            </a>
-            <span className="text-roma-cream/20">|</span>
-            <div className="flex items-center gap-4">
-              <a href="https://www.instagram.com/serino.consulting" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
-                <InstagramIcon />
-              </a>
-              <a href="https://www.facebook.com/serino.consulting/" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
-                <FacebookIcon />
-              </a>
-              <a href="https://www.linkedin.com/company/serino-consulting/" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
-                <LinkedInIcon />
-              </a>
-              <a href="https://www.youtube.com/@serino-consulting" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
-                <YouTubeIcon />
-              </a>
+    <>
+      <LegalModal type={modal} onClose={() => setModal(null)} />
+      <footer className="bg-serino-black border-t border-gold/20">
+        <div className="container-main py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <img
+              src="/assets/logos/black_w_quill.png"
+              alt="Serino Consulting"
+              className="h-10 w-auto opacity-80"
+            />
+            <p className="font-body text-sm text-roma-cream/40 text-center">
+              © 2026 Serino Consulting. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6">
+              <button onClick={() => setModal('privacy')} className="font-heading text-xs tracking-widest uppercase text-roma-cream/40 hover:text-gold transition-colors">
+                Privacy
+              </button>
+              <span className="text-roma-cream/20">|</span>
+              <button onClick={() => setModal('terms')} className="font-heading text-xs tracking-widest uppercase text-roma-cream/40 hover:text-gold transition-colors">
+                Terms
+              </button>
+              <span className="text-roma-cream/20">|</span>
+              <div className="flex items-center gap-4">
+                <a href="https://www.instagram.com/serino.consulting" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
+                  <InstagramIcon />
+                </a>
+                <a href="https://www.facebook.com/serino.consulting/" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
+                  <FacebookIcon />
+                </a>
+                <a href="https://www.linkedin.com/company/serino-consulting/" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
+                  <LinkedInIcon />
+                </a>
+                <a href="https://www.youtube.com/@serino-consulting" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
+                  <YouTubeIcon />
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   )
 }
