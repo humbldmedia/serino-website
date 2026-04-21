@@ -713,7 +713,20 @@ export default function ProcessSection() {
                     <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Write the vision and make it plain on tablets, that he may run who reads it." — Habakkuk 2:2</p>
                     <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>The Serino Brand Foundation Plan exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.</p>
                   </div>
-                  <button onClick={() => setModalView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.7'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>← Back to Deliverables</button>
+                  <div className="flex items-center gap-6 flex-wrap mt-2">
+                    <button onClick={() => setModalView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.7'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>← Back to Deliverables</button>
+                    <a
+                      href="https://calendly.com/serinoconsulting/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-heading text-xs tracking-widest uppercase px-6 py-3 transition-all duration-200"
+                      style={{ backgroundColor: '#7a3825', color: '#F4F0EA' }}
+                      onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#964830')}
+                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#7a3825')}
+                    >
+                      Book Now →
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -809,7 +822,20 @@ export default function ProcessSection() {
                   <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Where there is no guidance, a people falls, but in an abundance of counselors<br />there is safety." — Proverbs 11:14</p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>The brands that endure are not the ones that launched loudest. They are the ones that stayed true the longest. Serino Consulting exists to be that voice in the room — the one that keeps the standard high, the direction clear, and the brand worth believing in.</p>
                 </div>
-                  <button onClick={() => setRetainerView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => { e.currentTarget.style.opacity = '0.7' }} onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}>← Back to Deliverables</button>
+                  <div className="flex items-center gap-6 flex-wrap mt-2">
+                    <button onClick={() => setRetainerView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => { e.currentTarget.style.opacity = '0.7' }} onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}>← Back to Deliverables</button>
+                    <a
+                      href="https://calendly.com/serinoconsulting/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-heading text-xs tracking-widest uppercase px-6 py-3 transition-all duration-200"
+                      style={{ backgroundColor: '#7a3825', color: '#F4F0EA' }}
+                      onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#964830')}
+                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#7a3825')}
+                    >
+                      Book Now →
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
