@@ -16,6 +16,7 @@ const GOLD_V    = '#c9a84c'            // --gold (vivid)
 const CREAM     = 'rgb(244,240,234)'   // --cream
 const BG_COLOR  = '#060402'
 const DARK_BG   = 'rgba(36,13,4,0.94)'
+const GOLD_NODE_BG = 'rgba(48,32,4,0.96)'
 
 // ── Types ──────────────────────────────────────────────
 interface NodeDef {
@@ -457,7 +458,7 @@ export default function ProcessSection() {
                           <div style={{
                             flex: 1,
                             clipPath: 'polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)',
-                            background: 'rgba(8,4,1,.96)',
+                            background: GOLD_NODE_BG,
                           }} />
                         </div>
                       </div>
@@ -475,6 +476,12 @@ export default function ProcessSection() {
                             fontFamily: 'Cormorant Garamond, Georgia, serif',
                           }}>{line}</div>
                         ))}
+                        <div style={{
+                          marginTop: '6px', fontSize: '8px', letterSpacing: '0.15em',
+                          color: 'rgba(201,168,76,0.55)', textDecoration: 'underline',
+                          fontFamily: 'Cormorant Garamond, Georgia, serif',
+                          textTransform: 'uppercase',
+                        }}>Learn More</div>
                       </div>
                     </div>
                   )
@@ -496,7 +503,7 @@ export default function ProcessSection() {
                           ? 'rgba(201,168,76,0.5)'
                           : GOLD
                       }`,
-                      background: node.type === 'dark' ? DARK_BG : 'rgba(10,6,2,.92)',
+                      background: node.type === 'dark' ? DARK_BG : (node.id === 'humbld' || node.id === 'yourco') ? GOLD_NODE_BG : 'rgba(10,6,2,.92)',
                       textAlign: 'center',
                       padding: '11px 20px 10px',
                       position: 'relative', overflow: 'hidden',
