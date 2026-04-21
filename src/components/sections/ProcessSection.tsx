@@ -169,7 +169,7 @@ export default function ProcessSection() {
   const [showRetainer,  setShowRetainer]  = useState(false)
   const [retainerView,  setRetainerView]  = useState<'deliverable' | 'why'>('deliverable')
   const [diagramScale,  setDiagramScale]  = useState(1)
-  const [touchStartX,   setTouchStartX]   = useState(0)
+  const touchStartX = useRef(0)
 
   useEffect(() => {
     const updateScale = () => {
@@ -633,9 +633,9 @@ export default function ProcessSection() {
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
             style={{ backgroundColor: '#26211a', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
             onClick={e => e.stopPropagation()}
-            onTouchStart={e => setTouchStartX(e.touches[0].clientX)}
+            onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
             onTouchEnd={e => {
-              const delta = e.changedTouches[0].clientX - touchStartX
+              const delta = e.changedTouches[0].clientX - touchStartX.current
               if (delta < -50) setModalView('why')
               if (delta > 50) setModalView('deliverable')
             }}
@@ -652,63 +652,71 @@ export default function ProcessSection() {
             <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: 'rgba(194,168,120,0.6)' }}>$20,000 – $25,000+&nbsp;&nbsp;·&nbsp;&nbsp;4–6 Weeks</p>
             <div className="flex gap-2 mb-8">
               {(['deliverable', 'why'] as const).map(v => (
-                <div key={v} style={{ height: '2px', flex: 1, backgroundColor: modalView === v ? '#C2A878' : 'rgba(194,168,120,0.2)', transition: 'background-color 300ms' }} />
+                <div key={v} style={{ height: '2px', flex: 1, backgroundColor: modalView === v ? '#C2A878' : 'rgba(194,168,120,0.2)', transition: 'background-color 350ms' }} />
               ))}
             </div>
-            {modalView === 'deliverable' && (
-              <div>
-                <p className="font-body text-roma-cream/70 leading-relaxed mb-8">
-                  Perfect for anyone serious about building a scalable brand with long-term vision. This is the transformation package: brand assets, marketing strategy, integration, and guided consulting all in one.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                  <div>
-                    <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Brand Bible</p>
-                    <ul className="space-y-2">
-                      {['Brand Audit + Discovery Session','Mission, Vision & Values','Core Identity Messaging + UVP','Brand Voice & Tone Guide','StoryBrand Framework','Audience & Brand Narrative Arc','Logo Creation','Color Palette','Typography System','Moodboards','Social Media Templates','Social Media Messaging + Scripts'].map(item => (
-                        <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
-                          <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>{item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex flex-col justify-between">
+            {/* Sliding track */}
+            <div style={{ overflow: 'hidden' }}>
+              <div style={{
+                display: 'flex',
+                width: '200%',
+                transform: modalView === 'deliverable' ? 'translateX(0)' : 'translateX(-50%)',
+                transition: 'transform 350ms cubic-bezier(0.4,0,0.2,1)',
+              }}>
+                {/* Deliverables panel */}
+                <div style={{ width: '50%', flexShrink: 0 }}>
+                  <p className="font-body text-roma-cream/70 leading-relaxed mb-8">
+                    Perfect for anyone serious about building a scalable brand with long-term vision. This is the transformation package: brand assets, marketing strategy, integration, and guided consulting all in one.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div>
-                      <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Master Marketing Plan</p>
-                      <ul className="space-y-2 mb-6">
-                        {['Social Media Integration','Website Strategy + Integration','Marketing Strategy + Planning','Content Buckets + 30-Day Content Plan','Brand Video Shoot + Photoshoot','Consulting + Project Management (duration of project)'].map(item => (
+                      <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Brand Bible</p>
+                      <ul className="space-y-2">
+                        {['Brand Audit + Discovery Session','Mission, Vision & Values','Core Identity Messaging + UVP','Brand Voice & Tone Guide','StoryBrand Framework','Audience & Brand Narrative Arc','Logo Creation','Color Palette','Typography System','Moodboards','Social Media Templates','Social Media Messaging + Scripts'].map(item => (
                           <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
                             <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>{item}
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <button
-                      onClick={() => setModalView('why')}
-                      className="font-heading text-xs tracking-widest uppercase border px-6 py-3 transition-all duration-200 self-start"
-                      style={{ borderColor: '#C2A878', color: '#C2A878' }}
-                      onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#C2A878'; e.currentTarget.style.color = '#0D0D0D' }}
-                      onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C2A878' }}
-                    >
-                      Why This Matters →
-                    </button>
+                    <div className="flex flex-col justify-between">
+                      <div>
+                        <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Master Marketing Plan</p>
+                        <ul className="space-y-2 mb-6">
+                          {['Social Media Integration','Website Strategy + Integration','Marketing Strategy + Planning','Content Buckets + 30-Day Content Plan','Brand Video Shoot + Photoshoot','Consulting + Project Management (duration of project)'].map(item => (
+                            <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
+                              <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>{item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <button
+                        onClick={() => setModalView('why')}
+                        className="font-heading text-xs tracking-widest uppercase border px-6 py-3 transition-all duration-200 self-start"
+                        style={{ borderColor: '#C2A878', color: '#C2A878' }}
+                        onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#C2A878'; e.currentTarget.style.color = '#0D0D0D' }}
+                        onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C2A878' }}
+                      >
+                        Why This Matters →
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-            {modalView === 'why' && (
-              <div>
-                <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: '#C2A878' }}>Why This Matters</p>
-                <div className="space-y-4 leading-relaxed mb-10">
-                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>This is the essential item that most startups and businesses overlook. Not for any reason other than it's simply not talked about enough. You cannot build a house successfully without the foundation.</p>
-                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Do your planning and prepare your fields before building your house." — Proverbs 24:27</p>
-                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Without a clear identity, voice, and plan established from the start, teams pull in different directions, messaging becomes inconsistent, and the energy that launched the idea slowly turns into burnout and dysfunction. No, a brand logo is not all you need.</p>
-                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Why do 90% of startups fail within the first 2–5 years of operation? Because they do not hire Serino Consulting to establish their brand foundation and keep them on track.</p>
-                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Write the vision and make it plain on tablets, that he may run who reads it." — Habakkuk 2:2</p>
-                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>The Serino Brand Foundation Plan exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.</p>
+                {/* Why panel */}
+                <div style={{ width: '50%', flexShrink: 0, paddingLeft: '2.5rem' }}>
+                  <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: '#C2A878' }}>Why This Matters</p>
+                  <div className="space-y-4 leading-relaxed mb-10">
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>This is the essential item that most startups and businesses overlook. Not for any reason other than it's simply not talked about enough. You cannot build a house successfully without the foundation.</p>
+                    <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Do your planning and prepare your fields before building your house." — Proverbs 24:27</p>
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Without a clear identity, voice, and plan established from the start, teams pull in different directions, messaging becomes inconsistent, and the energy that launched the idea slowly turns into burnout and dysfunction. No, a brand logo is not all you need.</p>
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Why do 90% of startups fail within the first 2–5 years of operation? Because they do not hire Serino Consulting to establish their brand foundation and keep them on track.</p>
+                    <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Write the vision and make it plain on tablets, that he may run who reads it." — Habakkuk 2:2</p>
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>The Serino Brand Foundation Plan exists to not only actualize the brand and make it official for growth, but to help preserve integrity and heart through every stage of growth. It's the difference between a brand that reacts and one that leads.</p>
+                  </div>
+                  <button onClick={() => setModalView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.7'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>← Back to Deliverables</button>
                 </div>
-                <button onClick={() => setModalView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.7'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>← Back to Deliverables</button>
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
@@ -724,9 +732,9 @@ export default function ProcessSection() {
             className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto"
             style={{ backgroundColor: '#26211a', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
             onClick={e => e.stopPropagation()}
-            onTouchStart={e => setTouchStartX(e.touches[0].clientX)}
+            onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
             onTouchEnd={e => {
-              const delta = e.changedTouches[0].clientX - touchStartX
+              const delta = e.changedTouches[0].clientX - touchStartX.current
               if (delta < -50) setRetainerView('why')
               if (delta > 50) setRetainerView('deliverable')
             }}
@@ -743,60 +751,68 @@ export default function ProcessSection() {
             <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: 'rgba(194,168,120,0.6)' }}>$3,500 – $6,000 / mo&nbsp;&nbsp;·&nbsp;&nbsp;Ongoing</p>
             <div className="flex gap-2 mb-8">
               {(['deliverable', 'why'] as const).map(v => (
-                <div key={v} style={{ height: '2px', flex: 1, backgroundColor: retainerView === v ? '#C2A878' : 'rgba(194,168,120,0.2)', transition: 'background-color 300ms' }} />
+                <div key={v} style={{ height: '2px', flex: 1, backgroundColor: retainerView === v ? '#C2A878' : 'rgba(194,168,120,0.2)', transition: 'background-color 350ms' }} />
               ))}
             </div>
-            {retainerView === 'deliverable' && (
-              <div>
-                <p className="font-body text-roma-cream/70 leading-relaxed mb-8">The brand is built. Now it has to be kept. This retainer exists for companies that understand the work doesn't end at launch — it deepens. Serino stays inside your operation as the strategic constant: guiding decisions, maintaining brand integrity, and ensuring every execution reflects the vision you built from the foundation.</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                  <div>
-                    <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Strategic Oversight</p>
-                    <ul className="space-y-2">
-                      {['Monthly Strategy & Direction Sessions','Brand Governance & Consistency Reviews','Content Approval & Quality Control','Campaign Direction & Messaging Alignment','Quarterly Brand Audits','Creative Direction on All Output'].map(item => (
-                        <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
-                          <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>{item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex flex-col justify-between">
+            {/* Sliding track */}
+            <div style={{ overflow: 'hidden' }}>
+              <div style={{
+                display: 'flex',
+                width: '200%',
+                transform: retainerView === 'deliverable' ? 'translateX(0)' : 'translateX(-50%)',
+                transition: 'transform 350ms cubic-bezier(0.4,0,0.2,1)',
+              }}>
+                {/* Deliverables panel */}
+                <div style={{ width: '50%', flexShrink: 0 }}>
+                  <p className="font-body text-roma-cream/70 leading-relaxed mb-8">The brand is built. Now it has to be kept. This retainer exists for companies that understand the work doesn't end at launch — it deepens. Serino stays inside your operation as the strategic constant: guiding decisions, maintaining brand integrity, and ensuring every execution reflects the vision you built from the foundation.</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div>
-                      <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Execution Support</p>
-                      <ul className="space-y-2 mb-6">
-                        {['Vendor & Production Team Coordination','Humbld Media Partnership Management','Performance Review & Reporting','Growth Roadmap Updates','On-Call Consulting (Priority Access)','Consulting + Project Management (Ongoing)'].map(item => (
+                      <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Strategic Oversight</p>
+                      <ul className="space-y-2">
+                        {['Monthly Strategy & Direction Sessions','Brand Governance & Consistency Reviews','Content Approval & Quality Control','Campaign Direction & Messaging Alignment','Quarterly Brand Audits','Creative Direction on All Output'].map(item => (
                           <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
                             <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>{item}
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <button
-                      onClick={() => setRetainerView('why')}
-                      className="font-heading text-xs tracking-widest uppercase border px-6 py-3 transition-all duration-200 self-start"
-                      style={{ borderColor: '#C2A878', color: '#C2A878' }}
-                      onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#C2A878'; e.currentTarget.style.color = '#0D0D0D' }}
-                      onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C2A878' }}
-                    >
-                      Why This Matters →
-                    </button>
+                    <div className="flex flex-col justify-between">
+                      <div>
+                        <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Execution Support</p>
+                        <ul className="space-y-2 mb-6">
+                          {['Vendor & Production Team Coordination','Humbld Media Partnership Management','Performance Review & Reporting','Growth Roadmap Updates','On-Call Consulting (Priority Access)','Consulting + Project Management (Ongoing)'].map(item => (
+                            <li key={item} className="flex items-start gap-3 font-body text-sm text-roma-cream/70">
+                              <span style={{ color: '#C2A878', marginTop: '2px', flexShrink: 0 }}>—</span>{item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <button
+                        onClick={() => setRetainerView('why')}
+                        className="font-heading text-xs tracking-widest uppercase border px-6 py-3 transition-all duration-200 self-start"
+                        style={{ borderColor: '#C2A878', color: '#C2A878' }}
+                        onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#C2A878'; e.currentTarget.style.color = '#0D0D0D' }}
+                        onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C2A878' }}
+                      >
+                        Why This Matters →
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-            {retainerView === 'why' && (
-              <div>
-                <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: '#C2A878' }}>Why This Matters</p>
-                <div className="space-y-4 leading-relaxed mb-10">
-                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Most brands drift within six to twelve months of launch. Not because the strategy was wrong — but because there was no one keeping watch. Execution without ongoing oversight becomes inconsistent. Messaging fragments. The heart of the brand gets buried under urgency and output.</p>
-                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Let us not grow weary in doing good, for in due season we will reap,<br />if we do not give up." — Galatians 6:9</p>
-                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Governance is not maintenance. It is mastery maintained. The Serino Retainer keeps your brand in alignment through every season of growth — protecting what was built, directing what comes next, and ensuring that every decision made in the marketplace is rooted in your original vision and values.</p>
+                {/* Why panel */}
+                <div style={{ width: '50%', flexShrink: 0, paddingLeft: '2.5rem' }}>
+                  <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: '#C2A878' }}>Why This Matters</p>
+                  <div className="space-y-4 leading-relaxed mb-10">
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Most brands drift within six to twelve months of launch. Not because the strategy was wrong — but because there was no one keeping watch. Execution without ongoing oversight becomes inconsistent. Messaging fragments. The heart of the brand gets buried under urgency and output.</p>
+                    <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Let us not grow weary in doing good, for in due season we will reap,<br />if we do not give up." — Galatians 6:9</p>
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Governance is not maintenance. It is mastery maintained. The Serino Retainer keeps your brand in alignment through every season of growth — protecting what was built, directing what comes next, and ensuring that every decision made in the marketplace is rooted in your original vision and values.</p>
                   <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Where there is no guidance, a people falls, but in an abundance of counselors<br />there is safety." — Proverbs 11:14</p>
                   <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>The brands that endure are not the ones that launched loudest. They are the ones that stayed true the longest. Serino Consulting exists to be that voice in the room — the one that keeps the standard high, the direction clear, and the brand worth believing in.</p>
                 </div>
-                <button onClick={() => setRetainerView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => { e.currentTarget.style.opacity = '0.7' }} onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}>← Back to Deliverables</button>
+                  <button onClick={() => setRetainerView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => { e.currentTarget.style.opacity = '0.7' }} onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}>← Back to Deliverables</button>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
