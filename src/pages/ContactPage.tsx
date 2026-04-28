@@ -25,7 +25,7 @@ export default function ContactPage() {
     fetch('/api/send-confirmation', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: form.name, email: form.email }),
+      body: JSON.stringify(form),
     }).catch(() => {})
     navigate('/thank-you')
   }
