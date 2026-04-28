@@ -13,6 +13,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
 </head>
 <body style="margin:0;padding:0;background-color:#F4F0EA;font-family:Georgia,serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#F4F0EA;padding:48px 24px;">
@@ -20,28 +21,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       <td align="center">
         <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;">
 
-          <!-- Logo / wordmark -->
+          <!-- Logo -->
           <tr>
-            <td style="padding-bottom:36px;border-bottom:1px solid rgba(124,97,34,0.2);">
-              <p style="margin:0;font-family:Georgia,serif;font-size:16px;letter-spacing:0.22em;color:#7C6122;text-transform:uppercase;">
-                Serino Consulting
-              </p>
+            <td style="padding-bottom:32px;border-bottom:1px solid rgba(124,97,34,0.2);" align="left">
+              <img src="https://www.serinoconsulting.com/assets/logos/black_w_quill.png"
+                   alt="Serino Consulting"
+                   width="180"
+                   style="display:block;height:auto;border:0;" />
             </td>
           </tr>
 
           <!-- Body -->
           <tr>
             <td style="padding:40px 0 32px;">
-              <p style="margin:0 0 14px;font-family:Georgia,serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#7C6122;">
+              <p style="margin:0 0 14px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7C6122;">
                 Message Received
               </p>
-              <h1 style="margin:0 0 24px;font-family:Georgia,serif;font-size:30px;font-weight:400;color:#1A1A1A;line-height:1.35;">
+              <h1 style="margin:0 0 24px;font-family:'Playfair Display',Georgia,serif;font-size:30px;font-weight:400;color:#1A1A1A;line-height:1.35;">
                 ${name ? `${name},<br/>we're glad you reached out.` : `We're glad you reached out.`}
               </h1>
-              <p style="margin:0 0 16px;font-family:Georgia,serif;font-size:16px;color:rgba(26,26,26,0.65);line-height:1.75;">
+              <p style="margin:0 0 16px;font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;color:rgba(26,26,26,0.65);line-height:1.75;">
                 Your message is in our hands. We read every submission personally and will follow up within 48 hours.
               </p>
-              <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:rgba(26,26,26,0.65);line-height:1.75;">
+              <p style="margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;color:rgba(26,26,26,0.65);line-height:1.75;">
                 In the meantime, feel free to explore what we do — or book a call if you're ready to move now.
               </p>
             </td>
