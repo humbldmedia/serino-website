@@ -19,9 +19,15 @@ export default function ContactPage() {
     const { error } = await supabase.from('contact_submissions').insert([form])
     if (error) {
       setStatus('error')
-    } else {
-      navigate('/thank-you')
+      return
     }
+    // Send confirmation email — fire and forget, don't block navigation
+    fetch('/api/send-confirmation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: form.name, email: form.email }),
+    }).catch(() => {})
+    navigate('/thank-you')
   }
 
   const inputClass = `w-full bg-transparent border-b border-gold/30 py-3 font-body text-base text-roma-cream placeholder-roma-cream/30 focus:outline-none focus:border-gold transition-colors duration-200`
