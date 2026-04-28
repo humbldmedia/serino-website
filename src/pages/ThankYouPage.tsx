@@ -11,7 +11,7 @@ export default function ThankYouPage() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center grain-overlay"
+      className="relative min-h-screen flex items-end grain-overlay"
       style={{ backgroundColor: '#0D0D0D' }}
     >
       {/* Full-bleed background */}
@@ -32,7 +32,7 @@ export default function ThankYouPage() {
         style={{ backgroundColor: '#C2A878', opacity: 0.6 }}
       />
 
-      <div className="container-main relative z-10 text-center max-w-2xl mx-auto px-6">
+      <div className="container-main relative z-10 text-center max-w-2xl mx-auto px-6 pb-20 md:pb-32">
         <p
           className="font-heading text-xs tracking-widest uppercase mb-6"
           style={{
@@ -47,7 +47,7 @@ export default function ThankYouPage() {
         </p>
 
         <h1
-          className="font-display text-4xl md:text-5xl lg:text-6xl text-roma-cream leading-tight mb-6"
+          className="font-display text-3xl md:text-5xl lg:text-6xl text-roma-cream leading-tight mb-4"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? 'translateY(0)' : 'translateY(24px)',
@@ -59,7 +59,7 @@ export default function ThankYouPage() {
         </h1>
 
         <p
-          className="font-body text-lg text-roma-cream/70 leading-relaxed mb-12"
+          className="font-body text-base text-roma-cream/70 leading-relaxed mb-8"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? 'translateY(0)' : 'translateY(24px)',
