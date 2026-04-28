@@ -116,7 +116,7 @@ export default function ContactPage() {
               </div>
 
               {status === 'error' && (
-                <p className="font-body text-sm text-red-400/80">Something went wrong. Try emailing us directly at strategy@serinoconsulting.com.</p>
+                <p className="font-body text-sm text-red-400/80">Something went wrong. Try emailing us directly at serinoconsulting@gmail.com.</p>
               )}
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-2">
