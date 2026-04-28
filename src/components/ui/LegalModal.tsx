@@ -27,11 +27,11 @@ const content = {
       },
       {
         heading: 'Your Rights',
-        text: 'You have the right to request access to, correction of, or deletion of any personal information we hold about you. To make such a request, please contact us at serinoconsulting@gmail.com.',
+        text: 'You have the right to request access to, correction of, or deletion of any personal information we hold about you. To make such a request, please contact us at strategy@serinoconsulting.com.',
       },
       {
         heading: 'Contact',
-        text: 'If you have questions about this Privacy Policy, please reach out to us at serinoconsulting@gmail.com.',
+        text: 'If you have questions about this Privacy Policy, please reach out to us at strategy@serinoconsulting.com.',
       },
     ],
   },
@@ -64,7 +64,7 @@ const content = {
       },
       {
         heading: 'Contact',
-        text: 'For questions about these Terms, contact us at serinoconsulting@gmail.com.',
+        text: 'For questions about these Terms, contact us at strategy@serinoconsulting.com.',
       },
     ],
   },

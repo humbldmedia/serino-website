@@ -147,7 +147,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       headers,
       body: JSON.stringify({
         from: 'Serino Consulting <strategy@serinoconsulting.com>',
-        to: 'serinoconsulting@gmail.com',
+        to: 'strategy@serinoconsulting.com',
         reply_to: email,
         subject: `New inquiry from ${name || email}`,
         html: notificationHtml,
