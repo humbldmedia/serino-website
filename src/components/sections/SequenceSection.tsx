@@ -45,6 +45,13 @@ export default function SequenceSection() {
           Our Motive
         </span>
 
+        <blockquote
+          className="font-display italic text-2xl md:text-3xl lg:text-4xl leading-tight text-center mb-16 fade-up-visible"
+          style={{ color: '#7C6122' }}
+        >
+          If it ain't genuine, it ain't you.
+        </blockquote>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 mt-4">
           {steps.map((step, i) => (
             <div

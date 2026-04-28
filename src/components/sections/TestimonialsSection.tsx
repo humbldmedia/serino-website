@@ -198,7 +198,7 @@ export default function TestimonialsSection() {
               ;(e.currentTarget as HTMLAnchorElement).style.color = '#7C6122'
             }}
           >
-            Why Us ↓
+            Why Our Team ↓
           </a>
         </div>
       </div>
