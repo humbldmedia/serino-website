@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { supabase } from '../lib/supabase'
 
 export default function ContactPage() {
   const ref = useScrollReveal()
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const navigate = useNavigate()
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
   const [form, setForm] = useState({ name: '', email: '', company: '', situation: '', timeline: '' })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -16,7 +17,11 @@ export default function ContactPage() {
     e.preventDefault()
     setStatus('submitting')
     const { error } = await supabase.from('contact_submissions').insert([form])
-    setStatus(error ? 'error' : 'success')
+    if (error) {
+      setStatus('error')
+    } else {
+      navigate('/thank-you')
+    }
   }
 
   const inputClass = `w-full bg-transparent border-b border-gold/30 py-3 font-body text-base text-roma-cream placeholder-roma-cream/30 focus:outline-none focus:border-gold transition-colors duration-200`
@@ -43,19 +48,7 @@ export default function ContactPage() {
             We read every message personally and follow up within 48 hours.
           </p>
 
-          {status === 'success' ? (
-            <div className="fade-up-visible text-center py-16">
-              <p className="font-display text-2xl text-roma-cream mb-4">We received your message.</p>
-              <p className="font-body text-roma-cream/50 mb-10">Expect a personal response within 48 hours.</p>
-              <Link
-                to="/"
-                className="font-heading text-xs tracking-widest uppercase text-gold hover:text-roma-cream transition-colors"
-              >
-                ← Back to home
-              </Link>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-10 fade-up-visible" style={{ transitionDelay: '240ms' }}>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-10 fade-up-visible" style={{ transitionDelay: '240ms' }}>
               <div>
                 <input
                   type="text"
@@ -145,7 +138,6 @@ export default function ContactPage() {
                 </a>
               </div>
             </form>
-          )}
         </div>
       </div>
     </div>
