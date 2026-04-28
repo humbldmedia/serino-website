@@ -1,13 +1,32 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { supabase } from '../lib/supabase'
+
+const TIMELINE_OPTIONS = [
+  { value: 'immediate', label: 'Ready to move now' },
+  { value: '1-3months', label: 'Next 1–3 months' },
+  { value: 'exploring', label: 'Just exploring for now' },
+]
 
 export default function ContactPage() {
   const ref = useScrollReveal()
   const navigate = useNavigate()
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
   const [form, setForm] = useState({ name: '', email: '', company: '', situation: '', timeline: '' })
+  const [timelineOpen, setTimelineOpen] = useState(false)
+  const timelineRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!timelineOpen) return
+    const handleClick = (e: MouseEvent) => {
+      if (timelineRef.current && !timelineRef.current.contains(e.target as Node)) {
+        setTimelineOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [timelineOpen])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -98,20 +117,53 @@ export default function ContactPage() {
                   className={`${inputClass} resize-none`}
                 />
               </div>
-              <div>
-                <select
-                  name="timeline"
-                  required
-                  value={form.timeline}
-                  onChange={handleChange}
-                  className={`${inputClass} cursor-pointer`}
-                  style={{ appearance: 'none' }}
+              <div ref={timelineRef} className="relative">
+                <button
+                  type="button"
+                  onClick={() => setTimelineOpen(o => !o)}
+                  className="w-full text-left bg-transparent border-b border-gold/30 py-3 font-body text-base focus:outline-none focus:border-gold transition-colors duration-200 flex items-center justify-between"
+                  style={{ color: form.timeline ? '#F4F0EA' : 'rgba(244,240,234,0.3)' }}
                 >
-                  <option value="" disabled>What's your timeline?</option>
-                  <option value="immediate">Ready to move now</option>
-                  <option value="1-3months">Next 1–3 months</option>
-                  <option value="exploring">Just exploring for now</option>
-                </select>
+                  <span>{form.timeline ? TIMELINE_OPTIONS.find(o => o.value === form.timeline)?.label : "What's your timeline?"}</span>
+                  <svg
+                    width="12" height="7" viewBox="0 0 12 7" fill="none"
+                    style={{
+                      color: '#C2A878',
+                      transform: timelineOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 200ms',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                {timelineOpen && (
+                  <div
+                    className="absolute left-0 right-0 z-50 mt-1"
+                    style={{ backgroundColor: '#111111', border: '1px solid rgba(194,168,120,0.25)' }}
+                  >
+                    {TIMELINE_OPTIONS.map(opt => (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => {
+                          setForm(f => ({ ...f, timeline: opt.value }))
+                          setTimelineOpen(false)
+                        }}
+                        className="w-full text-left px-4 py-3 font-body text-base transition-colors duration-150"
+                        style={{
+                          color: form.timeline === opt.value ? '#C2A878' : 'rgba(244,240,234,0.7)',
+                          backgroundColor: 'transparent',
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'rgba(194,168,120,0.08)'; e.currentTarget.style.color = '#C2A878' }}
+                        onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = form.timeline === opt.value ? '#C2A878' : 'rgba(244,240,234,0.7)' }}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {status === 'error' && (

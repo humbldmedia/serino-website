@@ -41,13 +41,8 @@ export default function HeroSection() {
         style={{ background: 'linear-gradient(to top, rgba(13,13,13,1) 0%, transparent 100%)' }}
       />
 
-      {/* Thin vertical gold line on far left */}
-      <div
-        className="absolute left-0 top-1/4 bottom-1/4 w-px"
-        style={{ backgroundColor: '#C2A878', opacity: 0.6 }}
-      />
 
-      <div className="container-main relative z-10 pb-32 md:pb-40">
+<div className="container-main relative z-10 pb-32 md:pb-40">
         <div className="max-w-2xl">
           {/* Headline */}
           <h1

@@ -65,24 +65,24 @@ export default function Nav() {
             </a>
           </div>
 
-          {/* Hamburger */}
+          {/* Hamburger / Close */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="md:hidden p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <span
-              className="block w-6 h-px bg-roma-cream transition-all duration-300"
-              style={{ transform: menuOpen ? 'rotate(45deg) translateY(4px)' : 'none' }}
-            />
-            <span
-              className="block w-6 h-px bg-roma-cream transition-all duration-300"
-              style={{ opacity: menuOpen ? 0 : 1 }}
-            />
-            <span
-              className="block w-6 h-px bg-roma-cream transition-all duration-300"
-              style={{ transform: menuOpen ? 'rotate(-45deg) translateY(-4px)' : 'none' }}
-            />
+            {menuOpen ? (
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#F4F0EA" strokeWidth="1.5" strokeLinecap="round">
+                <line x1="2" y1="2" x2="16" y2="16" />
+                <line x1="16" y1="2" x2="2" y2="16" />
+              </svg>
+            ) : (
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="#F4F0EA" strokeWidth="1.5" strokeLinecap="round">
+                <line x1="0" y1="1" x2="20" y2="1" />
+                <line x1="0" y1="7" x2="20" y2="7" />
+                <line x1="0" y1="13" x2="20" y2="13" />
+              </svg>
+            )}
           </button>
         </div>
       </nav>
