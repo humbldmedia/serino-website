@@ -83,9 +83,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'Serino Consulting <onboarding@resend.dev>',
+      from: 'Serino Consulting <strategy@serinoconsulting.com>',
       to: email,
-      reply_to: 'serinoconsulting@gmail.com',
+      reply_to: 'strategy@serinoconsulting.com',
       subject: `We received your message — Serino Consulting`,
       html,
     }),
