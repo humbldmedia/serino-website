@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80)
@@ -11,10 +13,23 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleSectionLink = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    if (location.pathname === '/') {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/')
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+      }, 150)
+    }
+  }
+
   const mobileLinks = [
-    { label: 'Our Motive', href: '#process-intro' },
-    { label: 'The Process', href: '#process' },
-    { label: 'Our Team', href: '#team' },
+    { label: 'Our Motive', id: 'process-intro' },
+    { label: 'The Process', id: 'process' },
+    { label: 'Our Team', id: 'team' },
   ]
 
   return (
@@ -83,9 +98,9 @@ export default function Nav() {
         <div className="flex flex-col items-center gap-10">
           {mobileLinks.map((link) => (
             <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={(e) => handleSectionLink(e, link.id)}
               className="font-display text-4xl text-roma-cream hover:text-gold transition-colors duration-200"
             >
               {link.label}
@@ -121,6 +136,9 @@ export default function Nav() {
             </a>
             <a href="https://www.youtube.com/@serino-consulting" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="https://x.com/serinoconsultng" target="_blank" rel="noopener noreferrer" className="text-roma-cream/40 hover:text-gold transition-colors">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
           </div>
         </div>
