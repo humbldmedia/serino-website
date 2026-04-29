@@ -52,7 +52,7 @@ const NODES: NodeDef[] = [
 
   { id: 'brand',     cx: CX,       cy: 415,            w: HEX_W, h: HEX_H, type: 'hex',
     title: 'BRAND\nDEVELOPMENT',
-    info: 'Identity. Interpretation. Visual language. Voice. Everything that defines how the brand shows up in the world — consistently and boldly.' },
+    info: 'Identity. Interpretation. Visual language & Voice. Everything that defines how the brand shows up in the world, consistently and authentically.' },
 
   { id: 'marketing', cx: CX - 120, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
     title: 'MARKETING\nSTRATEGY',
