@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 
 // ── Constants ──────────────────────────────────────────
 const DIAG_W = 800
-const DIAG_H = 1400
+const DIAG_H = 1500
 const CX = 400
 const HUB_X = 400
 const HUB_Y = 598
-const HEX_W = 152
-const HEX_H = 138
+const HEX_W = 130
+const HEX_H = 118
 const HEX_HW = HEX_W / 2
 const HEX_HH = HEX_H / 2
 
@@ -46,7 +46,7 @@ const NODES: NodeDef[] = [
     title: 'SERINO CONSULTING', sub: '"This is what you need"',
     info: 'Serino Consulting maps the challenge to a solution — delivering clarity and a precise path forward. No guesswork. Only strategy.' },
 
-  { id: 'flagship',  cx: CX,       cy: 265,            w: 312,   h: 76,    type: 'dark',
+  { id: 'flagship',  cx: CX,       cy: 265,            w: 352,   h: 96,    type: 'dark',
     title: 'FLAGSHIP SERVICE', sub: 'Serino Brand Foundation Plan', link: 'flagship',
     info: 'The Serino Brand Foundation is our core strategic offering — a full-spectrum brand and business alignment engagement built for lasting impact.' },
 
@@ -54,15 +54,15 @@ const NODES: NodeDef[] = [
     title: 'BRAND\nDEVELOPMENT',
     info: 'Identity. Interpretation. Visual language. Voice. Everything that defines how the brand shows up in the world — consistently and boldly.' },
 
-  { id: 'marketing', cx: CX - 158, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
+  { id: 'marketing', cx: CX - 120, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
     title: 'MARKETING\nSTRATEGY',
     info: 'Channel Strategy. Campaigns. Positioning. Audience Development. Everything aligned to brand goals and growth objectives.' },
 
-  { id: 'creative',  cx: CX + 158, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
+  { id: 'creative',  cx: CX + 120, cy: HUB_Y - HEX_HH, w: HEX_W, h: HEX_H, type: 'hex',
     title: 'CREATIVE\nDIRECTION',
     info: 'Strategic Thinking. Concept Development. Content Frameworks. Storytelling that breathes life into the brand and captivates audiences.' },
 
-  { id: 'project',   cx: CX,       cy: HUB_Y + 15,     w: HEX_W, h: HEX_H, type: 'hex',
+  { id: 'project',   cx: CX,       cy: HUB_Y + 65,     w: HEX_W, h: HEX_H, type: 'hex',
     title: 'PROJECT\nARCHITECTURE',
     info: 'Systems. Timelines. Workflows that ensure every initiative is executed with precision and excellence.' },
 
@@ -74,19 +74,19 @@ const NODES: NodeDef[] = [
     title: 'REVIEW CALL', sub: 'Client: "Wow!"\nSerino: "Yes! Now let\'s execute."',
     info: 'The alignment moment. Client and Serino lock in with full confidence and momentum. This is where the real work begins.' },
 
-  { id: 'retainer',  cx: CX,       cy: 1068,           w: 305,   h: 76,    type: 'dark',
+  { id: 'retainer',  cx: CX,       cy: 1068,           w: 346,   h: 96,    type: 'dark',
     title: 'RETAINER PACKAGE', sub: 'Serino Governance & Growth', link: 'retainer',
     info: 'Ongoing partnership. The Serino Governance & Growth retainer sustains momentum, consistency, and brand integrity across every initiative.' },
 
-  { id: 'humbld',    cx: CX - 145, cy: 1204,           w: 210,   h: 62,    type: 'standard',
+  { id: 'humbld',    cx: CX - 115, cy: 1234,           w: 210,   h: 62,    type: 'standard',
     title: 'HUMBLD MEDIA', sub: 'Our production agency partner',
-    info: 'Humbld Media handles all production — video, photo, and content creation at the highest creative and technical standard.' },
+    info: 'Our in-house agency partner offers a seamless production ecosystem that handles content creation of all types and needs, planning and management, and design executions. We bring in vetted specialists when the scope demands deeper or niche expertise.' },
 
-  { id: 'yourco',    cx: CX + 145, cy: 1204,           w: 210,   h: 62,    type: 'standard',
+  { id: 'yourco',    cx: CX + 115, cy: 1234,           w: 210,   h: 62,    type: 'standard',
     title: 'YOUR COMPANY', sub: 'Your in-house marketing team',
-    info: 'Your internal team executes day-to-day operations — fully empowered with Serino strategy and brand guardrails as their guide.' },
+    info: 'Every business is run differently. Sometimes companies have their own marketing manager and teams, and sometimes they don\'t. Our intent is to build good relations and team collaboration throughout the process of what\'s needed for your company to grow.' },
 
-  { id: 'oversees',  cx: CX,       cy: 1320,           w: 300,   h: 70,    type: 'standard',
+  { id: 'oversees',  cx: CX,       cy: 1366,           w: 390,   h: 70,    type: 'standard',
     title: 'SERINO CONSULTING OVERSEES',
     sub: 'Quality, Consistency, Brand Alignment, Approvals',
     info: 'Serino maintains final oversight — ensuring every output meets the standard, serves the brand, and advances the mission.' },
@@ -120,7 +120,7 @@ const CONN_PAIRS = [
 
 // ── SVG path data ──────────────────────────────────────
 const jRetainer = nb('retainer').y + 36
-const jOversees = nb('humbld').y + 32
+const jOversees = nb('humbld').y + 35
 
 const SVG_PATHS = [
   // Spine top
@@ -163,7 +163,7 @@ export default function ProcessSection() {
   const mouseRef     = useRef({ x: 0, y: 0, sx: 0, sy: 0 })
   const particlesRef = useRef<Particle[]>([])
 
-  const [activeNode,    setActiveNode]    = useState<string | null>(null)
+  const [activeHexModal, setActiveHexModal] = useState<string | null>(null)
   const [hoveredNode,   setHoveredNode]   = useState<string | null>(null)
   const [showDeliverable, setShowDeliverable] = useState(false)
   const [modalView,     setModalView]     = useState<'deliverable' | 'why'>('deliverable')
@@ -174,8 +174,8 @@ export default function ProcessSection() {
 
   useEffect(() => {
     const updateScale = () => {
-      // Content spans x≈150–650 within the 800px canvas; scale to that real width
-      const CONTENT_W = 520
+      // Content spans x≈180–620 within the 800px canvas; scale to that real width
+      const CONTENT_W = 440
       const maxW = window.innerWidth - 40
       setDiagramScale(Math.min(1, maxW / CONTENT_W))
     }
@@ -292,20 +292,7 @@ export default function ProcessSection() {
   }, [])
 
   // Close info bar on outside click
-  useEffect(() => {
-    const onDocClick = (e: MouseEvent) => {
-      const target = e.target as Element
-      if (!target.closest('[data-proc-node]')) setActiveNode(null)
-    }
-    document.addEventListener('click', onDocClick)
-    return () => document.removeEventListener('click', onDocClick)
-  }, [])
-
-  const handleNodeClick = (node: NodeDef) => {
-    setActiveNode(prev => prev === node.id ? null : node.id)
-  }
-
-  const activeNodeData = activeNode ? nodeMap[activeNode] : null
+  const CARD_NODES = new Set(['brand', 'marketing', 'creative', 'project', 'humbld', 'yourco'])
 
   return (
     <section
@@ -412,7 +399,7 @@ export default function ProcessSection() {
 
               {/* Nodes */}
               {NODES.map((node, i) => {
-                const isActive  = activeNode  === node.id
+                const isClickable = node.type === 'hex' || node.type === 'dark' || CARD_NODES.has(node.id)
                 const isHovered = hoveredNode === node.id
                 const delay     = 0.12 + i * 0.07
 
@@ -421,7 +408,7 @@ export default function ProcessSection() {
                   left: node.cx,
                   top: node.cy,
                   width: node.w,
-                  cursor: 'pointer',
+                  cursor: isClickable ? 'pointer' : 'default',
                   zIndex: 10,
                   animation: `procNdIn 0.55s ease ${delay}s both`,
                 }
@@ -432,16 +419,14 @@ export default function ProcessSection() {
                       key={node.id}
                       data-proc-node="1"
                       style={{ ...commonWrapStyle, height: node.h }}
-                      onClick={() => handleNodeClick(node)}
+                      onClick={() => setActiveHexModal(node.id)}
                       onMouseEnter={() => setHoveredNode(node.id)}
                       onMouseLeave={() => setHoveredNode(null)}
                     >
                       {/* Spinning border hex */}
                       <div style={{
                         position: 'absolute', inset: 0,
-                        filter: isActive
-                          ? 'drop-shadow(0 0 14px rgba(201,168,76,0.6))'
-                          : isHovered
+                        filter: isHovered
                           ? 'drop-shadow(0 0 8px rgba(201,168,76,0.45))'
                           : 'none',
                         animation: isHovered ? 'procHexSpin 4s linear infinite' : 'none',
@@ -450,7 +435,7 @@ export default function ProcessSection() {
                         <div style={{
                           width: '100%', height: '100%',
                           clipPath: 'polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)',
-                          background: `rgba(201,168,76,${isHovered || isActive ? 0.65 : 0.42})`,
+                          background: `rgba(201,168,76,${isHovered ? 0.65 : 0.42})`,
                           padding: '1.5px',
                           display: 'flex', alignItems: 'stretch',
                           transition: 'background 0.3s',
@@ -471,17 +456,11 @@ export default function ProcessSection() {
                       }}>
                         {node.title.split('\n').map((line, li) => (
                           <div key={li} style={{
-                            fontSize: '9.5px', letterSpacing: '0.2em', fontWeight: 600,
-                            color: CREAM, textTransform: 'uppercase', lineHeight: 1.6,
+                            fontSize: '11px', letterSpacing: '0.18em', fontWeight: 600,
+                            color: CREAM, textTransform: 'uppercase', lineHeight: 1.55,
                             fontFamily: 'Cormorant Garamond, Georgia, serif',
                           }}>{line}</div>
                         ))}
-                        <div style={{
-                          marginTop: '6px', fontSize: '8px', letterSpacing: '0.15em',
-                          color: 'rgba(201,168,76,0.55)', textDecoration: 'underline',
-                          fontFamily: 'Cormorant Garamond, Georgia, serif',
-                          textTransform: 'uppercase',
-                        }}>Learn More</div>
                       </div>
                     </div>
                   )
@@ -493,8 +472,12 @@ export default function ProcessSection() {
                     key={node.id}
                     data-proc-node="1"
                     style={commonWrapStyle}
-                    onClick={() => handleNodeClick(node)}
-                    onMouseEnter={() => setHoveredNode(node.id)}
+                    onClick={() => {
+                      if (node.link === 'flagship') { setShowDeliverable(true); return }
+                      if (node.link === 'retainer') { setShowRetainer(true); return }
+                      if (node.id === 'humbld' || node.id === 'yourco') { setActiveHexModal(node.id); return }
+                    }}
+                    onMouseEnter={() => isClickable && setHoveredNode(node.id)}
                     onMouseLeave={() => setHoveredNode(null)}
                   >
                     <div style={{
@@ -508,9 +491,7 @@ export default function ProcessSection() {
                       padding: '11px 20px 10px',
                       position: 'relative', overflow: 'hidden',
                       transition: 'border-color .25s, box-shadow .25s',
-                      boxShadow: isActive
-                        ? '0 0 32px rgba(201,168,76,.24),0 0 80px rgba(201,168,76,.07)'
-                        : '0 0 20px rgba(201,168,76,.07),inset 0 0 20px rgba(201,168,76,.04)',
+                      boxShadow: '0 0 20px rgba(201,168,76,.07),inset 0 0 20px rgba(201,168,76,.04)',
                     }}>
                       {/* Hover inner glow */}
                       <div style={{
@@ -519,16 +500,17 @@ export default function ProcessSection() {
                         opacity: isHovered ? 1 : 0, transition: 'opacity .3s',
                       }} />
                       <div style={{
-                        fontSize: '12px', letterSpacing: '0.22em', fontWeight: 600,
-                        color: isActive ? GOLD : CREAM,
+                        fontSize: node.type === 'dark' ? '18px' : '15px',
+                        letterSpacing: '0.22em', fontWeight: 600,
+                        color: CREAM,
                         textTransform: 'uppercase', lineHeight: 1.55,
                         fontFamily: 'Cormorant Garamond, Georgia, serif',
                         transition: 'color 0.2s', position: 'relative',
                       }}>{node.title}</div>
                       {node.sub && (
                         <div style={{
-                          fontStyle: 'italic', fontSize: '12px', color: GOLD,
-                          marginTop: '3px', lineHeight: 1.45,
+                          fontStyle: 'italic', fontSize: node.type === 'dark' ? '15px' : '13px',
+                          color: GOLD, marginTop: '3px', lineHeight: 1.45,
                           fontFamily: 'Cormorant Garamond, Georgia, serif',
                           position: 'relative',
                         }}>
@@ -538,16 +520,12 @@ export default function ProcessSection() {
                       {node.link && (
                         <span
                           style={{
-                            display: 'block', fontStyle: 'italic', fontSize: '9px',
-                            color: 'rgba(201,168,76,.35)', textDecoration: 'underline',
-                            marginTop: '4px',
+                            display: 'block', fontSize: '10px', letterSpacing: '0.18em',
+                            color: 'rgba(201,168,76,.5)', textDecoration: 'underline',
+                            marginTop: '5px',
                             fontFamily: 'Cormorant Garamond, Georgia, serif',
+                            textTransform: 'uppercase',
                             position: 'relative',
-                          }}
-                          onClick={e => {
-                            e.stopPropagation()
-                            if (node.link === 'flagship') setShowDeliverable(true)
-                            if (node.link === 'retainer') setShowRetainer(true)
                           }}
                         >
                           Learn More
@@ -587,47 +565,6 @@ export default function ProcessSection() {
         </div>
       </div>
 
-      {/* Info bar */}
-      <div style={{
-        position: 'fixed', bottom: 0, left: 0, right: 0,
-        borderTop: '1px solid rgba(201,168,76,.14)',
-        background: 'rgba(4,3,2,.96)', backdropFilter: 'blur(20px)',
-        padding: '14px 40px',
-        display: 'flex', alignItems: 'center', gap: '24px',
-        transform: activeNode ? 'translateY(0)' : 'translateY(100%)',
-        transition: 'transform .4s ease',
-        zIndex: 700,
-      }}>
-        <span style={{
-          fontSize: '9.5px', letterSpacing: '0.24em', textTransform: 'uppercase',
-          color: GOLD_V, flexShrink: 0,
-          fontFamily: 'Cormorant Garamond, Georgia, serif',
-        }}>
-          {activeNodeData?.title.replace('\n', ' ')}
-        </span>
-        <div style={{ width: '1px', height: '20px', background: 'rgba(201,168,76,.2)', flexShrink: 0 }} />
-        <span style={{
-          fontStyle: 'italic', fontSize: '11.5px',
-          color: 'rgba(201,168,76,.6)', lineHeight: 1.5,
-          fontFamily: 'Cormorant Garamond, Georgia, serif',
-        }}>
-          {activeNodeData?.info}
-        </span>
-        <span
-          style={{
-            marginLeft: 'auto', fontSize: '9px', letterSpacing: '0.15em',
-            color: 'rgba(201,168,76,.3)', cursor: 'pointer', flexShrink: 0,
-            textTransform: 'uppercase',
-            fontFamily: 'Cormorant Garamond, Georgia, serif',
-            transition: 'color 0.2s',
-          }}
-          onClick={() => setActiveNode(null)}
-          onMouseEnter={e => (e.currentTarget as HTMLSpanElement).style.color = GOLD_V}
-          onMouseLeave={e => (e.currentTarget as HTMLSpanElement).style.color = 'rgba(201,168,76,.3)'}
-        >
-          ✕ close
-        </span>
-      </div>
 
       {/* Flagship Service Modal */}
       {showDeliverable && (
@@ -849,6 +786,39 @@ export default function ProcessSection() {
           </div>
         </div>
       )}
+
+      {/* Hex Node Modal */}
+      {activeHexModal && (() => {
+        const node = nodeMap[activeHexModal]
+        return (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-6"
+            style={{ backgroundColor: 'rgba(13,13,13,0.85)', backdropFilter: 'blur(4px)' }}
+            onClick={() => setActiveHexModal(null)}
+          >
+            <div
+              className="relative w-full max-w-md"
+              style={{ backgroundColor: '#26211a', border: '1px solid rgba(194,168,120,0.3)', padding: '2.5rem' }}
+              onClick={e => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setActiveHexModal(null)}
+                className="absolute top-4 right-5 font-heading text-xs tracking-widest uppercase"
+                style={{ color: '#C2A878' }}
+              >
+                Close ✕
+              </button>
+              <p className="font-heading text-xs tracking-widest uppercase mb-3" style={{ color: '#C2A878' }}>
+                {node.title.replace('\n', ' ')}
+              </p>
+              <div style={{ width: '40px', height: '1px', backgroundColor: 'rgba(194,168,120,0.3)', marginBottom: '1.25rem' }} />
+              <p className="font-body leading-relaxed" style={{ color: 'rgba(244,240,234,0.75)', fontSize: '0.9rem' }}>
+                {node.info}
+              </p>
+            </div>
+          </div>
+        )
+      })()}
     </section>
   )
 }
