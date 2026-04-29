@@ -721,7 +721,7 @@ export default function ProcessSection() {
               }}>
                 {/* Deliverables panel */}
                 <div style={{ width: '50%', flexShrink: 0 }}>
-                  <p className="font-body text-roma-cream/70 leading-relaxed mb-8">The brand is built. Now it has to be kept. This retainer exists for companies that understand the work doesn't end at launch — it deepens. Serino stays inside your operation as the strategic constant: guiding decisions, maintaining brand integrity, and ensuring every execution reflects the vision you built from the foundation.</p>
+                  <p className="font-body text-roma-cream/70 leading-relaxed mb-8">The brand is built, and now it has to be kept. This retainer exists for companies that understand that the work doesn't end at launch, it is designed to work effectively with Serino's guidance. We stay inside your operation as the strategic consultant: guiding decisions, maintaining brand integrity, and ensuring every execution reflects the vision you built from the foundation.</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div>
                       <p className="font-heading text-xs tracking-widest uppercase mb-4" style={{ color: '#C2A878' }}>Strategic Oversight</p>
@@ -760,12 +760,12 @@ export default function ProcessSection() {
                 <div style={{ width: '50%', flexShrink: 0, paddingLeft: '2.5rem' }}>
                   <p className="font-heading text-xs tracking-widest uppercase mb-6" style={{ color: '#C2A878' }}>Why This Matters</p>
                   <div className="space-y-4 leading-relaxed mb-10">
-                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Most brands drift within six to twelve months of launch. Not because the strategy was wrong — but because there was no one keeping watch. Execution without ongoing oversight becomes inconsistent. Messaging fragments. The heart of the brand gets buried under urgency and output.</p>
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Most brands drift within 6-12 months of launch, not because the strategy was wrong but because there was no one keeping watch. Without ongoing oversight, execution becomes inconsistent, messaging fragments, and the heart of the brand gets buried under urgency and output.</p>
                     <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Let us not grow weary in doing good, for in due season we will reap,<br />if we do not give up." — Galatians 6:9</p>
-                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>Governance is not maintenance. It is mastery maintained. The Serino Retainer keeps your brand in alignment through every season of growth — protecting what was built, directing what comes next, and ensuring that every decision made in the marketplace is rooted in your original vision and values.</p>
-                  <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Where there is no guidance, a people falls, but in an abundance of counselors<br />there is safety." — Proverbs 11:14</p>
-                  <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>The brands that endure are not the ones that launched loudest. They are the ones that stayed true the longest. Serino Consulting exists to be that voice in the room — the one that keeps the standard high, the direction clear, and the brand worth believing in.</p>
-                </div>
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>The Serino Governance & Growth Retainer keeps your brand in alignment through every season of growth. It protects what was built, directs what comes next, and ensures that every decision made in the marketplace is rooted in your original vision and values.</p>
+                    <p className="font-display italic text-center" style={{ color: 'rgba(194,168,120,0.85)', fontSize: '0.8rem' }}>"Where there is no guidance, a people falls, but in an abundance of counselors<br />there is safety." — Proverbs 11:14</p>
+                    <p className="font-body text-roma-cream/70" style={{ fontSize: '0.875rem' }}>The brands that endure aren't the ones that launched loudest, but ones that stayed true the longest. We exist to help you keep the standard high, the direction clear, and your brand worth believing in.</p>
+                  </div>
                   <div className="flex items-center gap-6 flex-wrap mt-2">
                     <button onClick={() => setRetainerView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => { e.currentTarget.style.opacity = '0.7' }} onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}>← Back to Deliverables</button>
                     <a

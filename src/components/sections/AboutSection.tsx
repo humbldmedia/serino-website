@@ -65,7 +65,7 @@ export default function AboutSection() {
               </p>
               <h3 className="font-display text-2xl text-roma-cream mb-4">Alexandria Russell</h3>
               <p className="font-body text-roma-cream/60 text-sm leading-relaxed">
-                Background in project development, business architecture, building operations and management.
+                Background in systems gamification, business operations and media journalism.
               </p>
             </div>
             <div

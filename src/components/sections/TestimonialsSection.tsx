@@ -1,16 +1,15 @@
 import { useState } from 'react'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
-// Default: faded dark grayscale. Hover: original colors (no filter).
-const F   = () => `grayscale(1) brightness(0.35) opacity(0.55)`
-const FN  = () => `grayscale(1) invert(1) brightness(0.35) opacity(0.55)`
+const F  = `grayscale(1) brightness(0.35) opacity(0.55)`
+const FN = `grayscale(1) invert(1) brightness(0.35) opacity(0.55)`
 
 const clientLogos: { src: string; alt: string; blurb: string; noInvert?: boolean; height?: string }[] = [
   { src: '/logos/client-1.svg',  alt: 'Beloved Health',  blurb: 'Delivered brand strategy & content that elevated their social presence, engagement, and network' },
   { src: '/logos/client-7.png',  alt: 'Propago PDX',     blurb: 'Delivered branded content that elevated their social presence, engagement and network', height: '76px' },
-  { src: '/logos/client-8.png',  alt: 'The Haven PDX',   blurb: 'Directed a kickstarter campaign that reached their $30k goal within 30 days', height: '96px' },
+  { src: '/logos/client-8.svg',  alt: 'The Haven PDX',   blurb: 'Directed a kickstarter campaign that reached their $30k goal within 30 days', height: '96px' },
   { src: '/logos/client-4.png',  alt: 'Bloom Agency',    blurb: 'Delivered branded content that elevated their social presence, engagement and network', height: '96px' },
-  { src: '/logos/client-3.png',  alt: 'DirectStay',      blurb: 'Delivered the essential startup package that accelerated their new business', height: '130px' },
+  { src: '/logos/client-3.svg',  alt: 'DirectStay',      blurb: 'Delivered the essential startup package that accelerated their new business', height: '130px' },
   { src: '/logos/client-6.png',  alt: 'iModels NW',      blurb: 'Delivered branded content that elevated their social presence, engagement and network', height: '96px' },
   { src: '/logos/client-12.png', alt: 'PowerPay',        blurb: 'Delivered brand materials that activated their new business' },
   { src: '/logos/client-2.svg',  alt: 'Dolgo',           blurb: 'Delivered a branded explainer video for a successful investor pitch', noInvert: true, height: '96px' },
@@ -65,7 +64,7 @@ function LogoStrip() {
                   width: 'auto',
                   maxWidth: '180px',
                   objectFit: 'contain',
-                  filter: isActive ? 'none' : (logo.noInvert ? FN() : F()),
+                  filter: isActive ? 'none' : (logo.noInvert ? FN : F),
                   mixBlendMode: isActive ? 'normal' : 'multiply',
                   transition: 'filter 300ms',
                 }}
