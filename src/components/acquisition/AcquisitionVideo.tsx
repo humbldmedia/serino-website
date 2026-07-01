@@ -61,13 +61,16 @@ export function HeroBackgroundVideo({ source }: { source: VideoSource }) {
   )
 }
 
-function PlayIcon() {
+function PlayIcon({ size = 52 }: { size?: number }) {
+  const triH = Math.round(size * 0.3)
+  const triW = Math.round(triH * 0.846)
   return (
     <span
       className="flex items-center justify-center rounded-full border border-gold transition-transform duration-200 group-hover:scale-110"
-      style={{ width: 72, height: 72, backgroundColor: 'rgba(13,13,13,0.35)' }}
+      // paddingLeft optically centers the right-pointing triangle (its visual mass sits left of the bounding box)
+      style={{ width: size, height: size, backgroundColor: 'rgba(13,13,13,0.35)', paddingLeft: Math.round(size * 0.08) }}
     >
-      <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true">
+      <svg width={triW} height={triH} viewBox="0 0 22 26" fill="none" aria-hidden="true">
         <path d="M21 13 0 26V0z" fill="#C2A878" />
       </svg>
     </span>
@@ -79,9 +82,21 @@ function PlayIcon() {
  * clicked, then swaps in the Cloudflare Stream (or YouTube) iframe with sound.
  * When no source is wired yet, renders an elegant "coming soon" placeholder.
  */
-export function ProofVideo({ source, aspect = '16 / 9' }: { source: VideoSource; aspect?: string }) {
+export function ProofVideo({
+  source,
+  aspect = '16 / 9',
+  label,
+  subLabel,
+}: {
+  source: VideoSource
+  aspect?: string
+  label?: string
+  subLabel?: string
+}) {
   const [playing, setPlaying] = useState(false)
   const available = hasSource(source)
+  const isVertical = aspect.trim().startsWith('9')
+  const visibleTitle = label ?? source.title
 
   // Auto-poster from Stream's generated thumbnail when no explicit still is set.
   const streamPoster =
@@ -127,7 +142,7 @@ export function ProofVideo({ source, aspect = '16 / 9' }: { source: VideoSource;
         <button
           type="button"
           onClick={() => available && setPlaying(true)}
-          className="group absolute inset-0 w-full h-full flex items-center justify-center"
+          className="group absolute inset-0 w-full h-full block text-left"
           style={{
             backgroundImage: poster ? `url(${poster})` : undefined,
             backgroundColor: poster ? undefined : '#141414',
@@ -135,13 +150,35 @@ export function ProofVideo({ source, aspect = '16 / 9' }: { source: VideoSource;
             backgroundPosition: 'center',
             cursor: available ? 'pointer' : 'default',
           }}
-          aria-label={available ? `Play ${source.title}` : `${source.title} — coming soon`}
+          aria-label={available ? `Play ${source.title}` : `${source.title}, coming soon`}
         >
-          <span className="absolute inset-0" style={{ background: 'rgba(13,13,13,0.45)' }} />
-          <span className="relative z-10 flex flex-col items-center gap-4 px-6 text-center">
-            <PlayIcon />
-            <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/70">
-              {available ? source.title : `${source.title} — coming soon`}
+          {/* Light overall tint, deepens slightly on hover for feedback */}
+          <span
+            className="absolute inset-0 transition-colors duration-200 group-hover:bg-black/10"
+            style={{ background: 'rgba(13,13,13,0.10)' }}
+          />
+          {/* Bottom gradient scrim so the title stays legible over any image */}
+          <span
+            className="absolute inset-x-0 bottom-0 pointer-events-none"
+            style={{ height: '65%', background: 'linear-gradient(to top, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.45) 42%, transparent 100%)' }}
+          />
+          {/* Bottom-left: play button + title (+ optional tag) */}
+          <span className={`absolute inset-x-0 bottom-0 z-10 flex items-center ${isVertical ? 'gap-2.5 p-3' : 'gap-4 p-5'}`}>
+            <span className="flex-shrink-0">
+              <PlayIcon size={isVertical ? 34 : 52} />
+            </span>
+            <span className="flex flex-col min-w-0">
+              <span className={`font-display text-roma-cream leading-tight ${isVertical ? 'text-sm' : 'text-xl md:text-2xl'}`}>
+                {visibleTitle}
+              </span>
+              {subLabel && (
+                <span
+                  className={`font-heading tracking-widest uppercase mt-1 ${isVertical ? 'text-[9px]' : 'text-[11px]'}`}
+                  style={{ color: '#C2A878' }}
+                >
+                  {subLabel}
+                </span>
+              )}
             </span>
           </span>
         </button>

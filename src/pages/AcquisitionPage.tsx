@@ -105,13 +105,13 @@ function Problem() {
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <p className="fade-up-visible font-display text-2xl md:text-3xl text-roma-cream/90 leading-snug">
             The market is saturated. AI is flooding every feed with generic content. Attention is
-            cheap — but trust is harder to earn than ever.
+            cheap, but trust is harder to earn than ever.
           </p>
           <p
             className="fade-up-visible font-body text-xl text-roma-cream/60 leading-relaxed"
             style={{ transitionDelay: '120ms' }}
           >
-            Most local service businesses are invisible online — not because they&rsquo;re bad at what
+            Most local service businesses are invisible online, not because they&rsquo;re bad at what
             they do, but because nobody&rsquo;s ever told their story properly. No film. No page built
             to convert. No system behind it.
           </p>
@@ -139,7 +139,7 @@ const phases = [
     n: '02',
     name: 'Production',
     price: '$6,000–$10,000',
-    body: '1–2 shoot days: brand hero film + ad / short-form content. StoryBrand on film — you are the guide, your customer is the hero.',
+    body: '1–2 shoot days: brand hero film + ad / short-form content. StoryBrand on film. You are the guide, your customer is the hero.',
   },
   {
     n: '03',
@@ -178,7 +178,7 @@ function Offer() {
                 {p.n}
               </span>
               <h3 className="mt-5 font-heading text-2xl tracking-wide uppercase text-serino-black">
-                Phase {p.n.replace('0', '')} — {p.name}
+                Phase {p.n.replace('0', '')}: {p.name}
               </h3>
               <p className="mt-1 font-heading text-lg tracking-wide" style={{ color: '#7C6122' }}>
                 {p.price}
@@ -212,6 +212,7 @@ function Offer() {
 const proof = [
   {
     name: 'DirectStay',
+    filmTitle: 'The Future of Short-Term Rental',
     source: proofVideos.directStay,
     story:
       'Pre-engagement: an early-stage startup with no brand identity and no video presence. We built the brand bible, shot the hero film, and produced 30 pieces of content. Their marketing team used it to launch their full digital presence.',
@@ -223,9 +224,10 @@ const proof = [
   },
   {
     name: 'Aladdin Heating & Cooling',
+    filmTitle: 'The Heart Behind the Heat',
     source: proofVideos.aladdin,
     story:
-      'An established Portland HVAC company. Two production days — brand film plus ad and skit content. Nine core videos now anchor their digital presence.',
+      'An established Portland HVAC company. Two production days: brand film plus ad and skit content. Nine core videos now anchor their digital presence.',
     tags: 'Brand Film · Ad Content · 9 Core Videos',
     quote: null,
   },
@@ -234,9 +236,24 @@ const proof = [
 // Strategy classification for the short-form strip (from the HUMBLD content taxonomy).
 // Each clip is a different format engineered for a different job.
 const verticalMeta = [
-  { format: 'Skit', purpose: 'Reach' },
-  { format: 'Interview', purpose: 'Authority' },
-  { format: 'News Remix', purpose: 'Engagement' },
+  {
+    format: 'Skit',
+    purpose: 'Awareness · Reach',
+    strategy:
+      'Character-driven and entertainment-first. The kind of skit people rewatch and tag a friend on, earning reach through story instead of a pitch.',
+  },
+  {
+    format: 'Interview',
+    purpose: 'Trust · Authority',
+    strategy:
+      'A candid two-person conversation that signals authority and depth, trust-building, and easy to clip into more content.',
+  },
+  {
+    format: 'Trend Splice',
+    purpose: 'Reach · Engagement',
+    strategy:
+      'Opens on a familiar breaking-news beat, then hard-cuts to brand: a pattern interrupt engineered for watch-through and shares.',
+  },
 ]
 
 function Proof() {
@@ -261,7 +278,7 @@ function Proof() {
             >
               {/* Alternate video/text sides on desktop */}
               <div className={i % 2 === 1 ? 'md:order-2' : ''}>
-                <ProofVideo source={c.source} />
+                <ProofVideo source={c.source} label={c.filmTitle} subLabel="Brand Film" />
               </div>
               <div className={i % 2 === 1 ? 'md:order-1' : ''}>
                 <h3 className="font-display text-3xl md:text-4xl text-roma-cream mb-5">{c.name}</h3>
@@ -282,24 +299,32 @@ function Proof() {
           ))}
         </div>
 
-        {/* Optional short-form vertical strip — renders only once clips are added */}
+        {/* Optional short-form vertical strip: renders only once clips are added */}
         {verticalClips.length > 0 && (
           <div className="mt-24">
             <p className="section-label text-center">90 Days of Content, From One Shoot</p>
             <p className="text-center font-body italic text-lg text-roma-cream/50 max-w-xl mx-auto -mt-2">
-              Three formats, three jobs — every setup cut into content engineered for a different result.
+              Three formats, three jobs: every setup cut into content engineered for a different result.
             </p>
-            <div className="mt-10 grid grid-cols-3 gap-4 md:gap-6 max-w-2xl mx-auto">
-              {verticalClips.slice(0, 3).map((clip, i) => (
-                <div key={i}>
-                  <ProofVideo source={clip} aspect="9 / 16" />
-                  {verticalMeta[i] && (
-                    <p className="mt-3 text-center font-heading text-[11px] tracking-widest uppercase" style={{ color: '#C2A878' }}>
-                      {verticalMeta[i].format} · {verticalMeta[i].purpose}
-                    </p>
-                  )}
-                </div>
-              ))}
+            <div className="mt-10 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 max-w-4xl mx-auto">
+              {verticalClips.slice(0, 3).map((clip, i) => {
+                const meta = verticalMeta[i]
+                return (
+                  <div key={i} className="snap-center shrink-0 w-[66%] sm:w-[42%] md:w-auto">
+                    <ProofVideo source={clip} aspect="9 / 16" subLabel={meta?.format} />
+                    {meta && (
+                      <div className="mt-4 text-center">
+                        <p className="font-heading text-[10px] tracking-[0.22em] uppercase" style={{ color: '#C2A878' }}>
+                          {meta.purpose}
+                        </p>
+                        <p className="mt-2 font-body text-xs md:text-[13px] text-roma-cream/55 leading-snug">
+                          {meta.strategy}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
         )}
