@@ -39,7 +39,7 @@ function Hero() {
   })
 
   return (
-    <section className="relative min-h-screen flex items-end grain-overlay" style={{ backgroundColor: '#0D0D0D' }}>
+    <section className="relative min-h-screen flex flex-col grain-overlay" style={{ backgroundColor: '#0D0D0D' }}>
       {/* Background film / poster */}
       <HeroBackgroundVideo source={heroVideo} />
 
@@ -57,15 +57,16 @@ function Hero() {
         style={{ background: 'linear-gradient(to bottom, rgba(13,13,13,0.7) 0%, transparent 100%)' }}
       />
 
-      {/* Minimal brand mark (no nav links, per brief) */}
-      <div className="absolute top-0 inset-x-0 z-20">
+      {/* Minimal brand mark (no nav links, per brief) — in normal flow at the top */}
+      <div className="relative z-20 w-full">
         <div className="container-main flex items-center py-6">
           <img src="/assets/logos/white_copy.png" alt="Serino Consulting" style={{ height: 40, width: 'auto' }} />
         </div>
       </div>
 
-      <div className="container-main relative z-10 pb-28 md:pb-36">
-        <div className="max-w-3xl">
+      <div className="relative z-10 w-full mt-auto pt-16 pb-28 md:pb-36">
+        <div className="container-main">
+          <div className="max-w-3xl">
           <span className="section-label" style={{ ...reveal('40ms') }}>
             The Brand Acquisition System
           </span>
@@ -89,6 +90,7 @@ function Hero() {
 
           <div style={{ ...reveal('320ms') }}>
             <BookButton />
+          </div>
           </div>
         </div>
       </div>
@@ -177,7 +179,7 @@ function Offer() {
               <span className="font-display text-5xl leading-none" style={{ color: '#7C6122', opacity: 0.4 }}>
                 {p.n}
               </span>
-              <h3 className="mt-5 font-heading text-2xl tracking-wide uppercase text-serino-black">
+              <h3 className="mt-5 font-heading text-2xl tracking-wide uppercase text-serino-black md:min-h-[4rem]">
                 Phase {p.n.replace('0', '')}: {p.name}
               </h3>
               <p className="mt-1 font-heading text-lg tracking-wide" style={{ color: '#7C6122' }}>
