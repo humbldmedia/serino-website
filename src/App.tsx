@@ -1,23 +1,27 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Nav from './components/layout/Nav'
-import Footer from './components/layout/Footer'
+import MainLayout from './components/layout/MainLayout'
 import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ThankYouPage from './pages/ThankYouPage'
+import AcquisitionPage from './pages/AcquisitionPage'
 
 function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-serino-black">
-        <Nav />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/thank-you" element={<ThankYouPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          {/* Main site — global nav + footer */}
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+
+          {/* Standalone acquisition landing page — no global nav/footer */}
+          <Route path="/acquisition" element={<AcquisitionPage />} />
         </Routes>
-        <Footer />
       </div>
     </BrowserRouter>
   )
