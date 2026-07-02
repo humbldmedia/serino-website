@@ -356,21 +356,35 @@ function CTAFooter() {
             <BookButton label="Book a call" />
           </div>
 
-          {/* Signature */}
+          {/* Signatures */}
           <div
-            className="fade-up-visible mt-16 flex items-center justify-center gap-4"
+            className="fade-up-visible mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-14"
             style={{ transitionDelay: '300ms' }}
           >
-            <img
-              src="/assets/pictures/phil.png"
-              alt="Philip Serino"
-              className="rounded-full object-cover"
-              style={{ width: 56, height: 56, filter: 'grayscale(0.2)' }}
-            />
-            <p className="text-left font-heading text-sm tracking-widest uppercase text-serino-black/70 leading-snug">
-              Philip Serino
-              <span className="block text-serino-black/45">Creative Director · Portland, OR</span>
-            </p>
+            <div className="flex items-center gap-4">
+              <img
+                src="/assets/pictures/phil-avatar.jpg"
+                alt="Philip Serino"
+                className="rounded-full object-cover"
+                style={{ width: 56, height: 56, filter: 'grayscale(0.2)' }}
+              />
+              <p className="text-left font-heading text-sm tracking-widest uppercase text-serino-black/70 leading-snug">
+                Philip Serino
+                <span className="block text-serino-black/45">Founder &amp; CEO</span>
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <img
+                src="/assets/pictures/lexi-avatar.jpg"
+                alt="Alexandria Russell"
+                className="rounded-full object-cover"
+                style={{ width: 56, height: 56, filter: 'grayscale(0.2)' }}
+              />
+              <p className="text-left font-heading text-sm tracking-widest uppercase text-serino-black/70 leading-snug">
+                Alexandria Russell
+                <span className="block text-serino-black/45">Business Consultant</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
