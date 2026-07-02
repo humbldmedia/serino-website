@@ -6,7 +6,7 @@ import { heroVideo, proofVideos, verticalClips } from '../config/acquisitionVide
 const BOOKING_URL = 'https://wellbooked.net/book/serinoconsulting/audit'
 
 // ─── Shared CTA button ───────────────────────────────────────────────────────
-function BookButton({ label = 'Book a 20-minute call' }: { label?: string }) {
+function BookButton({ label = 'Book a quick call' }: { label?: string }) {
   return (
     <a
       href={BOOKING_URL}
@@ -85,7 +85,7 @@ function Hero() {
             The founders who show up on camera pull ahead of everyone still hiding behind a logo.
           </p>
 
-          <div style={{ ...reveal('320ms') }}>
+          <div className="flex justify-center" style={{ ...reveal('320ms') }}>
             <BookButton />
           </div>
           </div>
