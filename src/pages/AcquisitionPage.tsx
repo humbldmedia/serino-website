@@ -199,7 +199,8 @@ function Offer() {
             <span className="font-display text-3xl md:text-4xl text-serino-black">$12,000–$20,000</span>
           </div>
           <p className="mt-8 font-body italic text-lg text-serino-black/60 max-w-xl mx-auto">
-            Most clients start with Phase 1. The page we build becomes the sales tool for the rest.
+            Phase 1 is the most important place to start. You can have a stunning hero film and
+            reels in every feed, but without the right brand funnel, that attention never converts.
           </p>
         </div>
       </div>
