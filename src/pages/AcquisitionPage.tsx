@@ -208,6 +208,119 @@ function Offer() {
   )
 }
 
+// ─── Section 3.5: Why This System Is Crucial ─────────────────────────────────
+const whyPhases = [
+  {
+    label: '01 · Foundation',
+    invest: '$2,500 in',
+    math: 'One booked job covers it 3×',
+    support: 'Avg. service ticket $8,000+. The funnel turns attention into booked calls.',
+    barLabel: 'Convert',
+    barHeight: 52,
+  },
+  {
+    label: '02 · Production',
+    invest: '$6,000 to $10,000 in',
+    math: 'A kept customer is worth 3 to 5× the first job',
+    support: 'The film builds the trust that closes bigger work, then keeps it coming back.',
+    barLabel: 'Trust + Retain',
+    barHeight: 94,
+  },
+  {
+    label: '03 · Deployment',
+    invest: '$3,000 to $5,000 in',
+    math: '≈ $55 per branded asset',
+    support: '60 to 90 on-voice pieces. Ninety days of presence pulling pre-sold, higher-intent leads.',
+    barLabel: 'Amplify',
+    barHeight: 140,
+  },
+]
+
+function WhyItWorks() {
+  const ref = useScrollReveal()
+  return (
+    <section className="py-28 md:py-36" style={{ backgroundColor: '#0D0D0D' }}>
+      {/* Bars rise from the baseline once their column reveals (desktop only) */}
+      <style>{`
+        @media (min-width: 768px) {
+          .why-bar { transform: scaleY(0); transform-origin: bottom; transition: transform 900ms cubic-bezier(0.16,1,0.3,1) 250ms; }
+          .fade-up-visible.visible .why-bar { transform: scaleY(1); }
+        }
+      `}</style>
+      <div className="container-main" ref={ref}>
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="section-label fade-up-visible">Why This System Is Crucial</span>
+          <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-roma-cream leading-tight">
+            The system pays for itself.
+            <br />
+            Then it compounds.
+          </h2>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 max-w-4xl mx-auto items-end">
+          {whyPhases.map((p, i) => (
+            <div key={p.label} className="fade-up-visible" style={{ transitionDelay: `${i * 140}ms` }}>
+              <p className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878' }}>
+                {p.label}
+              </p>
+              <p className="mt-1 font-body text-sm text-roma-cream/55">{p.invest}</p>
+              <p className="mt-3 font-display italic text-xl md:text-2xl leading-snug" style={{ color: '#DBBFA8' }}>
+                {p.math}
+              </p>
+              <p className="mt-3 mb-5 font-body text-sm text-roma-cream/50 leading-relaxed">{p.support}</p>
+
+              {/* Rising bar: widening strip on mobile, climbing column on desktop */}
+              <div className="flex items-center gap-3 md:hidden">
+                <div
+                  style={{
+                    backgroundColor: 'rgba(194,168,120,0.12)',
+                    borderTop: '2px solid #C2A878',
+                    height: 10,
+                    width: `${(i + 1) * 30}%`,
+                  }}
+                />
+                <span className="font-heading text-[10px] tracking-[0.18em] uppercase whitespace-nowrap" style={{ color: 'rgba(194,168,120,0.85)' }}>
+                  {p.barLabel}
+                </span>
+              </div>
+              <div
+                className="why-bar hidden md:flex items-end justify-center w-full"
+                style={{
+                  backgroundColor: 'rgba(194,168,120,0.12)',
+                  borderTop: '2px solid #C2A878',
+                  height: p.barHeight,
+                }}
+              >
+                <span className="font-heading text-[10px] tracking-[0.18em] uppercase pb-2" style={{ color: 'rgba(194,168,120,0.85)' }}>
+                  {p.barLabel}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div
+          className="fade-up-visible mt-16 pt-6 flex flex-wrap justify-center items-baseline gap-x-10 gap-y-2 text-center"
+          style={{ transitionDelay: '300ms', borderTop: '1px solid rgba(194,168,120,0.3)' }}
+        >
+          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/60">
+            Full System $12,000 to $20,000
+          </span>
+          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#DBBFA8' }}>
+            Break-even ≈ 2 to 3 booked jobs
+          </span>
+          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/60">
+            Everything after compounds
+          </span>
+        </div>
+        <p className="fade-up-visible mt-6 text-center font-body italic text-sm text-roma-cream/40" style={{ transitionDelay: '380ms' }}>
+          Example math: Portland HVAC. We run your numbers on the call.
+        </p>
+      </div>
+    </section>
+  )
+}
+
 // ─── Section 4: Proof ────────────────────────────────────────────────────────
 const proof = [
   {
@@ -397,6 +510,7 @@ export default function AcquisitionPage() {
       <Hero />
       <Problem />
       <Offer />
+      <WhyItWorks />
       <Proof />
       <CTAFooter />
     </main>
