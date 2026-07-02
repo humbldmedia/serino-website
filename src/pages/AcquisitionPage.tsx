@@ -72,20 +72,19 @@ function Hero() {
           </span>
 
           <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-[1.05] mb-8"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-[1.05] mb-6"
             style={{ ...reveal('120ms') }}
           >
             Attention is cheap.
             <br />
-            Trust is <span style={{ color: '#DBBFA8' }}>everything</span>.
+            Trust <span style={{ color: '#DBBFA8' }}>isn&rsquo;t</span>.
           </h1>
 
           <p
-            className="font-body italic text-xl md:text-2xl text-roma-cream/70 mb-12 leading-relaxed max-w-2xl"
+            className="font-body italic text-lg md:text-2xl text-roma-cream/70 mb-10 leading-relaxed max-w-xl"
             style={{ ...reveal('220ms') }}
           >
-            The founders who put a real face and a real story on camera now will pull ahead of every
-            competitor still hiding behind a logo.
+            The founders who show up on camera pull ahead of everyone still hiding behind a logo.
           </p>
 
           <div style={{ ...reveal('320ms') }}>
