@@ -75,9 +75,7 @@ function Hero() {
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-[1.05] mb-6"
             style={{ ...reveal('120ms') }}
           >
-            Attention is cheap.
-            <br />
-            Trust <span style={{ color: '#DBBFA8' }}>isn&rsquo;t</span>.
+            People purchase <span style={{ color: '#DBBFA8' }}>trust</span>.
           </h1>
 
           <p
@@ -157,7 +155,7 @@ function Offer() {
       <div className="container-main" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
-            The Offer
+            The Solution
           </span>
           <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-serino-black leading-tight">
             The Brand Acquisition System
@@ -264,7 +262,7 @@ function Proof() {
       <hr className="gold-rule" />
       <div className="container-main pt-20" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
-          <span className="section-label fade-up-visible">The Proof</span>
+          <span className="section-label fade-up-visible">Case Studies</span>
           <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-roma-cream leading-tight">
             The work speaks first.
           </h2>
@@ -352,7 +350,7 @@ function CTAFooter() {
             gaps, and show you exactly what the system looks like for your business.
           </p>
           <div className="fade-up-visible" style={{ transitionDelay: '200ms' }}>
-            <BookButton label="Book a call" />
+            <BookButton label="Book now" />
           </div>
 
           {/* Signatures */}
