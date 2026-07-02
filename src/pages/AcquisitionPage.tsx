@@ -3,13 +3,13 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { HeroBackgroundVideo, ProofVideo } from '../components/acquisition/AcquisitionVideo'
 import { heroVideo, proofVideos, verticalClips } from '../config/acquisitionVideos'
 
-const CALENDLY = 'https://calendly.com/serinoconsulting/30min'
+const BOOKING_URL = 'https://wellbooked.net/book/serinoconsulting/audit'
 
 // ─── Shared CTA button ───────────────────────────────────────────────────────
 function BookButton({ label = 'Book a 20-minute call' }: { label?: string }) {
   return (
     <a
-      href={CALENDLY}
+      href={BOOKING_URL}
       target="_blank"
       rel="noopener noreferrer"
       className="inline-block font-heading text-sm tracking-widest uppercase px-10 py-4 transition-all duration-200"
