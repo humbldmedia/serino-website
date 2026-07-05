@@ -239,7 +239,7 @@ const whyPhases = [
 function WhyItWorks() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#0D0D0D' }}>
+    <section className="py-28 md:py-36" style={{ backgroundColor: '#5b3020' }}>
       {/* Bars rise from the baseline once their column reveals (desktop only) */}
       <style>{`
         @media (min-width: 768px) {
@@ -249,7 +249,9 @@ function WhyItWorks() {
       `}</style>
       <div className="container-main" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
-          <span className="section-label fade-up-visible">Why This System Is Crucial</span>
+          <span className="section-label fade-up-visible" style={{ color: '#EAD9BB' }}>
+            Why This System Is Crucial
+          </span>
           <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-roma-cream leading-tight">
             The system pays for itself.
             <br />
@@ -260,38 +262,38 @@ function WhyItWorks() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 max-w-4xl mx-auto items-end">
           {whyPhases.map((p, i) => (
             <div key={p.label} className="fade-up-visible" style={{ transitionDelay: `${i * 140}ms` }}>
-              <p className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878' }}>
+              <p className="font-heading text-xs tracking-widest uppercase" style={{ color: '#EAD9BB' }}>
                 {p.label}
               </p>
-              <p className="mt-1 font-body text-sm text-roma-cream/55">{p.invest}</p>
-              <p className="mt-3 font-display italic text-xl md:text-2xl leading-snug" style={{ color: '#DBBFA8' }}>
+              <p className="mt-1 font-body text-sm text-roma-cream/75">{p.invest}</p>
+              <p className="mt-3 font-display italic text-xl md:text-2xl leading-snug" style={{ color: '#F0DFC0' }}>
                 {p.math}
               </p>
-              <p className="mt-3 mb-5 font-body text-sm text-roma-cream/50 leading-relaxed">{p.support}</p>
+              <p className="mt-3 mb-5 font-body text-sm text-roma-cream/70 leading-relaxed">{p.support}</p>
 
               {/* Rising bar: widening strip on mobile, climbing column on desktop */}
               <div className="flex items-center gap-3 md:hidden">
                 <div
                   style={{
-                    backgroundColor: 'rgba(194,168,120,0.12)',
-                    borderTop: '2px solid #C2A878',
+                    backgroundColor: 'rgba(244,240,234,0.12)',
+                    borderTop: '2px solid #E9D5B8',
                     height: 10,
                     width: `${(i + 1) * 30}%`,
                   }}
                 />
-                <span className="font-heading text-[10px] tracking-[0.18em] uppercase whitespace-nowrap" style={{ color: 'rgba(194,168,120,0.85)' }}>
+                <span className="font-heading text-[10px] tracking-[0.18em] uppercase whitespace-nowrap" style={{ color: 'rgba(244,240,234,0.8)' }}>
                   {p.barLabel}
                 </span>
               </div>
               <div
                 className="why-bar hidden md:flex items-end justify-center w-full"
                 style={{
-                  backgroundColor: 'rgba(194,168,120,0.12)',
-                  borderTop: '2px solid #C2A878',
+                  backgroundColor: 'rgba(244,240,234,0.12)',
+                  borderTop: '2px solid #E9D5B8',
                   height: p.barHeight,
                 }}
               >
-                <span className="font-heading text-[10px] tracking-[0.18em] uppercase pb-2" style={{ color: 'rgba(194,168,120,0.85)' }}>
+                <span className="font-heading text-[10px] tracking-[0.18em] uppercase pb-2" style={{ color: 'rgba(244,240,234,0.8)' }}>
                   {p.barLabel}
                 </span>
               </div>
@@ -301,19 +303,19 @@ function WhyItWorks() {
 
         <div
           className="fade-up-visible mt-16 pt-6 flex flex-wrap justify-center items-baseline gap-x-10 gap-y-2 text-center"
-          style={{ transitionDelay: '300ms', borderTop: '1px solid rgba(194,168,120,0.3)' }}
+          style={{ transitionDelay: '300ms', borderTop: '1px solid rgba(244,240,234,0.25)' }}
         >
-          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/60">
+          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/75">
             Full System $12,000 to $20,000
           </span>
-          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#DBBFA8' }}>
+          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#F0DFC0' }}>
             Break-even ≈ 2 to 3 booked jobs
           </span>
-          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/60">
+          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/75">
             Everything after compounds
           </span>
         </div>
-        <p className="fade-up-visible mt-6 text-center font-body italic text-sm text-roma-cream/40" style={{ transitionDelay: '380ms' }}>
+        <p className="fade-up-visible mt-6 text-center font-body italic text-sm text-roma-cream/60" style={{ transitionDelay: '380ms' }}>
           Example math: Portland HVAC. We run your numbers on the call.
         </p>
       </div>
