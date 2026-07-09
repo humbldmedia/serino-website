@@ -82,7 +82,7 @@ function Hero() {
             className="font-body italic text-lg md:text-2xl text-roma-cream/70 mb-10 leading-relaxed max-w-xl"
             style={{ ...reveal('220ms') }}
           >
-            The founders who show up on camera pull ahead of everyone still hiding behind a logo.
+            The founders on camera pull ahead of the ones hiding behind a logo.
           </p>
 
           <div className="flex justify-center" style={{ ...reveal('320ms') }}>
@@ -99,12 +99,16 @@ function Hero() {
 function Problem() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-40" style={{ backgroundColor: '#0D0D0D' }}>
-      <div className="container-main" ref={ref}>
+    <section className="pb-28 md:pb-40" style={{ backgroundColor: '#0D0D0D' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-28 md:pt-40" ref={ref}>
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <p className="fade-up-visible font-display text-2xl md:text-3xl text-roma-cream/90 leading-snug">
-            The market is saturated. AI is flooding every feed with generic content. Attention is
-            cheap, but trust is harder to earn than ever.
+            The market is saturated.
+            <br />
+            AI is flooding every feed with generic content.
+            <br />
+            Attention is cheap, and trust is harder to earn than ever.
           </p>
           <p
             className="fade-up-visible font-body text-xl text-roma-cream/60 leading-relaxed"
@@ -126,24 +130,51 @@ function Problem() {
   )
 }
 
+// ─── Section 2.5: The Bridge (ROI hook) ──────────────────────────────────────
+function Bridge() {
+  const ref = useScrollReveal()
+  return (
+    <section className="pb-24 md:pb-32" style={{ backgroundColor: '#F4F0EA' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-24 md:pt-32" ref={ref}>
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
+            The Math
+          </span>
+          <h2 className="fade-up-visible font-display text-4xl md:text-6xl text-serino-black leading-[1.05]">
+            90 days of content.
+            <br />
+            <span style={{ color: '#964830' }}>From one shoot.</span>
+          </h2>
+          <p
+            className="fade-up-visible mt-8 font-body text-xl text-serino-black/60 leading-relaxed max-w-xl mx-auto"
+            style={{ transitionDelay: '120ms' }}
+          >
+            One day of your time becomes three months of showing up everywhere your customers
+            already are. That is the whole point of the system: film once, stay visible for a
+            quarter.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ─── Section 3: The Offer ────────────────────────────────────────────────────
 const phases = [
   {
     n: '01',
     name: 'Foundation',
-    price: '$2,500–$3,500',
     body: 'Brand messaging framework + conversion landing page. Gets your story right and builds the page that turns visitors into calls.',
   },
   {
     n: '02',
     name: 'Production',
-    price: '$6,000–$10,000',
-    body: '1–2 shoot days: brand hero film + ad / short-form content. StoryBrand on film. You are the guide, your customer is the hero.',
+    body: '1–2 shoot days: brand hero film + ad / short-form content. You are the guide, your customer is the hero.',
   },
   {
     n: '03',
     name: 'Deployment Assets',
-    price: '$3,000–$5,000',
     body: '30–60 short-form clips, 30 graphics / stills, organic + paid deployment brief. 90 days of content from one shoot.',
   },
 ]
@@ -151,8 +182,9 @@ const phases = [
 function Offer() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#F4F0EA' }}>
-      <div className="container-main" ref={ref}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#F4F0EA' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-28 md:pt-36" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
             The Solution
@@ -179,26 +211,14 @@ function Offer() {
               <h3 className="mt-5 font-heading text-2xl tracking-wide uppercase text-serino-black md:min-h-[4rem]">
                 Phase {p.n.replace('0', '')}: {p.name}
               </h3>
-              <p className="mt-1 font-heading text-lg tracking-wide" style={{ color: '#7C6122' }}>
-                {p.price}
-              </p>
               <p className="mt-4 font-body text-lg text-serino-black/70 leading-relaxed">{p.body}</p>
             </div>
           ))}
         </div>
 
-        {/* Full system + note */}
+        {/* Phase-1 note (pricing lives in the break-even section that follows) */}
         <div className="fade-up-visible mt-14 text-center" style={{ transitionDelay: '160ms' }}>
-          <div
-            className="inline-flex flex-col sm:flex-row items-center gap-x-4 gap-y-1 px-8 py-5"
-            style={{ border: '1px solid rgba(124,97,34,0.35)' }}
-          >
-            <span className="font-heading text-sm tracking-widest uppercase text-serino-black/60">
-              Full System
-            </span>
-            <span className="font-display text-3xl md:text-4xl text-serino-black">$12,000–$20,000</span>
-          </div>
-          <p className="mt-8 font-body italic text-lg text-serino-black/60 max-w-xl mx-auto">
+          <p className="font-body italic text-lg text-serino-black/60 max-w-xl mx-auto">
             Phase 1 is the most important place to start. You can have a stunning hero film and
             reels in every feed, but without the right brand funnel, that attention never converts.
           </p>
@@ -239,7 +259,8 @@ const whyPhases = [
 function WhyItWorks() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#5b3020' }}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#573427' }}>
+      <hr className="gold-rule" />
       {/* Bars rise from the baseline once their column reveals (desktop only) */}
       <style>{`
         @media (min-width: 768px) {
@@ -247,7 +268,7 @@ function WhyItWorks() {
           .fade-up-visible.visible .why-bar { transform: scaleY(1); }
         }
       `}</style>
-      <div className="container-main" ref={ref}>
+      <div className="container-main pt-28 md:pt-36" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="section-label fade-up-visible" style={{ color: '#EAD9BB' }}>
             Why This System Is Crucial
@@ -326,25 +347,25 @@ function WhyItWorks() {
 // ─── Section 4: Proof ────────────────────────────────────────────────────────
 const proof = [
   {
-    name: 'DirectStay',
-    filmTitle: 'The Future of Short-Term Rental',
-    source: proofVideos.directStay,
-    story:
-      'Pre-engagement: an early-stage startup with no brand identity and no video presence. We built the brand bible, shot the hero film, and produced 30 pieces of content. Their marketing team used it to launch their full digital presence.',
-    tags: 'Brand Strategy · Hero Film · 30-piece Content Package · $20,000',
-    quote: {
-      text: 'You captured the essence and heart of what we’re doing and I literally had chills. I could not have done it better myself.',
-      who: 'Jennefer Payne, DirectStay',
-    },
-  },
-  {
     name: 'Aladdin Heating & Cooling',
     filmTitle: 'The Heart Behind the Heat',
     source: proofVideos.aladdin,
     story:
-      'An established Portland HVAC company. Two production days: brand film plus ad and skit content. Nine core videos now anchor their digital presence.',
-    tags: 'Brand Film · Ad Content · 9 Core Videos',
+      'An established Portland HVAC company with real craft but no presence online. Two production days: brand film plus ad and skit content. They launched their first Instagram off the back of it — and before spending a dollar on ads, the content pulled 4,000+ views, 1,500+ in reach, and their first followers.',
+    tags: 'Brand Film · Ad Content · 4K+ Views · 1,500+ Reach — Pre-Ads',
     quote: null,
+  },
+  {
+    name: 'DirectStay',
+    filmTitle: 'The Future of Short-Term Rental',
+    source: proofVideos.directStay,
+    story:
+      'Pre-engagement: an early-stage short-term-rental startup with no brand identity and no video presence. We built the brand bible, shot the hero film, and produced 30 pieces of content their team used to launch their entire digital presence. Since then: 30,000+ views across channels, 50,000+ in reach, and more than 100 new hosts onboarded, and growing.',
+    tags: 'Brand Strategy · Hero Film · 30K+ Views · 50K+ Reach · 100+ New Hosts',
+    quote: {
+      text: 'You captured the essence and heart of what we’re doing and I literally had chills. I could not have done it better myself.',
+      who: 'Jennefer Payne, DirectStay',
+    },
   },
 ]
 
@@ -374,13 +395,13 @@ const verticalMeta = [
 function Proof() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#0D0D0D' }}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#0D0D0D' }}>
       <hr className="gold-rule" />
       <div className="container-main pt-20" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="section-label fade-up-visible">Case Studies</span>
           <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-roma-cream leading-tight">
-            The work speaks first.
+            Trust, earned on camera.
           </h2>
         </div>
 
@@ -417,9 +438,9 @@ function Proof() {
         {/* Optional short-form vertical strip: renders only once clips are added */}
         {verticalClips.length > 0 && (
           <div className="mt-24">
-            <p className="section-label text-center">90 Days of Content, From One Shoot</p>
+            <p className="section-label text-center">A Format for Every Job</p>
             <p className="text-center font-body italic text-lg text-roma-cream/50 max-w-xl mx-auto -mt-2">
-              Three formats, three jobs: every setup cut into content engineered for a different result.
+              Every setup from one shoot, cut into content engineered for a different result.
             </p>
             <div className="mt-10 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 max-w-4xl mx-auto">
               {verticalClips.slice(0, 3).map((clip, i) => {
@@ -448,56 +469,99 @@ function Proof() {
   )
 }
 
-// ─── Section 5: CTA Footer ───────────────────────────────────────────────────
+// ─── Section 5: The Founder ──────────────────────────────────────────────────
+function Founder() {
+  const ref = useScrollReveal()
+  return (
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#0D0D0D' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-28 md:pt-36" ref={ref}>
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="section-label fade-up-visible">Who You&rsquo;re Working With</span>
+          <h2 className="fade-up-visible font-display text-3xl md:text-4xl text-roma-cream leading-tight">
+            You&rsquo;re not hiring an agency.
+            <br />
+            You&rsquo;re working with us.
+          </h2>
+          <p
+            className="fade-up-visible mt-6 font-body text-lg text-roma-cream/65 leading-relaxed max-w-2xl mx-auto"
+            style={{ transitionDelay: '80ms' }}
+          >
+            We started Serino Consulting after watching great local businesses stay invisible while
+            lesser competitors with better video took the market. When you get on a call, you&rsquo;re
+            talking to the two people who&rsquo;ll actually do the work &mdash; no account managers, no
+            handoffs.
+          </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-14 max-w-2xl mx-auto">
+          {[
+            {
+              img: 'phil.png',
+              name: 'Philip Serino',
+              role: 'Founder & Creative Director',
+              line: 'Directs your brand story and every frame on camera.',
+            },
+            {
+              img: 'lexi.png',
+              name: 'Alexandria Russell',
+              role: 'Lead Strategist & Director of Operations',
+              line: 'Runs the operation and stays your point of contact, start to finish.',
+            },
+          ].map((m, i) => (
+            <div
+              key={m.name}
+              className="fade-up-visible text-center"
+              style={{ transitionDelay: `${i * 120}ms` }}
+            >
+              <img
+                src={`/assets/pictures/${m.img}`}
+                alt={`${m.name}, ${m.role} at Serino Consulting`}
+                className="w-full object-cover"
+                style={{ aspectRatio: '4 / 5', filter: 'grayscale(0.15)' }}
+              />
+              <p className="mt-5 font-heading text-sm tracking-widest uppercase text-roma-cream">
+                {m.name}
+              </p>
+              <p className="mt-1 font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878' }}>
+                {m.role}
+              </p>
+              <p className="mt-3 font-body text-base text-roma-cream/60 leading-relaxed">{m.line}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Section 6: CTA Footer ───────────────────────────────────────────────────
 function CTAFooter() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#F4F0EA' }}>
-      <div className="container-main" ref={ref}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#F4F0EA' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-28 md:pt-36" ref={ref}>
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="fade-up-visible font-display text-4xl md:text-5xl lg:text-6xl text-serino-black leading-tight mb-8">
             Ready to own your category?
           </h2>
           <p
-            className="fade-up-visible font-body text-xl text-serino-black/60 leading-relaxed mb-12"
+            className="fade-up-visible font-body text-xl text-serino-black/70 leading-relaxed mb-4"
             style={{ transitionDelay: '80ms' }}
           >
-            Start with a 20-minute call. We&rsquo;ll look at your current digital presence, identify the
-            gaps, and show you exactly what the system looks like for your business.
+            If you&rsquo;re doing over $500K a year and you&rsquo;re still invisible online, this call
+            is for you.
           </p>
-          <div className="fade-up-visible" style={{ transitionDelay: '200ms' }}>
-            <BookButton label="Book now" />
-          </div>
-
-          {/* Signatures */}
-          <div
-            className="fade-up-visible mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-14"
-            style={{ transitionDelay: '300ms' }}
+          <p
+            className="fade-up-visible font-body text-lg text-serino-black/55 leading-relaxed mb-12"
+            style={{ transitionDelay: '140ms' }}
           >
-            <div className="flex items-center gap-4">
-              <img
-                src="/assets/pictures/phil-avatar.jpg"
-                alt="Philip Serino"
-                className="rounded-full object-cover"
-                style={{ width: 56, height: 56, filter: 'grayscale(0.2)' }}
-              />
-              <p className="text-left font-heading text-sm tracking-widest uppercase text-serino-black/70 leading-snug">
-                Philip Serino
-                <span className="block text-serino-black/45">Founder &amp; CEO</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <img
-                src="/assets/pictures/lexi-avatar.jpg"
-                alt="Alexandria Russell"
-                className="rounded-full object-cover"
-                style={{ width: 56, height: 56, filter: 'grayscale(0.2)' }}
-              />
-              <p className="text-left font-heading text-sm tracking-widest uppercase text-serino-black/70 leading-snug">
-                Alexandria Russell
-                <span className="block text-serino-black/45">Business Consultant</span>
-              </p>
-            </div>
+            We&rsquo;ll look at your current presence, show you exactly what the system looks like for
+            your business, and tell you straight whether we&rsquo;re the right fit.
+          </p>
+          <div className="fade-up-visible" style={{ transitionDelay: '220ms' }}>
+            <BookButton label="Book your call" />
           </div>
         </div>
       </div>
@@ -511,9 +575,11 @@ export default function AcquisitionPage() {
     <main>
       <Hero />
       <Problem />
+      <Bridge />
+      <Proof />
       <Offer />
       <WhyItWorks />
-      <Proof />
+      <Founder />
       <CTAFooter />
     </main>
   )
