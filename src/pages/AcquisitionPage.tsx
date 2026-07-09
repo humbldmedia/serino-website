@@ -134,8 +134,9 @@ function Problem() {
 function Bridge() {
   const ref = useScrollReveal()
   return (
-    <section className="py-24 md:py-32" style={{ backgroundColor: '#F4F0EA' }}>
-      <div className="container-main" ref={ref}>
+    <section className="pb-24 md:pb-32" style={{ backgroundColor: '#F4F0EA' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-24 md:pt-32" ref={ref}>
         <div className="max-w-3xl mx-auto text-center">
           <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
             The Math
@@ -181,8 +182,9 @@ const phases = [
 function Offer() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#F4F0EA' }}>
-      <div className="container-main" ref={ref}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#F4F0EA' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-28 md:pt-36" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
             The Solution
@@ -257,7 +259,8 @@ const whyPhases = [
 function WhyItWorks() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#573427' }}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#573427' }}>
+      <hr className="gold-rule" />
       {/* Bars rise from the baseline once their column reveals (desktop only) */}
       <style>{`
         @media (min-width: 768px) {
@@ -265,7 +268,7 @@ function WhyItWorks() {
           .fade-up-visible.visible .why-bar { transform: scaleY(1); }
         }
       `}</style>
-      <div className="container-main" ref={ref}>
+      <div className="container-main pt-28 md:pt-36" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="section-label fade-up-visible" style={{ color: '#EAD9BB' }}>
             Why This System Is Crucial
@@ -470,8 +473,9 @@ function Proof() {
 function Founder() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#0D0D0D' }}>
-      <div className="container-main" ref={ref}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#0D0D0D' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-28 md:pt-36" ref={ref}>
         <div className="max-w-3xl mx-auto text-center">
           <span className="section-label fade-up-visible">Who You&rsquo;re Working With</span>
           <h2 className="fade-up-visible font-display text-3xl md:text-4xl text-roma-cream leading-tight">
@@ -535,8 +539,9 @@ function Founder() {
 function CTAFooter() {
   const ref = useScrollReveal()
   return (
-    <section className="py-28 md:py-36" style={{ backgroundColor: '#F4F0EA' }}>
-      <div className="container-main" ref={ref}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#F4F0EA' }}>
+      <hr className="gold-rule" />
+      <div className="container-main pt-28 md:pt-36" ref={ref}>
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="fade-up-visible font-display text-4xl md:text-5xl lg:text-6xl text-serino-black leading-tight mb-8">
             Ready to own your category?
