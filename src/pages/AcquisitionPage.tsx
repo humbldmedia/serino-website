@@ -501,7 +501,7 @@ function Founder() {
             {
               img: 'lexi.png',
               name: 'Alexandria Russell',
-              role: 'Co-Founder & Director of Operations',
+              role: 'Lead Strategist & Director of Operations',
               line: 'Runs the operation and stays your point of contact, start to finish.',
             },
           ].map((m, i) => (
