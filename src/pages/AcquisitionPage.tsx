@@ -3,13 +3,13 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { HeroBackgroundVideo, ProofVideo } from '../components/acquisition/AcquisitionVideo'
 import { heroVideo, proofVideos, verticalClips } from '../config/acquisitionVideos'
 
-const CALENDLY = 'https://calendly.com/serinoconsulting/30min'
+const BOOKING_URL = 'https://wellbooked.net/book/serinoconsulting/audit'
 
 // ─── Shared CTA button ───────────────────────────────────────────────────────
-function BookButton({ label = 'Book a 20-minute call' }: { label?: string }) {
+function BookButton({ label = 'Book a quick call' }: { label?: string }) {
   return (
     <a
-      href={CALENDLY}
+      href={BOOKING_URL}
       target="_blank"
       rel="noopener noreferrer"
       className="inline-block font-heading text-sm tracking-widest uppercase px-10 py-4 transition-all duration-200"
@@ -39,7 +39,7 @@ function Hero() {
   })
 
   return (
-    <section className="relative min-h-screen flex items-end grain-overlay" style={{ backgroundColor: '#0D0D0D' }}>
+    <section className="relative min-h-screen flex flex-col grain-overlay" style={{ backgroundColor: '#0D0D0D' }}>
       {/* Background film / poster */}
       <HeroBackgroundVideo source={heroVideo} />
 
@@ -57,38 +57,37 @@ function Hero() {
         style={{ background: 'linear-gradient(to bottom, rgba(13,13,13,0.7) 0%, transparent 100%)' }}
       />
 
-      {/* Minimal brand mark (no nav links, per brief) */}
-      <div className="absolute top-0 inset-x-0 z-20">
+      {/* Minimal brand mark (no nav links, per brief) — in normal flow at the top */}
+      <div className="relative z-20 w-full">
         <div className="container-main flex items-center py-6">
           <img src="/assets/logos/white_copy.png" alt="Serino Consulting" style={{ height: 40, width: 'auto' }} />
         </div>
       </div>
 
-      <div className="container-main relative z-10 pb-28 md:pb-36">
-        <div className="max-w-3xl">
+      <div className="relative z-10 w-full mt-auto pt-16 pb-28 md:pb-36">
+        <div className="container-main">
+          <div className="max-w-3xl">
           <span className="section-label" style={{ ...reveal('40ms') }}>
             The Brand Acquisition System
           </span>
 
           <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-[1.05] mb-8"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-[1.05] mb-6"
             style={{ ...reveal('120ms') }}
           >
-            Attention is cheap.
-            <br />
-            Trust is <span style={{ color: '#DBBFA8' }}>everything</span>.
+            People purchase <span style={{ color: '#DBBFA8' }}>trust</span>.
           </h1>
 
           <p
-            className="font-body italic text-xl md:text-2xl text-roma-cream/70 mb-12 leading-relaxed max-w-2xl"
+            className="font-body italic text-lg md:text-2xl text-roma-cream/70 mb-10 leading-relaxed max-w-xl"
             style={{ ...reveal('220ms') }}
           >
-            The founders who put a real face and a real story on camera now will pull ahead of every
-            competitor still hiding behind a logo.
+            The founders who show up on camera pull ahead of everyone still hiding behind a logo.
           </p>
 
-          <div style={{ ...reveal('320ms') }}>
+          <div className="flex justify-center" style={{ ...reveal('320ms') }}>
             <BookButton />
+          </div>
           </div>
         </div>
       </div>
@@ -156,7 +155,7 @@ function Offer() {
       <div className="container-main" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
-            The Offer
+            The Solution
           </span>
           <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-serino-black leading-tight">
             The Brand Acquisition System
@@ -177,7 +176,7 @@ function Offer() {
               <span className="font-display text-5xl leading-none" style={{ color: '#7C6122', opacity: 0.4 }}>
                 {p.n}
               </span>
-              <h3 className="mt-5 font-heading text-2xl tracking-wide uppercase text-serino-black">
+              <h3 className="mt-5 font-heading text-2xl tracking-wide uppercase text-serino-black md:min-h-[4rem]">
                 Phase {p.n.replace('0', '')}: {p.name}
               </h3>
               <p className="mt-1 font-heading text-lg tracking-wide" style={{ color: '#7C6122' }}>
@@ -200,9 +199,125 @@ function Offer() {
             <span className="font-display text-3xl md:text-4xl text-serino-black">$12,000–$20,000</span>
           </div>
           <p className="mt-8 font-body italic text-lg text-serino-black/60 max-w-xl mx-auto">
-            Most clients start with Phase 1. The page we build becomes the sales tool for the rest.
+            Phase 1 is the most important place to start. You can have a stunning hero film and
+            reels in every feed, but without the right brand funnel, that attention never converts.
           </p>
         </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Section 3.5: Why This System Is Crucial ─────────────────────────────────
+const whyPhases = [
+  {
+    label: '01 · Foundation',
+    invest: '$2,500 in',
+    math: 'One booked job covers it 3×',
+    support: 'Avg. service ticket $8,000+. The funnel turns attention into booked calls.',
+    barLabel: 'Convert',
+    barHeight: 52,
+  },
+  {
+    label: '02 · Production',
+    invest: '$6,000 to $10,000 in',
+    math: 'A kept customer is worth 3 to 5× the first job',
+    support: 'The film builds the trust that closes bigger work, then keeps it coming back.',
+    barLabel: 'Trust + Retain',
+    barHeight: 94,
+  },
+  {
+    label: '03 · Deployment',
+    invest: '$3,000 to $5,000 in',
+    math: '≈ $55 per branded asset',
+    support: '60 to 90 on-voice pieces. Ninety days of presence pulling pre-sold, higher-intent leads.',
+    barLabel: 'Amplify',
+    barHeight: 140,
+  },
+]
+
+function WhyItWorks() {
+  const ref = useScrollReveal()
+  return (
+    <section className="py-28 md:py-36" style={{ backgroundColor: '#5b3020' }}>
+      {/* Bars rise from the baseline once their column reveals (desktop only) */}
+      <style>{`
+        @media (min-width: 768px) {
+          .why-bar { transform: scaleY(0); transform-origin: bottom; transition: transform 900ms cubic-bezier(0.16,1,0.3,1) 250ms; }
+          .fade-up-visible.visible .why-bar { transform: scaleY(1); }
+        }
+      `}</style>
+      <div className="container-main" ref={ref}>
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="section-label fade-up-visible" style={{ color: '#EAD9BB' }}>
+            Why This System Is Crucial
+          </span>
+          <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-roma-cream leading-tight">
+            The system pays for itself.
+            <br />
+            Then it compounds.
+          </h2>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 max-w-4xl mx-auto items-end">
+          {whyPhases.map((p, i) => (
+            <div key={p.label} className="fade-up-visible" style={{ transitionDelay: `${i * 140}ms` }}>
+              <p className="font-heading text-xs tracking-widest uppercase" style={{ color: '#EAD9BB' }}>
+                {p.label}
+              </p>
+              <p className="mt-1 font-body text-sm text-roma-cream/75">{p.invest}</p>
+              <p className="mt-3 font-display italic text-xl md:text-2xl leading-snug" style={{ color: '#F0DFC0' }}>
+                {p.math}
+              </p>
+              <p className="mt-3 mb-5 font-body text-sm text-roma-cream/70 leading-relaxed">{p.support}</p>
+
+              {/* Rising bar: widening strip on mobile, climbing column on desktop */}
+              <div className="flex items-center gap-3 md:hidden">
+                <div
+                  style={{
+                    backgroundColor: 'rgba(244,240,234,0.12)',
+                    borderTop: '2px solid #E9D5B8',
+                    height: 10,
+                    width: `${(i + 1) * 30}%`,
+                  }}
+                />
+                <span className="font-heading text-[10px] tracking-[0.18em] uppercase whitespace-nowrap" style={{ color: 'rgba(244,240,234,0.8)' }}>
+                  {p.barLabel}
+                </span>
+              </div>
+              <div
+                className="why-bar hidden md:flex items-end justify-center w-full"
+                style={{
+                  backgroundColor: 'rgba(244,240,234,0.12)',
+                  borderTop: '2px solid #E9D5B8',
+                  height: p.barHeight,
+                }}
+              >
+                <span className="font-heading text-[10px] tracking-[0.18em] uppercase pb-2" style={{ color: 'rgba(244,240,234,0.8)' }}>
+                  {p.barLabel}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div
+          className="fade-up-visible mt-16 pt-6 flex flex-wrap justify-center items-baseline gap-x-10 gap-y-2 text-center"
+          style={{ transitionDelay: '300ms', borderTop: '1px solid rgba(244,240,234,0.25)' }}
+        >
+          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/75">
+            Full System $12,000 to $20,000
+          </span>
+          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#F0DFC0' }}>
+            Break-even ≈ 2 to 3 booked jobs
+          </span>
+          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/75">
+            Everything after compounds
+          </span>
+        </div>
+        <p className="fade-up-visible mt-6 text-center font-body italic text-sm text-roma-cream/60" style={{ transitionDelay: '380ms' }}>
+          Example math: Portland HVAC. We run your numbers on the call.
+        </p>
       </div>
     </section>
   )
@@ -263,7 +378,7 @@ function Proof() {
       <hr className="gold-rule" />
       <div className="container-main pt-20" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
-          <span className="section-label fade-up-visible">The Proof</span>
+          <span className="section-label fade-up-visible">Case Studies</span>
           <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-roma-cream leading-tight">
             The work speaks first.
           </h2>
@@ -351,24 +466,38 @@ function CTAFooter() {
             gaps, and show you exactly what the system looks like for your business.
           </p>
           <div className="fade-up-visible" style={{ transitionDelay: '200ms' }}>
-            <BookButton label="Book a call" />
+            <BookButton label="Book now" />
           </div>
 
-          {/* Signature */}
+          {/* Signatures */}
           <div
-            className="fade-up-visible mt-16 flex items-center justify-center gap-4"
+            className="fade-up-visible mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-14"
             style={{ transitionDelay: '300ms' }}
           >
-            <img
-              src="/assets/pictures/phil.png"
-              alt="Philip Serino"
-              className="rounded-full object-cover"
-              style={{ width: 56, height: 56, filter: 'grayscale(0.2)' }}
-            />
-            <p className="text-left font-heading text-sm tracking-widest uppercase text-serino-black/70 leading-snug">
-              Philip Serino
-              <span className="block text-serino-black/45">Creative Director · Portland, OR</span>
-            </p>
+            <div className="flex items-center gap-4">
+              <img
+                src="/assets/pictures/phil-avatar.jpg"
+                alt="Philip Serino"
+                className="rounded-full object-cover"
+                style={{ width: 56, height: 56, filter: 'grayscale(0.2)' }}
+              />
+              <p className="text-left font-heading text-sm tracking-widest uppercase text-serino-black/70 leading-snug">
+                Philip Serino
+                <span className="block text-serino-black/45">Founder &amp; CEO</span>
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <img
+                src="/assets/pictures/lexi-avatar.jpg"
+                alt="Alexandria Russell"
+                className="rounded-full object-cover"
+                style={{ width: 56, height: 56, filter: 'grayscale(0.2)' }}
+              />
+              <p className="text-left font-heading text-sm tracking-widest uppercase text-serino-black/70 leading-snug">
+                Alexandria Russell
+                <span className="block text-serino-black/45">Business Consultant</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -383,6 +512,7 @@ export default function AcquisitionPage() {
       <Hero />
       <Problem />
       <Offer />
+      <WhyItWorks />
       <Proof />
       <CTAFooter />
     </main>
