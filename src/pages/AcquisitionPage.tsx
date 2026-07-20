@@ -100,7 +100,7 @@ function Hero() {
           </p>
 
           <div className="flex justify-center" style={{ ...reveal('320ms') }}>
-            <BookButtonOutline />
+            <BookButtonOutline label="Book now" />
           </div>
           </div>
         </div>
@@ -153,7 +153,7 @@ function Bridge() {
       <div className="container-main pt-24 md:pt-32" ref={ref}>
         <div className="max-w-3xl mx-auto text-center">
           <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
-            The Math
+            Unique Value Proposition
           </span>
           <h2 className="fade-up-visible font-display text-4xl md:text-6xl text-serino-black leading-[1.05]">
             90 days of content.
@@ -196,14 +196,14 @@ const phases = [
 function Offer() {
   const ref = useScrollReveal()
   return (
-    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#F4F0EA' }}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#4d2718' }}>
       <hr className="gold-rule" />
       <div className="container-main pt-28 md:pt-36" ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
-          <span className="section-label fade-up-visible" style={{ color: '#7C6122' }}>
-            The Solution
+          <span className="section-label fade-up-visible" style={{ color: '#EAD9BB' }}>
+            What You Get
           </span>
-          <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-serino-black leading-tight">
+          <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-roma-cream leading-tight">
             The Brand Acquisition System
           </h2>
         </div>
@@ -215,144 +215,28 @@ function Offer() {
               className="fade-up-visible flex flex-col p-8"
               style={{
                 transitionDelay: `${i * 120}ms`,
-                backgroundColor: '#FBF9F5',
-                border: '1px solid rgba(124,97,34,0.18)',
+                backgroundColor: 'rgba(244,240,234,0.06)',
+                border: '2px solid #C2A878',
               }}
             >
-              <span className="font-display text-5xl leading-none" style={{ color: '#7C6122', opacity: 0.4 }}>
+              <span className="font-display text-5xl leading-none" style={{ color: '#EAD9BB', opacity: 0.45 }}>
                 {p.n}
               </span>
-              <h3 className="mt-5 font-heading text-2xl tracking-wide uppercase text-serino-black md:min-h-[4rem]">
+              <h3 className="mt-5 font-heading text-2xl tracking-wide uppercase text-roma-cream md:min-h-[4rem]">
                 Phase {p.n.replace('0', '')}: {p.name}
               </h3>
-              <p className="mt-4 font-body text-lg text-serino-black/70 leading-relaxed">{p.body}</p>
+              <p className="mt-4 font-body text-lg text-roma-cream/70 leading-relaxed">{p.body}</p>
             </div>
           ))}
         </div>
 
-        {/* Phase-1 note (pricing lives in the break-even section that follows) */}
+        {/* Phase-1 note */}
         <div className="fade-up-visible mt-14 text-center" style={{ transitionDelay: '160ms' }}>
-          <p className="font-body italic text-lg text-serino-black/60 max-w-xl mx-auto">
+          <p className="font-body italic text-lg text-roma-cream/60 max-w-xl mx-auto">
             Phase 1 is the most important place to start. You can have a stunning hero film and
             reels in every feed, but without the right brand funnel, that attention never converts.
           </p>
         </div>
-      </div>
-    </section>
-  )
-}
-
-// ─── Section 3.5: Why This System Is Crucial ─────────────────────────────────
-const whyPhases = [
-  {
-    label: '01 · Foundation',
-    invest: '$2,500 in',
-    math: 'One booked job covers it 3×',
-    support: 'Avg. service ticket $8,000+. The funnel turns attention into booked calls.',
-    barLabel: 'Convert',
-    barHeight: 52,
-  },
-  {
-    label: '02 · Production',
-    invest: '$6,000 to $10,000 in',
-    math: 'A kept customer is worth 3 to 5× the first job',
-    support: 'The film builds the trust that closes bigger work, then keeps it coming back.',
-    barLabel: 'Trust + Retain',
-    barHeight: 94,
-  },
-  {
-    label: '03 · Deployment',
-    invest: '$3,000 to $5,000 in',
-    math: '≈ $55 per branded asset',
-    support: '60 to 90 on-voice pieces. Ninety days of presence pulling pre-sold, higher-intent leads.',
-    barLabel: 'Amplify',
-    barHeight: 140,
-  },
-]
-
-function WhyItWorks() {
-  const ref = useScrollReveal()
-  return (
-    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#4d2718' }}>
-      <hr className="gold-rule" />
-      {/* Bars rise from the baseline once their column reveals (desktop only) */}
-      <style>{`
-        @media (min-width: 768px) {
-          .why-bar { transform: scaleY(0); transform-origin: bottom; transition: transform 900ms cubic-bezier(0.16,1,0.3,1) 250ms; }
-          .fade-up-visible.visible .why-bar { transform: scaleY(1); }
-        }
-      `}</style>
-      <div className="container-main pt-28 md:pt-36" ref={ref}>
-        <div className="text-center max-w-2xl mx-auto">
-          <span className="section-label fade-up-visible" style={{ color: '#EAD9BB' }}>
-            Why This System Is Crucial
-          </span>
-          <h2 className="fade-up-visible font-display text-4xl md:text-5xl text-roma-cream leading-tight">
-            The system pays for itself.
-            <br />
-            Then it compounds.
-          </h2>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 max-w-4xl mx-auto items-end">
-          {whyPhases.map((p, i) => (
-            <div key={p.label} className="fade-up-visible" style={{ transitionDelay: `${i * 140}ms` }}>
-              <p className="font-heading text-xs tracking-widest uppercase" style={{ color: '#EAD9BB' }}>
-                {p.label}
-              </p>
-              <p className="mt-1 font-body text-sm text-roma-cream/75">{p.invest}</p>
-              <p className="mt-3 font-display italic text-xl md:text-2xl leading-snug" style={{ color: '#F0DFC0' }}>
-                {p.math}
-              </p>
-              <p className="mt-3 mb-5 font-body text-sm text-roma-cream/70 leading-relaxed">{p.support}</p>
-
-              {/* Rising bar: widening strip on mobile, climbing column on desktop */}
-              <div className="flex items-center gap-3 md:hidden">
-                <div
-                  style={{
-                    backgroundColor: 'rgba(244,240,234,0.12)',
-                    borderTop: '2px solid #E9D5B8',
-                    height: 10,
-                    width: `${(i + 1) * 30}%`,
-                  }}
-                />
-                <span className="font-heading text-[10px] tracking-[0.18em] uppercase whitespace-nowrap" style={{ color: 'rgba(244,240,234,0.8)' }}>
-                  {p.barLabel}
-                </span>
-              </div>
-              <div
-                className="why-bar hidden md:flex items-end justify-center w-full"
-                style={{
-                  backgroundColor: 'rgba(244,240,234,0.12)',
-                  borderTop: '2px solid #E9D5B8',
-                  height: p.barHeight,
-                }}
-              >
-                <span className="font-heading text-[10px] tracking-[0.18em] uppercase pb-2" style={{ color: 'rgba(244,240,234,0.8)' }}>
-                  {p.barLabel}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div
-          className="fade-up-visible mt-16 pt-6 flex flex-wrap justify-center items-baseline gap-x-10 gap-y-2 text-center"
-          style={{ transitionDelay: '300ms', borderTop: '1px solid rgba(244,240,234,0.25)' }}
-        >
-          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/75">
-            Full System $12,000 to $20,000
-          </span>
-          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#F0DFC0' }}>
-            Break-even ≈ 2 to 3 booked jobs
-          </span>
-          <span className="font-heading text-xs tracking-widest uppercase text-roma-cream/75">
-            Everything after compounds
-          </span>
-        </div>
-        <p className="fade-up-visible mt-6 text-center font-body italic text-sm text-roma-cream/60" style={{ transitionDelay: '380ms' }}>
-          Example math: Portland HVAC. We run your numbers on the call.
-        </p>
       </div>
     </section>
   )
@@ -590,7 +474,6 @@ export default function AcquisitionPage() {
       <Bridge />
       <Proof />
       <Offer />
-      <WhyItWorks />
       <Founder />
       <CTAFooter />
     </main>

@@ -42,11 +42,11 @@ export default function HeroSection() {
       />
 
 
-<div className="container-main relative z-10 pb-32 md:pb-40">
-        <div className="max-w-2xl">
+<div className="container-main relative z-10 pt-16 pb-16 md:pb-20">
+        <div className="max-w-3xl mx-auto text-center">
           {/* Headline */}
           <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-tight mb-8"
+            className="font-display text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-tight mb-6"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? 'translateY(0)' : 'translateY(24px)',
@@ -59,7 +59,7 @@ export default function HeroSection() {
 
           {/* Subheadline */}
           <p
-            className="font-body italic text-xl text-roma-cream/60 mb-12 leading-relaxed max-w-lg"
+            className="font-body italic text-xl text-roma-cream/60 mb-10 leading-relaxed max-w-xl mx-auto"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? 'translateY(0)' : 'translateY(24px)',
