@@ -22,6 +22,20 @@ function BookButton({ label = 'Book a quick call' }: { label?: string }) {
   )
 }
 
+/** Gold outline variant, matching the home page hero CTA. */
+function BookButtonOutline({ label = 'Book a quick call' }: { label?: string }) {
+  return (
+    <a
+      href={BOOKING_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block font-heading text-sm tracking-widest uppercase border border-gold text-gold px-8 py-4 hover:bg-gold hover:text-serino-black transition-all duration-200"
+    >
+      {label} →
+    </a>
+  )
+}
+
 // ─── Section 1: Hero ─────────────────────────────────────────────────────────
 function Hero() {
   const [loaded, setLoaded] = useState(false)
@@ -60,13 +74,13 @@ function Hero() {
       {/* Minimal brand mark (no nav links, per brief) — in normal flow at the top */}
       <div className="relative z-20 w-full">
         <div className="container-main flex items-center py-6">
-          <img src="/assets/logos/white_copy.png" alt="Serino Consulting" style={{ height: 40, width: 'auto' }} />
+          <img src="/assets/logos/black_w_quill.png" alt="Serino Consulting" className="h-12 w-auto" />
         </div>
       </div>
 
-      <div className="relative z-10 w-full mt-auto pt-16 pb-28 md:pb-36">
+      <div className="relative z-10 w-full mt-auto pt-16 pb-16 md:pb-20">
         <div className="container-main">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
           <span className="section-label" style={{ ...reveal('40ms') }}>
             The Brand Acquisition System
           </span>
@@ -75,18 +89,18 @@ function Hero() {
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-roma-cream leading-[1.05] mb-6"
             style={{ ...reveal('120ms') }}
           >
-            People purchase <span style={{ color: '#DBBFA8' }}>trust</span>.
+            People purchase tr<span style={{ color: '#DBBFA8' }}>u</span>st.
           </h1>
 
           <p
-            className="font-body italic text-lg md:text-2xl text-roma-cream/70 mb-10 leading-relaxed max-w-xl"
+            className="font-body italic text-xl text-roma-cream/70 mb-10 leading-relaxed max-w-xl mx-auto"
             style={{ ...reveal('220ms') }}
           >
-            The founders on camera pull ahead of the ones hiding behind a logo.
+            The founders on camera pull ahead of those hiding behind a logo.
           </p>
 
           <div className="flex justify-center" style={{ ...reveal('320ms') }}>
-            <BookButton />
+            <BookButtonOutline />
           </div>
           </div>
         </div>
@@ -259,7 +273,7 @@ const whyPhases = [
 function WhyItWorks() {
   const ref = useScrollReveal()
   return (
-    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#573427' }}>
+    <section className="pb-28 md:pb-36" style={{ backgroundColor: '#4d2718' }}>
       <hr className="gold-rule" />
       {/* Bars rise from the baseline once their column reveals (desktop only) */}
       <style>{`
@@ -479,9 +493,7 @@ function Founder() {
         <div className="max-w-3xl mx-auto text-center">
           <span className="section-label fade-up-visible">Who You&rsquo;re Working With</span>
           <h2 className="fade-up-visible font-display text-3xl md:text-4xl text-roma-cream leading-tight">
-            You&rsquo;re not hiring an agency.
-            <br />
-            You&rsquo;re working with us.
+            Meet Serino Consulting
           </h2>
           <p
             className="fade-up-visible mt-6 font-body text-lg text-roma-cream/65 leading-relaxed max-w-2xl mx-auto"

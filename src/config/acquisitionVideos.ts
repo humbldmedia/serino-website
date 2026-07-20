@@ -69,7 +69,7 @@ export const proofVideos = {
  */
 export const verticalClips: VideoSource[] = [
   { streamUid: '6efe5fe37e0e3984fb5ddf8d7ca5bb31', poster: '/assets/pictures/haunted-poster.jpg', title: 'The Haunted Listing' }, // Skit
-  { streamUid: '12045e484429034ef40822868dcf6f7e', poster: '/assets/pictures/rooted-poster.jpg', title: 'Rooted in Community' }, // Interview
+  { streamUid: 'e4d75d9a4b0c4d58bd72767585ff57dc', poster: '/assets/pictures/rooted-poster.jpg', title: 'Rooted in Community' }, // Interview
   { streamUid: '1f320c64d4a17f74a90f1893c919adbc', poster: '/assets/pictures/thisjustin-poster.jpg', title: 'This Just In' }, // Remix / pattern interrupt
 ]
 
