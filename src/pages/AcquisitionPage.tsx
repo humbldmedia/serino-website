@@ -412,7 +412,11 @@ function Founder() {
                 src={`/assets/pictures/${m.img}`}
                 alt={`${m.name}, ${m.role} at Serino Consulting`}
                 className="w-full object-cover"
-                style={{ aspectRatio: '4 / 5', filter: 'grayscale(0.15)' }}
+                style={{
+                  aspectRatio: '4 / 5',
+                  filter: 'grayscale(0.15)',
+                  border: '1px solid rgba(194,168,120,0.3)',
+                }}
               />
               <p className="mt-5 font-heading text-sm tracking-widest uppercase text-roma-cream">
                 {m.name}
