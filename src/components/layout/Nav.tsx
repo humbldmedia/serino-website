@@ -54,7 +54,7 @@ export default function Nav() {
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-6">
             <a
-              href="https://calendly.com/serinoconsulting/30min"
+              href="https://wellbooked.net/book/serinoconsulting/acquisition-call"
               target="_blank"
               rel="noopener noreferrer"
               className="font-heading text-xs tracking-widest uppercase border border-gold text-gold px-5 py-2.5 transition-all duration-200"
@@ -107,7 +107,7 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="https://calendly.com/serinoconsulting/30min"
+            href="https://wellbooked.net/book/serinoconsulting/acquisition-call"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}

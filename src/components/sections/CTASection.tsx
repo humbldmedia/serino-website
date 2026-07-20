@@ -29,7 +29,7 @@ export default function CTASection() {
 
           <div className="fade-up-visible" style={{ transitionDelay: '240ms' }}>
             <a
-              href="https://calendly.com/serinoconsulting/30min"
+              href="https://wellbooked.net/book/serinoconsulting/acquisition-call"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block font-heading text-sm tracking-widest uppercase px-10 py-4 transition-all duration-200"

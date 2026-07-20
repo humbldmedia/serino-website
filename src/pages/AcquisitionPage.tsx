@@ -3,7 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { HeroBackgroundVideo, ProofVideo } from '../components/acquisition/AcquisitionVideo'
 import { heroVideo, proofVideos, verticalClips } from '../config/acquisitionVideos'
 
-const BOOKING_URL = 'https://wellbooked.net/book/serinoconsulting/audit'
+const BOOKING_URL = 'https://wellbooked.net/book/serinoconsulting/acquisition-call'
 
 // ─── Shared CTA button ───────────────────────────────────────────────────────
 function BookButton({ label = 'Book a quick call' }: { label?: string }) {

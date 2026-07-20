@@ -660,7 +660,7 @@ export default function ProcessSection() {
                   <div className="flex items-center gap-6 flex-wrap mt-2">
                     <button onClick={() => setModalView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.7'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>← Back to Deliverables</button>
                     <a
-                      href="https://calendly.com/serinoconsulting/30min"
+                      href="https://wellbooked.net/book/serinoconsulting/acquisition-call"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-heading text-xs tracking-widest uppercase px-6 py-3 transition-all duration-200"
@@ -769,7 +769,7 @@ export default function ProcessSection() {
                   <div className="flex items-center gap-6 flex-wrap mt-2">
                     <button onClick={() => setRetainerView('deliverable')} className="font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878', letterSpacing: '0.1em' }} onMouseEnter={e => { e.currentTarget.style.opacity = '0.7' }} onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}>← Back to Deliverables</button>
                     <a
-                      href="https://calendly.com/serinoconsulting/30min"
+                      href="https://wellbooked.net/book/serinoconsulting/acquisition-call"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-heading text-xs tracking-widest uppercase px-6 py-3 transition-all duration-200"

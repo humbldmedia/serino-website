@@ -185,7 +185,7 @@ export default function ContactPage() {
                 <span className="font-body text-sm text-roma-cream/30">or</span>
 
                 <a
-                  href="https://calendly.com/serinoconsulting/30min"
+                  href="https://wellbooked.net/book/serinoconsulting/acquisition-call"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-heading text-xs tracking-widest uppercase border border-gold text-gold px-6 py-3 transition-all duration-200"
