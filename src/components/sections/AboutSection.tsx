@@ -34,7 +34,7 @@ export default function AboutSection() {
           <div className="fade-up-visible max-w-xs mx-auto w-full">
             <div style={{ borderBottom: '1px solid rgba(194,168,120,0.2)', paddingBottom: '20px', marginBottom: '24px' }}>
               <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>
-                Founder &amp; Brand Consultant
+                Founder &amp; CEO
               </p>
               <h3 className="font-display text-2xl text-roma-cream mb-4">Phil Serino</h3>
               <p className="font-body text-roma-cream/60 text-sm leading-relaxed">
@@ -47,7 +47,7 @@ export default function AboutSection() {
             >
               <img
                 src="/assets/pictures/phil.png"
-                alt="Phil Serino — Founder & Brand Consultant"
+                alt="Phil Serino — Founder & CEO"
                 className="absolute inset-0 w-full h-full object-cover object-top"
               />
               <div
@@ -61,7 +61,7 @@ export default function AboutSection() {
           <div className="fade-up-visible max-w-xs mx-auto w-full" style={{ transitionDelay: '100ms' }}>
             <div style={{ borderBottom: '1px solid rgba(194,168,120,0.2)', paddingBottom: '20px', marginBottom: '24px' }}>
               <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#C2A878' }}>
-                Business Consultant
+                Lead Strategist &amp; COO
               </p>
               <h3 className="font-display text-2xl text-roma-cream mb-4">Alexandria Russell</h3>
               <p className="font-body text-roma-cream/60 text-sm leading-relaxed">
@@ -74,7 +74,7 @@ export default function AboutSection() {
             >
               <img
                 src="/assets/pictures/lexi.png"
-                alt="Alexandria Russell — Business Consultant"
+                alt="Alexandria Russell — Lead Strategist & COO"
                 className="absolute inset-0 w-full h-full object-cover object-top"
               />
               <div

@@ -383,10 +383,10 @@ function Founder() {
             className="fade-up-visible mt-6 font-body text-lg text-roma-cream/65 leading-relaxed max-w-2xl mx-auto"
             style={{ transitionDelay: '80ms' }}
           >
-            We started Serino Consulting after watching great local businesses stay invisible while
-            lesser competitors with better video took the market. When you get on a call, you&rsquo;re
-            talking to the two people who&rsquo;ll actually do the work &mdash; no account managers, no
-            handoffs.
+            The people you meet on the first call are the people responsible for your results.
+            Philip directs the creative. Alexandria runs the operation. We work closely with our
+            in-house production team to execute under our direction so that nothing gets lost in
+            translation between the person who heard your story and the person telling it.
           </p>
         </div>
 
@@ -395,14 +395,12 @@ function Founder() {
             {
               img: 'phil.png',
               name: 'Philip Serino',
-              role: 'Founder & Creative Director',
-              line: 'Directs your brand story and every frame on camera.',
+              role: 'Founder & CEO',
             },
             {
               img: 'lexi.png',
               name: 'Alexandria Russell',
-              role: 'Lead Strategist & Director of Operations',
-              line: 'Runs the operation and stays your point of contact, start to finish.',
+              role: 'Lead Strategist & COO',
             },
           ].map((m, i) => (
             <div
@@ -422,7 +420,6 @@ function Founder() {
               <p className="mt-1 font-heading text-xs tracking-widest uppercase" style={{ color: '#C2A878' }}>
                 {m.role}
               </p>
-              <p className="mt-3 font-body text-base text-roma-cream/60 leading-relaxed">{m.line}</p>
             </div>
           ))}
         </div>
